@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="..\index.css">    
+</head>
+<body>
+<div class="mainContainer w3-container">
+
+<header class="w3-container  w3-teal headerContainer">
+  <h2>Tutorial Campus....!</h2>
+</header>
+    
+    
+<nav  style="margin-top: 10px;" class="w3-bar w3-border w3-card-4 w3-light-grey">    
+    
+		<a href="Core-Java.html" class="w3-bar-item w3-button">Core Java</a> 
+		<a href="JDBC.html" class="w3-bar-item w3-button">JDBC</a>
+		<a href="Design-Patterns.html" class="w3-bar-item w3-button">Design Patterns</a>
+		<a href="..\advance_Java\Servlet-JSP.html" class="w3-bar-item w3-button">Servlet-JSP</a>	
+		
+    
+    
+</nav>
+<div class="contentContainer">
+    <div class="leftContentContainer">
+       <ul>
+        <li><a href="#Intro">JDBC Introduction</a></li>
+        <li><a href="#ResultSet">ResultSet Object</a></li>   
+        <li><a href="#preparedStatement">PreparedStatement</a></li>
+        <li><a href="#callableStatement">CallableStatement</a></li>
+        <li><a href="#JDBCBatchUpdates">JDBC Batch Updates</a></li>  
+        <li><a href="#ResultSetMetaData">ResultSetMetaData</a></li>   
+        <li><a href="#DatabaseMetaData">DatabaseMetaData</a></li>
+        <li><a href="#BLOBCLOB">Storing &amp; Retriving BLOB/CLOB</a></li>   
+        </ul>
+    </div>   
+    <div class="middleContentContainer">
+<H1 id="#Intro">JDBC Introduction</H1>        
+According to database software specification , there are 4 types of queries
+	<ol type="1">
+		<li> DML (update, insert , delete)</li>
+		<li> DRL (select queries.)</li>
+		<li> DDL queries (create or alter table or drop table etc.)</li>
+		<li> TCL (commit, rollback savepoint)</li>
+	</ol>
+    <ul>    
+	<li> When select queries are executed, they return bunch of records,and when non select <br>
+        queries are executed they return one numeric value which is no. of records affected. </li>
+	<li> We use JDBC Statement object to send and execute queries in database software being <br>
+        from java application. we can create this object based on connection object. <br>
+Statement st= connection.createStatement(); 
+    </li>
+	<li> use executeQuery() to send and execute sql select queries.  </li>
+	<li> use executeUpdate() to send and execute sql non-select queries. </li>
+    </ul>    
+        
+	<b>Prototypes of JDBC API methods</b>
+	<ul>
+		<li>public static Connection getConnection(Stirng url, String username, String password)</li>
+		<li>public Statement createStatement() throws SQLException</li>
+		<li>public ResultSet executeQuery(String query) throws SQLException</li>
+		<li>public int getInt(String collumnName or Index) throws SQLException</li>
+		<li>public boolean next() throws SQLException</li>
+		<li>public void close() throws SQLException</li>
+	</ul>	
+	
+<div class="javaCode">
+    public class JdbcTest
+	{
+		public static void main(---)
+		{
+			//load jdbc driver class to register JDBC driver with DriverManager service.
+			Class.forName("Driver_Class_Name");
+			//establish connection with db software from java app.
+			Connection con=DriverManager.getConnection("hostname_and_service", username, password);
+			//create JDBC statement object.
+			Statement st=con.createStatement();
+			//send and execute sql select or update statement 
+			ResutlSet rs=st.executeQuery("select * from student");
+			while(rs,next())
+			{
+				sop (rs.getInt(1)+" "+rs.getString(2)+" "+ rs.getString(3));
+				or 
+				sop ( rs.getInt("sno")+" "+rs.getString("sname")+" "+rs.getString("slocation"))
+			}
+				or 
+			it updatedRecords= st.executeQuery("update student set rollNo=10 where sname='Mangesh'");
+			sop ( updatedRecords +" records updated successfully");
+			rs.close(); //sequence of closing would be in decending order.
+			st.close();
+			con.close();				
+
+		}//main
+	} //JdbcTest
+</div>        
+        
+        
+ <h3 id="ResultSet">ResultSet Object</h3>
+        <ul>
+		<li> ResultSet object it is object of underlying jdbc driver supplied java class that implements java.sql.ResultSet interface. </li>
+		<li> by default every ResultSet object contains BFR & ALR records . & record pointer / cursor reside in BFR position by default 
+        </li>
+        
+        </ul>    
+        
+       <div class="imageDiv">
+        <img src="ResultSet.jpg">
+        </div> 
+    <ul>    
+<li> ResultSet have getXXX(). we can use collumn index or column name
+        <li> if we don't  know what is datatype of the collumn in ResultSet then we can simply call <br> <strong>rs.getString(index/collumnName)</strong> method.	 </li>
+		<li> when we select specific collumns of db into RS object. <br>
+        the collumn vlues will be stored in the ResultSet object in the order they are selected.</li>
+		<li> while retriving these values from ResultSet object, give collumn indexes  <br>
+            in which they are stored in ResultSet object and not in order they are there in database table.</li>
+        <li> if we try to get values from ResultSet object when it is closed , then we get SQLException.</li>
+
+</ul>
+ 		
+<h4>Types of ResultSet</h4>			
+<ol type="1">
+	<li>TYPE_FORWARD_ONLY:
+        <ul>
+	 <li> The result set cannot be scrolled; its cursor moves forward only, from BFR row to ALR positions. </li>
+ 	 <li> The default ResultSet type is TYPE_FORWARD_ONLY  </li>
+        </ul>
+</li>
+	<li>TYPE_SCROLL_INSENSITIVE:
+        <ul>
+	 <li> The result can be scrolled; its cursor can move both forward and backward relative to the current position.</li>
+ 	 <li> The cursor can scroll forward and backward, and the result set is not sensitive to changes made by others to the database<br> 
+ 		that occur after the result set was created.
+     </li>
+    </ul>        
+ </li>
+	<li>TYPE_SCROLL_SENSITIVE:
+        <ul>
+ 	<li>The cursor can scroll forward and backward, and the result set is sensitive to changes made by others to the database that occur after the result set was created.</li>
+            </ul>
+    </li>    
+</ol>        
+        
+        <div class="javaCode">
+         st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            rs = st.executeQuery("select accno, bal from bank");
+            System.out.println("Cursor position is at BFR ? : "+rs.isBeforeFirst());
+           
+			while(rs.next()){
+                System.out.println(rs.getInt(1)+"   "+rs.getDouble(2));
+            }
+            //now result set cursor reached the last position
+            System.out.println("Cursor position is at ALR ?: "+rs.isAfterLast());
+            while(rs.previous()){
+                System.out.println(rs.getInt(1)+"   "+rs.getDouble(2));
+            }
+
+Note :- 1) ResultSet.CONCUR_READ_ONLY   :- this property Creates a read-only result set. This is the default
+        2) ResultSet.CONCUR_UPDATABLE   :- this property Creates an updateable result set.
+
+        </div>
+     
+<b>Q)What is difference between toString() &amp; printStackTrace() called on any exception object ?</b>
+	<ul>
+    <li> toString() gives only className of the exception that is raised. </li>
+	<li> printStackTrace() displays the elaborated method details of the exception that is raiased. <br>
+        Java method executes in stack memory, when exception is raised, Stack memory will be filled with exception <br>
+		related messages. printStackTrace will display those messages only.
+    </li>    
+    </ul>    
+<b>Q) what is difference between System.out.println(--) &amp; System.error.println(--)</b>	
+    <ul>    
+	<li> System.out.println(--) supports output redirection to a file. </li>
+	<li> System.error.println(--) doesent support output redirection. </li>
+    </ul>    
+<b>Q) Can we use single method call to execute both select and update queries ? </b>
+    <ul>    
+        <li> Yes, it is possible by calling execute() method. it will return true if executed query is select query and flase if executed query is non select. </li>
+	<li> While working with this method we need to gather query execution result through seperate method calls. <br>
+		if query returns 'true'  then we can call getResultSet() method to get ResultSet object.<br>
+		if query returns 'false' then we can call getUpdateCount() method to get no. of records that are affected in JDBC application.  <br>      
+    </li>    
+    </ul>    
+        <div class="javaCode">
+        
+			boolean flag= st.execute(String sql)
+			if(flag)
+			{
+				ResultSet rs=st.getResultSet();
+				while(rs.next(0){...}
+			}
+ 			else
+			{
+				int updateCount=st.getUpdateCount();
+				sop ("no. of records updated are "+ updateCount);
+			}
+
+        </div>
+        
+      
+<h2>Types Of JDBC Drivers</h2>
+	  
+<b>Type-1 driver</b>
+        <ul>
+	<li> Vendor db library is provided by database softwares. so it is database specific. These could be in same language in which database software is written. </li>
+	<li> ODBC drivers are database specific.																		 </li>
+
+</ul>            
+<br>            
+	<b>JDBC CODE---> Driver Manager Service ---> ODBC driver for database ----> Vendor db library for database  ----> | NETWORK | ---> | DATABASE |  </b>
+<br><br>
+<b>Type-2 driver</b>
+        <ul>
+	<li> these drivers eliminate ODBC drivers from architecture. and Vendor library is sufficient <br>
+        to communicate with database. </li>
+            </ul>
+	<b>JDBC CODE ---> Driver Manager Service ---> Vendor db library for database ----> | NETWORK | ---> | DATABASE | </b>
+<br><br>
+<b>Type-4 driver</b>
+	<ul>
+	<li> These drivers are known as thin drivers.  vendor library is eliminated from this architecture. </li>
+	<li> These type of drivers are java implementations. </li>
+    </ul>    
+    <br>    
+	<b>JDBC CODE ---> Driver Manager Service ---> | NETWORK | ---> |DATABASE|  </b>
+<br><br> 		 																						
+<b>Type- 3 Driver</b>
+    <ul>
+	<li> These are connection pool factories , where connections are available to use directly. </li>
+    </ul>    
+	<b>JDBC CODE ---> |NETWORK| ---> |Connection Pool on App Server. e.g. oracle weblogic or apache tomcat. | ---> | DATABASE | </b>
+
+
+<h2 id="preparedStatement">PreparedStatement</h2>
+
+	Advantages of prepared statement are as follows.
+		<ul>
+			<li>Allows to eork on pre-compiled sql query.</li>
+			<li>Allows to specify parameters (?) in query.</li>
+			<li>Avoid sql injection problem.</li>
+			<li>Allows to insert date, lob values.</li>
+			<li>Suitable for executing same query for multiple times with same or different parameters.</li>
+			<li>reduces network traffic between java app and db software.</li>
+			<li> By preparing sql query for prepared statement object , we can take parameters in the query just representing input values & condition values that means we an't take params<br>
+				representing sql keywords like taablenames & collumn names etc. <br>
+				e.g. <br>
+                1) select * ? userlist where user=? (invalid.) <br>
+                2) select * from ? where user=? and pwd=? (invalid.)
+			</li>
+				
+		</ul>        
+
+General syntax for PreparedStatement
+<div class="javaCode">			
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
+    
+PreparedStatement stmt=con.prepareStatement("insert into Emp values(?,?)");  
+
+stmt.setInt(1,101);     //1 specifies the first parameter in the query  
+
+stmt.setString(2,"Ratan");     // <b> we have setXXX(-) methods to set the values to the placeholders.</b>
+
+int i=stmt.executeUpdate();  // or executeQuery() for select queries.  
+
+System.out.println(i+" records inserted");    	
+
+con.close();
+</div>
+   
+        
+<br>
+	
+<b>Q) What is difference between java.util.Date & java.sql.Date</b>
+        <ul>
+	<li> java.util.Date can't be used for db operation. whereas java.sql.Date can be used for db operation. </li>
+	<li> java.sql.Date dosen't have 0- param constructor and java.util.Date maintains 0- param constructor/ Default constructor.
+    </li>
+            
+	<li> java.sql.Date is sub class of java.util.Date class. </li>
+	</ul>
+<br><hr>
+        
+<h3>Converting string date value to java.util.Date value</h3> 
+        
+ This is required when we are inserting date value in database.
+<div class="javaCode">
+String stringDate="21-02-2018" //dd-mm-yyyy	
+SimpleDateFormat sdf=new SimpleDateFormat("d-mm-yyyy");
+java.util.Date utilDate= sdf.parse(s1);
+	
+once we have util.Date class object , we can convert it to sql.Date object.
+	
+long miliseconds= utilDate.getTime();
+java.sql.Date sqlDate=new java.sql.Date(miliseconds);
+	
+<b>note that if date stirng is in format "yyyy-mm-dd" then it can be converted directly to sqlDate <br>
+    e.g. java.sql.Date sqlDate= java.sql.Date.valueOf("2018-10-20")</b>		  	
+</div>
+        
+<h3>Converting date values to string values.</h3>
+    <ul>
+	<li> This is required when we are retriving date form date collumn of database. </li>
+    <li> ResultSet will give us java.sql.Date class object. </li>
+    </ul>
+    
+<div class="javaCode">
+java.sql.Date sqlDate=rs.getDate(x-index)		
+//we will typecast to utilDate object. it is possible because there is base class-> subclass relationship.
+
+java.util.Date utilDate=(java.util.Date) sqlDate;
+//now we can covert utilDate object to string object as below.
+SimpleDateFormat sdf=new SimpleDateFormat("dd-mm-yyyy");
+String stringDate= sdf.format(utilDate);	
+</div>
+<br>        
+<b>to summerize :- parse(-) of java.text.SimpleDateFormat class convets given string to java.util.Date value.<br>
+    
+&amp; format(-) of java.text.SimpleDateFormat class converts given java.util.Date object to String date value. </b>
+        
+<br>
+        
+        
+        
+
+<h3 id="callableStatement">Callable statements</h3>
+
+A CallableStatement object provides a way to call stored procedures using JDBC <br>
+
+Syntax:- 
+        
+<div class="javaCode">
+        
+        
+Connection con = null;
+CallableStatement csmt = null;
+try {
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+        con = DriverManager.getConnection(&quot;jdbc:oracle:thin:@&lt;hostname&gt;:&lt;port num&gt;:&lt;DB name&gt;&quot;,&quot;user&quot;,&quot;password&quot;);
+        csmt = con.prepareCall("{call myprocedure(?,?)}");
+        csmt.setInt(1,200);
+        csmt.setDouble(2, 3000);
+        csmt.execute();
+        System.out.println("Executed stored procedure!!!");
+    } catch (ClassNotFoundException e) {           
+        e.printStackTrace();
+    } catch (SQLException e) {            
+        e.printStackTrace();
+}
+            
+</div>        
+        
+ <br><hr>
+What if there is a parameter to be registered as out parameter in the procedure.
+<div class="javaCode">
+        
+csmt = con.prepareCall("{call myprocedure(?,?)}");
+csmt.setInt(1,200);
+//below method used to register data type of the out parameter
+csmt.registerOutParameter(2, Types.DOUBLE);
+csmt.execute();
+	
+Double output = csmt.getDouble(2);       
+        
+</div>
+        
+<br><hr>		
+we can also make batch updates with callable statement. <br>
+<div class="javaCode">	
+csmt = con.prepareCall("{call myprocedure(?,?)}");
+csmt.setInt(1,200);
+csmt.setDouble(2, 3000);
+csmt.addBatch(); //added first batch params.			
+csmt.setInt(1,130);
+csmt.setDouble(2, 2000);
+csmt.addBatch(); //added second batch params.
+int[] updateCounts = csmt.executeBatch();
+</div>
+<br><hr>    
+<ul>    
+<li>we can also call database function by using callable statements. </li>
+    <li>A function is a named PL/SQL Block which is similar to a procedure.</li> 
+<li>The major difference between a procedure and a function is, a function must always return a value, <br>
+but a procedure may or may not return a value.	 </li>
+    
+</ul>		     
+    
+ 
+<div class="javaCode">
+csmt = con.prepareCall("{?= call myfunction(?,?)}");  // note here we have total 3 params.
+ 		 
+//below method used to register data type of the out parameter
+csmt.registerOutParameter(1, Types.DOUBLE);
+csmt.setInt(2,200);
+csmt.setInt(3,3677);
+csmt.execute();
+Double output = csmt.getDouble(2);
+        
+</div>            
+<br><hr>        
+We can also call database cursor to select records from database. <br>
+
+<div class="javaCode">        
+csmt = con.prepareCall("{call myCursorExmp(?,?)}");
+csmt.setInt(1,200);
+csmt.registerOutParameter(2, OracleTypes.CURSOR);
+csmt.execute();
+rs = (ResultSet)callSt.getObject(2);        
+</div>        
+<br><hr>
+
+
+		 
+<h3 id="JDBCBatchUpdates">JDBC Batch updates.</h3>
+<ul>
+	<li> JDBC Batch updates are useful to perform multiple DML operations at same time. <br>
+        it will reduce connection opening and closing. </li>
+	<li> batch should not contain select query. </li>
+	<li> batch operation can be performed using Statement or PreparedStatement. </li>
+</ul>		
+<br>        
+1) Using Statement <br>        	
+<div class="javaCode">        
+Statement st;
+			
+st = con.createStatement();
+st.addBatch("update emp set sal=3000 where empid=200");
+st.addBatch("insert into emp values (100,4000)");
+st.addBatch("update emp set emp name='Ram' where empid=345");
+int count[] = st.executeBatch();
+            
+for(int i=1;i&lt;=count.length;i++){
+    System.out.println("Query "+i+" has effected "+count[i]+" times");
+    }
+</div>
+<br>        
+2) Using PreparedStatement <br>
+<br>        
+<div class="javaCode">			
+con.setAutoCommit(false);  // to manage transaction. 
+Boolean flag=false; // used to rollback transaction.	
+PreparedStatement pst=null;
+pst = con.prepareStatement("update emp set sal=? where empid=?");
+pst.setInt(1, 3000);
+pst.setInt(2, 200);
+	
+pst.addBatch();
+            
+pst.setInt(1, 4000);
+pst.setInt(2, 230);
+            
+pst.addBatch();
+            
+int count[] = pst.executeBatch();
+			
+    for(int i=1;i&lt;=count.length;i++){
+        System.out.println("Query "+i+" has effected "+count[i]+" times");
+		
+if(count[i]==0)
+	{
+		flag=true;
+		break;
+	}		
+	if(flag==true)
+	{
+		con.rollback()
+	}
+	else{
+        con.commit();
+	}		
+
+}        
+</div>        
+        
+        
+            
+
+<h3 id="ResultSetMetaData">ResultSetMetaData</h3>			
+
+ResultSetMetaData is an object that can be used to get information about the types and 
+properties of the columns in a ResultSet object.
+
+<div class="javaCode">        
+rs = st.executeQuery("select * from emp");
+ResultSetMetaData rsmd = rs.getMetaData();
+int columnCount = rsmd.getColumnCount();
+for(int i=0;i&lt;=columnCount;i++){
+System.out.println(rsmd.getColumnName(i));
+        System.out.println(rsmd.getColumnType(i));
+    }
+</div>
+    
+<h3 id="DatabaseMetaData">DatabaseMetaData</h3>
+        
+ DatabaseMetaData is used to know which type of driver we are using and whether is it compatable or JDBC complaint 
+ or not. <br>
+It is used to know all details about database provider as well. <br>		
+
+<div class="javaCode">
+DatabaseMetaData dm = con.getMetaData();
+System.out.println(dm.getDriverVersion());
+System.out.println(dm.getDriverName());
+System.out.println(dm.getDatabaseProductName());
+System.out.println(dm.getDatabaseProductVersion());
+</div>
+	
+<br><hr>	
+<h2 id="BLOBCLOB">Stroring Large Objects (BLOB /CLOB) to database.</h2>
+
+we can achieve this with help of PreparedStatement <br>
+
+<div class="javaCode">        
+        
+ PreparedStatement ps=null;
+ ps = con.prepareCall("insert into student_profile values (?,?)");
+ ps.setInt(1, 101);
+ File file=new File("Student_img.jpg");
+ int len=file.length();
+ InputStream is = new FileInputStream(file); //file object passed here
+ ps.setBinaryStream(2, is , len); // alternate is ps.setBLOB(2,is,len); 
+ int count = ps.executeUpdate();
+</div>
+
+<br><hr>        
+        
+ For Character Stream / CLOB use below
+	ps.setCharacterStream(-,-,-)  / ps.setCLOB(-,-,-);
+	
+<h2>Retriving BLOB from database.</h2>
+<div class="javaCode">		
+InputStream is=null ;
+if(rs.next())
+{	
+    is=rs.getBinaryStream(4);
+	FileOutputStream fos=new FileOutputStream("newPic.gif");
+	int bytesRead=0;
+	byte [] buffer = new byte[4096];
+	while(( bytesRead=is.read(buffer))!=-1) 
+	{
+		fos.write(buffer,0,bytesRead);
+	}
+}		
+	
+</div>        
+        
+        
+        
+    </div>
+    <div class="rightContentContainer">
+        Right Navigation...
+    </div>
+</div>    
+
+<footer class="w3-container w3-teal footerContainer">
+  <p>Terms Of Use 
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Java and other tutorials</span> by 
+<a xmlns:cc="http://creativecommons.org/ns#" href="www.tcampus.in" property="cc:attributionName" rel="cc:attributionURL">Suraj Patil</a>
+ is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="..\index.css">    
+</head>
+<body>
+<div class="mainContainer w3-container">
+
+<header class="w3-container  w3-teal headerContainer">
+  <h2>Tutorial Campus....!</h2>
+</header>
+    
+    
+<nav  style="margin-top: 10px;" class="w3-bar w3-border w3-card-4 w3-light-grey">    
+    
+		<a href="Core-Java.html" class="w3-bar-item w3-button">Core Java</a> 
+		<a href="JDBC.html" class="w3-bar-item w3-button">JDBC</a>
+		<a href="Design-Patterns.html" class="w3-bar-item w3-button">Design Patterns</a>
+		<a href="..\advance_Java\Servlet-JSP.html" class="w3-bar-item w3-button">Servlet-JSP</a>	    
+</nav>
+<div class="contentContainer">
+    <div class="leftContentContainer">
+        
+        <ul>
+        <li><a href ="#corejava">core java </a></li>
+        <li><a href="#constructors">Constructors </a></li>
+        <li><a href="#thiskeyword">this &amp; this()</a></li>
+        <li><a href="#inheritance">Inheritance</a></li>
+        <li><a href="#AbstractClasses">Abstract Classes</a></li>
+        <li><a href="#interfaces"> Interfaces</a></li>
+        <li><a href="#packages">Packages</a></li>     
+        <li><a href="#modifiers">Access Modifiers</a></li>
+        <li><a href="#ExceptionHandeling">Exception Handeling</a></li>
+        <li><a href="#collectionFramework">Collection Framework</a></li>            
+        <li><a href="#Multithreading">Multithreading</a></li>    
+        <li><a href="#fileHandeling">FileHandeling</a></li>
+        <li><a href="#networkProgramming"> Network Programming</a></li>    
+        </ul>
+    </div>   
+    <div class="middleContentContainer">
+        
+
+<h1 id="corejava">
+   Core Java
+</h1>
+<ul>
+<li><H3> <a href="Core-Java-Interview-Questions.html">Core Java Interview Questions...</a></H3></li>
+</ul>
+
+<br><br>
+
+<b>Q) What is difference bertween URL &amp; URI </b> <br>
+<b>ans :-</b> the place where application is running is known as URL &amp; <br>
+        the place where application resides is known as URI
+
+<br><br>
+<pre>
+			     |-------------
+ ABC.java---> abc.class ---> |jvm (jit)   |  -----------------------> O.S.		
+		(byte code)  |------------- (interpretation	
+					    to native understanding
+					    form of o.s.)	
+</pre>
+
+<br><br>
+
+<b>Q) Define JIT.  </b> <br>
+
+<b> ans> </b> JIT is set of programs developed by sum ms. &amp; added as part of JVM to <br>
+    speedup the INTERPRETATION phase. 
+	it reads byte code and converts to native understanding form of o.s. 
+<br><br>
+
+---> Exception handeling capability makes java robust. <br>        
+    other languages like c,c++ are having more chances of crashing due to 
+	errors.
+<br><br>
+
+<b> Q) What are the differences between HTTP &amp; FTP </b>
+
+
+<table border='1'>
+<tr><th>HTTP</th><th>FTP</th></tr>
+<tr><td>it is one of the TCP protocol</td><td>it is one of the UDP protocol</td></tr>
+<tr><td>it is one of the stateless protocol</td><td>it is one of the stateful protocol.</td></tr>
+<tr><td>it is one of the acknowledgement oriented protocol.</td>
+    <td>FTP is non acknowledgement oriented protocol.</td></tr>
+</table>
+
+<br><br>
+
+
+<b> Q) What are the differences between instance methods &amp; Static methods. </b>
+
+
+<table border='1'>
+<tr><th>Instance Methods</th>
+    <th>Static Methods</th></tr>
+<tr>
+<td> are recommended
+    to perform repeated operations 
+    such as reading records from db.
+</td>
+<td> are recommended to perform 
+    one time operations <br>
+    such as opening a file either in read mode
+    <br>or write mode.or opening a db connection
+</td></tr>
+
+<tr>
+<td>result of instance methods is not shareble  among objects.</td>
+<td> result of static methods is always sharable among objects.</td></tr>
+<tr><td>instance methods are also known as object level methods</td>
+<td>static methods are also known as class level methods </td></tr>
+
+</table>
+
+
+<br><br>
+<h2>Static &amp; instance method calling consequences.</h2>
+<br>
+
+1) One Static method can call other staic method directly 
+   provided both the methods belong to same class. <br>
+2) One instance method can call oehter instance method directly provided
+   both the methods belongs to same class.<br>
+3) One static method can call other instance method w.r.t. object 
+   i.e. without considering wether they belong to same class or not. <br>
+4) One instance method can call other static method w.r.t. class Name . 
+   i.e. without considering wether they belong to same class or different calss.<br>
+
+<br>
+
+<h2>Converting String to fundamental Data</h2> <br>
+
+in general syntax is :- <b> public satic XXX parseXXX(String); </b> <br><br>
+
+<table border='1'>
+<tr><th>Datatype</th><th>Wrapper Class</th><th>Conversion Method from string to fundamental data</th></tr>
+<tr><td>byte</td><td>Byte</td><td>public static byte parseByte(Sting)</td></tr>
+<tr><td>short</td><td>Short</td><td>public static short parseShort(Sting)</td></tr>
+<tr><td>int</td><td>Integer</td><td>public static int parseInt(Sting)</td></tr>
+<tr><td>float</td><td>Float</td><td>public static float parseFloat(String)</td></tr>
+<tr><td>long</td><td>Long</td><td>public static long parseLong(Sting)</td></tr>
+<tr><td>double</td><td>Double</td><td>public static double parseDouble(Sting)</td></tr>
+<tr><td>char</td><td>Character</td><td>public static char parseChar(Sting)</td></tr>
+<tr><td>boolean</td><td>Boolean</td><td>public static boolean parseBoolean(Sting)</td></tr>
+</table>
+
+<br><br>
+
+
+
+<b> Q)Define Wrapper class. what is purpose of Wrapper class </b> <br>
+For each and every datatype there exist a predefined class. this predefined class is  <br>
+known as wrapper class.
+<br> purpose of wraper class is to convert string data into fundamental data.
+
+<br><br>
+
+
+<H1 id="constructors">Constructors</H1> <br>
+
+<b>Def:- </b> A Constructor is a special member method which is called by the JVM Automatically <br>
+        when the object is created for placing our own <br>
+values without placing default values. (basic purpose of constructor is to initialize object.)
+
+<br>
+<h2>Advantages/Properties of Constructors..</h2>
+
+<ul type="disc">
+<li>Constructors will be called automatically whenever an object is created.</li>
+<li>The Constructor name must be simmiler to classname.</li>
+<li>Constructor should not be static because constructors will be <br>
+    called each and every time as and when we create object.</li>
+<li>Java doesen't contain static constructors.</li>
+<li>Constructors are not inherited from one class to another class as every <br>
+    constructor if the class is used for initializing it's own data members.</li>
+<li>Constructor can be <strong>private</strong> provided an object of one class <br>
+    cannot be created in the context of some other class .
+but it can be created in context of same class. </li>
+<li>Whenever we create an object only with default constructor (e.g. new ClassName()) , <br>
+    defining the default constructor is optional.<br>
+	if we define our own default constructor then JVM will execute programmer defined <br>
+    default constructor. if we are not defining our own default constructor,<br>
+then JVM will call it's own constructor called system defined default constructor and it is <br>
+    used for placing default values.
+	
+</li>
+<li>Whenever we create any object with parameterized constructor , defining the parameterised  <br> 
+    constructor is mandatory.</li>
+<li>Whenever we create multiple objects of any class w.r.t. default and parameterised constructors, 
+    it is mandatory to define both the Constructors</li>
+
+</ul>
+ <br>
+
+<h2>To View Profile of a Class/Interface</h2> <br>
+--->javap className/InterfaceName <br>
+
+this will show the profile of class . i.e. member variables and member method signatures will be listed.
+
+<br>
+
+ 
+ 
+<h1 id="thiskeyword">'this' keyword &amp; this(...)</h1> <br>
+	This is a keyword / implicit object created by JVM and supplied in every java proram for 2 purposes.<br>
+1) It is pointing to current class object or it contains an addres of current class object.
+2) Whenever the formal parameter and datamember of class are simmileer ,<br> 
+        there is possibility that JVM get ambituity. in order to differentiate between<br>
+   formal parameters and data members of class, 
+the data members of the class must be preceeded by a keyword 'this'.<br>
+3) 'this' cannot be used in static methods/context. <br>
+
+4) 'this(..)' is used to call establish communication between constructors. this(..) 
+should be the first statement while making call to other constructors. <br>
+       
+e.g. 
+<br>
+<div class="javaCode">    
+public class TestClass {
+
+	 int a,b,c;
+	
+	public TestClass()
+	{
+		System.out.println("Executing Default Constructor...!");
+	}
+	
+	public TestClass(int x)
+	{
+		this();
+		this.c=x;
+	}
+	
+	public TestClass(int a,int b)
+	{
+		this(a+b);
+		this.a=a;
+		this.b=b;
+		//this(a+b); // C.E. :- Constructor call must be the first statement in a constructor
+	}
+	
+	public static void main(String[] args) {
+		
+		TestClass tc=new TestClass(10,20);
+		System.out.println("Value of C is "+tc.c);
+
+	}
+
+}
+</div>        
+<br>
+<b>Q) Define factory method and Singleton class? explain purpose of factory method. </b>
+A Factory method is one whose return type must be simmileer to class name. 
+factory method can be instance method or static method.
+Singleton Class is one of the java class whose object existance will be allwed only once per JVM.
+
+
+<h1 id="inheritance">Inheritance </h1>
+The process of getting the data members and methods of one class into another class is known as inheritance.
+
+<ul>
+<li>in java multople inheritance is not supported. single, multilevel &amp;
+    Hirarchial inheritance is supported.
+i.e. one class can extend only one class. </li>
+<li>'extends' is the keyword used for inheriting the features of base class to the derived class. </li>
+<li> when we create an object of bottom most derived class, 
+first we get memory space for the top most base class data memberslater
+we get memory space for intermediate base classes and at last for the bottom most derived class datamembers.</li>
+<li>for each and every class in java there exist an implicit predefined superclass called java.lang.Object.</li>
+<li>Constructors of base class will not be inherited into the derived class. <br>
+in general constructors will not participate in inheritance.</li>
+<li>if we dont want to give some of the features of the base class to 
+derived class then those features must be made as private.
+i.e. private data members and methods will not beparticipate in inheritance.
+</li>
+</ul>
+<H2>'super' Keyword</H2>
+
+        <p>
+'super' keyword help us in differentiating difference between datamembers of base class
+and datamembers of derived class. super keyword can be used at variable level,
+method level & at constructor level.
+</p>        
+<b>1) at variable level :-</b><br><br> 
+<div class="javaCode" >           
+e.g. :-  (inside some method of derived class.)
+this.a=x;
+super.a=y;
+this.a + super.a
+</div>
+<br>            
+<b>2) method level (in main method.)</b><br><br>
+<div class="javaCode">    
+Dc dc=new Dc();
+dc.display();  //it will call derived class display method. 
+//to call super class display method we need to specify as below
+//in derived class dispaly method.
+
+public class DC extends BC
+{
+...
+	pv display()	
+	{
+		super.display(); //this will call BC display() method.
+	}
+} 
+</div><br>
+<b>&nbsp;&nbsp; Note :- there is no way to call super class orignal method from the context of main().
+w.r.t. derived class object.</b>
+<br>
+<b>3) constructor level. super()/super(..)</b>
+<p>        
+super()/super(..) is used to call the constructor of base class. 
+it should be the first statement in the constructor of derived class while making call to base class constructor.
+</p>
+        
+<b>Constructors calling sequence is from bottom to top 
+i.e. from derived to base &nbsp; they are executed in top to bottom  <br>
+i.e. from base class constructor to derived class constructor.</b>
+
+
+<br> <br>
+
+<b>Method overriding </b>:- in method overriding we redefine body of the method and keep method Heading same.
+
+ 
+<H1 id="AbstractClasses">Abstract Classes</H1>
+<ul>
+<li>Concreate Classes are those which contains all the defined methods.
+Abstract Class is one which may contain zero or more abstract methods.</li>
+<li>not defined means there is just method heading. &amp; body is not defined for that method. 
+such methods needs to be declared as abstract. 
+and if there is at least one abstract method in the class then it is
+that class should be declared as abstract class with <b>'abstract '</b> keyword.</li>
+<li> we cannot create object of a abstract class directly with new ClassName(); 
+abstract classes are ment for inheriting so that implementation class/ 
+subclass of abstract class should implement 
+all the unimplemented methods . 
+if subclass of abstract class is also not implementing unimplemented methods 
+then it should also be declared as abstract class.</li>
+<li>all the reusable methods should be placed in abstract class so 
+that class extending from abstract class can get those methods and reuse them.</li>
+<li>abstract class should always participate in inheritance hence it should not be made as final.</li>
+<li>example of abstract class is GenericServlet class. </li>
+<li> it is highly recommended to override abstract/null body methods as method body 
+overriding cost could be much more than creating new body while overriding.</li>
+</ul>
+<b>Q)is it possible to make a concrete class as abstract class ?</b>
+Yes; it is possible! it is because if there are some null body methods 
+or methods that are not having any business logic. 
+if we want such methods to be implemented by extender then we can make 
+such class as abstract.   
+       
+        
+        
+ 
+<H1 id="interfaces">Interfaces</H1>
+Syntax for defining an interface 
+public interface interfaceName
+{
+	public static final variableNames & initializations.
+	//e.g. pulblic static final int a=10;
+	abstract ... mehtod declarations;
+}
+
+<ul>
+<li>One of the limitation of Abstract class is , we cannot achieve multiple inheritance w.r.t. Abstract Class.</li>
+<li>Interfaces are useful for developing userdefined datatypes.</li>
+<li>'Interface' keyword used to create interface. <br>
+interfaces are nothing but collection of public static final variables <br>
+(i.e. variables should be initialized.)  and abstract methods. </li>
+<li>we cannot create object of interface directly. interface should be implemented by another class &amp;
+then we can create object of that class.</li>
+<li>interfaces are by default abstract . no need to specify abstract against interface explicitly.</li>
+<li>one class can extend only one class but one class can implement many interfaces.</li>
+	<li> class and interface extending & implementing consequences are as follows
+		<ul type="square">
+		<li>class extends class  </li>
+		<li>class implements interface</li>
+		<li>interface extends interface</li>
+		</ul>
+	</li>
+</ul>
+       
+
+
+<h1 id="packages">Packages</h1>
+
+Syntax for defining a package :- package packagename1.subpackagename2.subsubpackagename3.... <br>
+
+Syntax for compiling package is  :-  javac -d /locatoin_where_package_to_be_placed  filename.java
+
+
+
+<ul>
+<li>package statement should be the first statement of any java program.</li>
+<li>generally package name should be like org/com . domainname/companyName . applicationName/ModuleName . subpackageName.</li>
+<li>For a class to be placed in package , modifier of class & methods and constructors inside should be public </li>
+<li>class/interface within a package could be reffered by using <strong>import </strong>statements or by using <strong>fully qualified name of class/interface </strong>.</li>
+<li>if base class or interface lies within same package then there is no need to 
+import or use fully qualified name in context of derived class.</li>
+</ul>
+        
+        
+
+<h1 id="modifiers"> Access Specifiers/Modifiers </h1>
+
+There are 4 access specifiers in java 1) private 2) default 3) protected 4) public 
+<ul>
+<li>private access apecifier is also known as native access apecifier</li>
+<li>default access apecifier is also known as package access apecifier</li>
+<li>protected access specifier is also known as inherited access specifier</li>
+<li>public access specifier is also known as universal access specifier.</li>
+
+</ul>
+
+<b>Access Protection Matrix  </b><br><br>
+
+Same Package Base Class = S.P.B.C.<br>
+Same Package Derived Class= S.P.D.C.<br>
+Same Package Independent Class= S.P.I.C.<br>
+Other Package Derived Class = O.P.D.C.<br>
+Other Package Independent Class = O.P.I.C. <br>
+<br>
+
+
+<table border="1">
+<tr> <th>classes</th> <th>S.P.B.C</th> <th> S.P.D.C.</th> <th>S.P.I.C.</th> 
+<th>O.P.D.C.</th> <th>O.P.I.C.</th> </tr>
+<tr ><th>specifiers</th></tr>
+<tr> <td>private</td> <td>true</td>     <td>false</td> <td>false</td> <td>false</td> <td>false</td> </tr>
+<tr> <td>default</td> <td>true</td>     <td>true</td> <td>true</td> <td>false</td> <td>false</td> </tr>
+<tr> <td>protected</td> <td>true</td> <td>true</td> <td>true</td> <td>true</td> <td>false</td> </tr>
+<tr> <td>public</td> <td>true</td>      <td>true</td> <td>true</td> <td>true</td> <td>true</td> </tr>
+</table>
+
+        
+
+        
+
+
+<h1 id="ExceptionHandeling">Exception Handeling</h1>
+
+In Java we have 2 type of Exceptions 
+1) Predefined Exceptions.
+2) Userdefined Exceptions.
+
+Predefined Exceptions are classified in 2 types
+
+<ol type="i">
+<li><b> Asynchronous Exceptions </b> 
+-> These are Exception which deals with hardwareproblems and external problems. 
+like memory problem/ hardware problems/power failure.
+->These Exceptions are direct Sub classes of Error Class.
+-> e.g. StackOverFlowException
+
+</li>
+<li><b>Synchronous Exceptions </b>   
+-> These are Exceptions which deals with programatic runtime errors.
+-> These Exceptions are direct sub classes of Exception Class.
+-> e.g. ClassNotFoundException
+</li>
+</ol>
+
+<b>Synchronous Exceptions</b> can be further divided in two type of exceptions.
+<ol>
+<li> <b>Checked Exceptions</b>  
+	-> These are direct sub classes of Exception Class.
+	-> These exceptions occur during harddisc checking. 
+	-> e.g. FileNotFoundException, ClassNotFoundException, IOException
+</li>
+<li> <b>Unchecked Exceptions</b> </li>
+	-> These are direct sub classes of RuntimeException Class.
+	-> These exceptions occur during main memory checking/ processing .
+	-> e.g. ArithmaticException,NumberFormatException,DivideByZeroException, 
+       ArrayIndexOutOfBoundsException etc 
+</ol>
+
+ <H3>Exception Handeling Hirarchy </H3>       
+        
+<div class="imageDiv">       
+    <img src="ExceptionHirarchy_1.jpg"/>    
+</div>
+        
+<hr>
+  <h3>Exception classes</h3>        
+ <div class="imageDiv">
+ <img src="Checked-UncheckedExceptions.jpg">       
+ </div>       
+ 
+        
+<h3>Exception Occurence Internal Flow </h3>
+<ol type="i">
+<li> if user enters valid inputs , java program will execute successfully.
+and execution terminates normally</li>
+<li> if user enters invalid input , java program cannot proceed hence. 
+JVM contacts JRE to get Exception Subclass </li>
+<li> JRE further contacts Throwable class to get type of exception occured &amp; 
+passes message back to JRE.
+JRE further contacts Java Exception API to get Appropriate Exception Subclass. 
+i.e. JRE checks if exception is of Error or Exception or RuntimeException etc.</li>
+<li> JRE gives Appropriate Exception Subclass to JVM &amp;
+JVM creates object of that exception subclass. 
+with  error message and cause for that exception.</li>
+</ol>																			
+																													
+
+<h3>Exception Handeling</h3>
+it is highly recommended to java prrogrammer to convert system generated error messages to userfriendly error messages. 
+this process is called as Exception Handeling.
+
+Exception Handeling could be achieved with help of following keywords.
+<ol type="1">
+<li><b>try</b> :- 
+	<ul>
+		<li>It is one of the block in which we write the block
+        of statements which causes problems at runtime</li>
+		<li>one try block can contain at least one catch block. 
+        and it can have multiple catch blocks.</li>
+		<li>each try block must be followed by a catch block</li>
+	</ul>
+</li>
+<li><b>catch</b>:- 
+	<ul>
+		<li>this block executes automatically whenever exception occurs.</li>
+		<li>we can supress the system generated error message &amp; 
+        provide userfriendly error message in catch block.</li>
+		<li></li>
+	</ul>
+</li>
+<li><b>finally</b> :- this block executes compulsarily even if exception is not occuring. <br>
+so it can be used for resource cleanup operations like closing db connection 
+&amp; file &amp; closing streams. </li>
+<li><b>throws</b>:- we need to declare throws keyword 
+at the method heading while writing method defination .<br>
+
+so that calling method can handel exceptions in try-catch block</li>
+<li><b>throw</b>:- to throw exception this keyword is used. </li>
+</ol>
+
+
+Q) what are differences between throw and throws keywords.
+
+<table border="1">
+<tr><th>throw</th><th>throws</th></tr>
+<tr><td>throw is kyword which is always used for hitting or raising exception </td>
+<td>throws is keyword which gives an indication to calling 
+function to keep called function within try and catch block</td></tr>
+<tr><td>throw is used within method bode</td>
+<td>throws is used within method heading</td></tr>
+<tr><td>if we are using throw keyword then using throws 
+is mandatory for that mehtod in heading.</td>
+<td>if we are using throws keyword then it is not mandatory
+to use throw keyword in method body</td></tr>
+</table>
+        
+
+<h1 id="collectionFramework">Collection Framework</h1>
+
+Collection framework is one of the standardised mechanism of java which allows us to integrate 
+or group different types of elements or simmiler type of elements or both of them in single variable.
+
+<br>
+
+for questions please reffer :- <br>
+
+<a target="_blank" href="http://javahungry.blogspot.com/2015/05/50-java-collections-interview-questions-and-answers.html">
+javahungry-collection question answers.</a>
+ <br><br>
+    <div class="imageDiv">
+    <img src="CollectionHirarchy.jpg">        
+        </div>    
+
+
+Below are few methods of Collection interface. which will be available in rest of the derived interfaces.
+
+	<ul>
+	<li>public int size()</li>
+	<li>public boolean isEmpty()</li>
+	<li>public boolean add(Object obj)</li>
+	<li>public Object[] toArray()  :- this method will return array of Objects</li>
+	<li>public Iterator iterator() :- this will return iterator interface object.
+    to iterate through the collectoin variable. it has hasNext() &amp; next() methods.</li>
+	<li>public Object first()</li>
+	<li>public Object last()</li>
+	<li>public List headList(begining_upto_target_object)</li>
+	<li>public List tailList(from_target_till-last-object)</li>
+	<li>public List subList(Object from,Object to)</li>
+	<li></li>	
+	</ul>
+
+Below are few methods of <b>List</b> interface. 
+<ul>
+<li>public void add(int,object) </li>
+<li>public Object get(int)</li>
+<li>public void removeAll()</li>
+<li>public ListIterator listIterator() :- this method will return listIterator interface object. 
+it is subinterface of Iterator interface. which is also having hasPrevious(), previous() mehtods.
+i.e. using ListIterator we can iterate in both forward and backword direction.	
+</li>		
+</ul>
+
+methods of <b>Set</b> interface are same as that of Collection interface. 
+implementation of those methods is in such a way that Set classes will not allow duplicate elements.
+
+Below are few methods of <b>SortedSet</b> interface.
+
+<ul>
+	<li>public Object first()</li>
+	<li>public Object last()</li>
+	<li>public SortedSet headSet(object) --> list will be returned upto specified object.</li>
+	<li>pubilc SortedSet tailSet(object) ---> list will be returned from specified object till end.</li>
+	<li>public SortedSet subSet(obj_from,obj_to)</li>	
+</ul>
+
+
+<b>1D CollectionFramework implementation classes are as below.</b><br>
+        
+	AC:- stands for Abstract class.<br>
+     C:- stands for Concrete class
+	 AbstractCollection(AC)
+		        
+        
+<div class="imageDiv">
+    <img src="CollectionHirarchy-2.jpg">
+</div>        
+
+
+<b>LinkedList </b>
+<ul>        
+<li>LinkedList stores data in form of nodes. i.e. node contains data/object in first half 
+and second half contains address to next element.</li>
+<li>LinkedList can be useful in cases where elements are to be added or removed at begining 
+or at end or at specific position. </li>
+<li>LinkedList are consuming more memory as these requires memore to strore address of next element.
+retrival operations with linkedList is more. </li>
+    </ul>
+<br> 
+<pre>
+<storng>Profile of Linked List </storng>
+
+	Constructors 	
+		1) LinkedList()
+		2) LinkedList(int size)
+
+	instance methods
+ 		public void addFirst(object)
+		public void addLast(object)
+		public Object removeFirst()
+		public Object removeLast()
+		public Object getFirst()
+		public Object getLast()
+	
+        along with these ofcourse Collection interface methods are also present . :) 
+</pre>
+        
+<b>ArrayList :- </b>
+it consumes less memory space than linkedlist.
+retriving elements from ArrayList takes negligible amount of time.
+
+<strong>Profile of ArrayList </strong>
+<ul>
+Constructors
+<li>1) ArrayList()  :- bydefault arraylist will increment it's size by half of elements added. </li>
+<li>2) ArrayList(int size)	:- it will create arraylist of specified size.  </li>
+<li>3) ArrayList(int size,increment_ratio) :- <br>
+with help of this constructor we can specify the ratio in which size of arraylist should be incremented. 
+i.e. consider new ArrayList(4,2)) when 4 elements are added to ArrayList then it's size will be 
+incremented by 2 this way we can optimize performance of ArrayList.	
+</li>
+</ul>    
+    
+<b>HasSet &amp; TreeSet</b>
+
+both of these implementations will not allow duplicate elements.
+
+<table border="1">
+<tr><th>HashSet</th><th>TreeSet</th></tr>
+<tr><td>HashSet internally uses HashMap</td>
+<td>TreeSet internally uses TreeMap</td>
+</tr>
+<tr>
+<td>Order of storing and retriving of elements from HashSet 
+cannot be determined.
+it uses hashing mechanism</td>
+<td>TreeSet displays data always in sorted order. 
+it uses red-black algorithm to store elements.</td>
+</tr>
+
+</table>
+
+<b>2D Collection Framework </b><br>
+
+In 2D collection framework , we can store data in key->value pair.
+in key-> value pair both should be of object type.
+
+following are the 2D collection framework  interfaces 
+
+1) java.util.Map
+2) java.util.Map.Entry
+3) java.util.SortedMap
+
+Map interface methods are as follows
+
+<ul>
+	<li>public int size()</li>
+	<li>public void put (object_key , object_value)</li>
+	<li>public object get(Object_key)</li>
+	<li>public Set entrySet()  :- this method will return Set object of Map.Entry . Entry object contains key &amp; value.</li>
+	<li>public Set keySet() :- this method will return Set object of all the keys.</li>	
+</ul>
+
+Map.Entry interface methods are as follows
+map implementation stores the values in the form of Entry objects. in the buckets.
+
+<ul>
+	<li>public Object getKey()</li>
+	<li>public Object getValue()</li>	
+</ul>
+
+
+SortedMap interface methods are as follows.
+<ul>
+	<li>public Objct first()</li>
+	<li>public Object last()</li>
+	<li>public SortedMap HeadMap(upto_target_object)</li>
+	<li>public SortedMap tailMap(from_taret_object)</li>
+	<li>public SortedMap subMap(obj_from , obj_to)</li>		
+</ul>
+
+<b>2D CollectionFramework implementation classes are as below.</b>
+
+        <div class="imageDiv">
+        <img src="2dnewCollectionFramework.jpg">
+        </div>
+  
+<hr>
+HashMap &amp; TreeMap are implementation Classes of 2D collection framework. <br>
+
+<table border="1">
+<tr><th>HashMap</th><th>TreeMap</th></tr>
+<tr>
+<td>HashMap stores elements with hashing mechanism i.e. <br>
+we cannot determine the order of elements to be stored in HashMap.</td>
+<td>HashTable stores elements in sorted order.</td>
+</tr>
+<tr><td>HashMap allows one key as a null and multiple null objects as values.<br></td>
+<td>TreeMap never allows null values eiter as key or value.</td></tr>
+</table>
+
+<h2>Legacy Collection Framework.</h2>
+<ul>
+<li>Early days of SUN MICROSYSTEMS Legacy Collection Framework was known as Datastructures.</li>
+<li> they reeinginered datastructures and formed New Collection Framework as we discussed above.</li>
+<li> legacy collection framework contains following interfaces and classes.</li>
+<li> legacy collection framework variables are by default thread safe / synchronized. 
+becuase in early days they used to run on standalone system. 
+i.e. on non threadsafe environment.
+	new collection framework can be used in threadsafe environments. 
+    i.e. under server's control which is by default threadsafe environment. </li>
+</ul>
+<h3>1D legacy Collection Framework : </h3>
+    <br>
+    Below are classes of 1d legacy collection framework <br>    
+        
+	<b>Enumeration(I):-</b>
+        <ul>
+		<li>Enumeration is predefined interface used for extracting the data from legacy collection framework. </li>
+		<li>it points just before first element of collection framework variable. </li>
+		<li> it has following methods
+            <ol type="1">
+			<li> public boolean hasMoreElements()</li>
+                <li> public Object nextElement() </li>
+            </ol>
+        </li>    
+        </ul>    
+			 
+	<b>Vector (C)</b><br>
+		 it is same to ArrayList. <br>
+		---> Constructors of Vector are as follows
+        <ol type="1">
+			<li> Vector()  : - default size of vector is 10 cells. </li>
+			<li> Vector(int size) </li>
+			<li> Vector(in size, increment_ratio) </li>
+		</ol><br>
+        ---> methods of Vector are as follows.
+        <ol type="1">
+            <li> public void addElement(Object) </li>
+			 <li>public void addElement(Object , int) </li>
+			<li> public Object removeElementAt(int) </li>
+			<li> public void removeElement(Object) </li>
+			 <li>public void setElementAt(int, Object) </li>
+			<li> public int size() </li>
+			<li> public Enumeration elments() </li>
+			<li> public int capacity() </li>
+	   </ol>
+        <br>
+	<b>Stack (C)</b>
+        <ul>
+            <li> stack is extended class of Vectodr class.</li>
+            <li> basic working principle of stack is LIFO (Last In First Out) </li>
+		 <li> Constructors of Stack
+			1) Stack()
+            </li> 
+		<li> methods of Stack
+            <ol type="1">
+			<li> public oolean empty() </li>
+             <li> public void push(Object)  :- inserts element in stack at top. </li>
+			<li> public Object pop()	 :- removes element form stack i.e. topmost element </li>
+			<li> public Object peek() :- to obtain topmost element. </li>
+			<li> public int search(Object)	 :- if element is found in stack then it will return index of element in that stack . </li>
+            </ol>    
+            </li>    
+        </ul>    
+<h3>2D legacy Collection Framework :</h3><br>
+	<b>Dictionary (AC)</b>
+        <ul>
+		<li>  it is Abstract class. so it is playing role to give comman methods to it's implementation classes.</li>
+		<li> Methods of Dictionary class are as follows. 
+            <ol type="1">
+                <li> public int size() </li>
+                <li> public void put(object,object) </li>
+                <li> public void remove(Object)</li>
+                <li> public void removeAll()</li>
+                <li> public Enumeration keys()</li>
+                <li> public Object get(Object)</li>
+            </ol>    
+        </li>    
+        </ul>    
+	<b>Hashtable (C) </b><br>
+        <ul>
+		<li> it extends Dictionary class.</li>
+		<li> it organises data in Key--Value pair</li>
+		<li> following are constructors of HashTable
+            <ol type="1">
+			<li> HashTable() </li>
+	        <li> HashTable(int size)</li>
+			<li>HashTable(int size, float fillratio) 
+				fillratio is used as formula  :-  size=size +[size * fillratio]<br>	
+					note here size* fillratio will return ceiling value <br>
+                    i.e. eg. size= 4+ [4 * 0.25]  i.e. size= 4+[1]
+                </li>
+            </ol>
+        </li>
+        </ul>
+	<b>Properties (C)</b><br>
+        <ul>
+		<li> properties files are maintaining data in key-value pair. </li>
+		 <li>these are also known as resource bundle files. </li>
+		<li> properties file extension could be .properties or .vbf </li>
+		<li> Properties p= new Properties(new FileInputStream(XXX.properties))
+			p.getProperty(stno); </li>
+		</ul>
+<b>Q) what is difference between HashTable and HashMap</b>
+		<table border="1">
+		<tr><th>HashTable</th><th>HashMap</th></tr>
+		<tr><td>it is synchronized</td><td>it is nonsynchronized</td></tr>
+		<tr><td>it will not allow null key & value</td><td>it will allow one key as null & multiple values could be null.</td></tr>
+		</table>	
+ 
+<h1 id="Multithreading"> MultiThreading</h1>
+
+	<strong>Thread </strong>:- flow of control is known as thread. or path of execution is known as thread.
+<br>
+        <ul>
+<li>Basic aim of multithreading is to achieve concurrent execution.</li>
+<li>any java program is containing multiple flow of controls then the java program in known as multithreaded program. </li>
+<li>wih multithreaded modeling languages we can achieve both concurent execution and sequential execution. </li>
+<li> in java we have following API for developing multithreaded application. 
+    <ol type="1">
+	<li>1) javalang.Thread (C) </li>
+    <li>2) java.lang.Runnable (I) </li>
+    </ol>
+</li>    
+</ul>
+        
+<b>Q)how do you justify every java program is multithreaded ?</b><br>
+        <ul>
+	<li>By default there exist single background thread &amp; single foreground thread. </li>
+<li>Whenever we execute a java program, the logic of the java program will be executed by one of the thread known as foreground thread. </li>
+<li> and to monitor the status of foreground thread,
+one more thread is internally created known as background thread.  </li>
+<li>so in java program at any point of time two types of threads are executing . 
+hence every java program is multithreaded.  </li>
+</ul>
+<br>        
+<b>Q)What are the differences between program and process.</b>
+	
+<table border="1">
+<tr><th>program</th><th>process</th></tr>
+<tr><td>set of optimized instruction is known as program.</td>
+<td>a program under execution is known as process</td></tr>
+<tr>
+<td>programs reside in secondary memory.</td>
+<td>process always resides in main memory.</td></tr>
+<tr>
+<td>program is blueprint of process. </td>
+<td>process is program in execution. so there could be multiple process of program.</td></tr>
+</table>
+
+<h3>States of thread.</h3>
+
+there are 5 types of states as below.
+<div class="imageDiv">
+    <img src="Thread_states.jpg">
+</div>       
+
+<ol type ="1">
+<li><b>new :- </b> when thread is created . at that time it's state is new. 
+and it is about to enter in main memory.</li>
+<li><b>ready :- </b> ready state is one in which thread is entered into main memory. 
+address space is created for the thread methods first time and it's waiting for the CPU.</li>
+<li><b>running :- </b> a running state is one in which thread is under control of CPU. 
+i.e. it is being processed.</li>
+<li><b>waiting :- </b> a thread is said to be in waiting state if and only if 
+the thread will satisfy anyone of the following factors.
+<ol type="i">
+<li>for the ramaining cpu burst time 
+(the amount of time required by thread form cpu for it's complete execution is known as CPU burst time.)</li>
+<li>making currently executing thread to sleep by specifying the amount of sleep time in miliseconds.</li>
+<li>making the currently executing thread to suspend .</li>
+<li>making the thread to wait by specifying the waiting time</li>
+<li>making thread to wait without specifying the wait time.</li>
+<li>joining the threads which are completed their execution </li>	
+</ol>	
+</li>
+	<li><b>halted :- </b> when thread completes it's execution then it will go in halted state. </li>
+</ol>
+
+<h3>No. of ways to create a thread in java </h3>
+	---> after creating thread object , we would need to implement run(){...business logic..}	<br>
+	--->There are two ways to create a thread.
+		<ol>
+		<li> by using java.lang.Thread (C)</li>
+		<li> by using java.lang.Runnable (I)</li>
+		</ol>
+	<h4>1) by using java.lang.Thread (C)</h4>
+		<ul>
+			<li>by using new operator  Thread t=new Thread()</li>
+			<li>by using factory method Thread t=Thread.currentThread()</li>
+			<li>by using object of class which is derived from Thread class. </li>
+		</ul>		
+	<h4>1) by using java.lang.Runnable (I)</h4><br>
+        <ul>
+        <li> note that start() method is not there in Runnable inerface. it's there in Thread class.	</li>
+        <li> in this way we have to implement Runnable interface in our class and define run() method. 
+after that we need to pass that class object to Thread(Runnable object) constructor to create a thread.. </li>
+<li> benifit of doing this will be , 
+we will be able to call start() method form Thread class which internally calls run method.
+    this will start execution of thread. so thread will be started.. </li>
+<li> if we are not creating object of Thread class with Runnable interface implementation class object  
+and try to call run() method from there then we are just calling run method to run normally. 
+    and in this way thread will not be created.  	</li>
+</ul>
+        
+<h3>Thread class profile</h3> 
+	
+    <b>Datamembers</b>
+    <ol type="1">        
+	<li> public static final int MAX_PRIORITY  (10) </li>
+	<li> public static final int MIN_PRIORITY (1) </li>
+	<li> public static final int NORM_PRIORITY (5) </li>
+    </ol>
+        
+	<b>Constructors.</b>
+        <ol type="1">
+	<li> Thread() :- this will create thread with default name Thread-0 , Thread-1 ...Thread-n </li>
+	<li> Thread(String) - this will create thread with specified name. </li>
+	<li> Thread(Runnable object)   </li>	 
+        </ol>    
+	<b>Instance methods</b>
+        <ol type="1">
+            <li>public final void setName(String)</li>
+            <li>public final String getName(String)</li>
+            <li>public final void setPriority(int)</li>
+            <li>public final int getPriority()</li>
+            <li>public final boolean isAlive() 
+                :- this will return 'true' if thread is in ready , running, waiting states.
+                and 'false' will be returned if thread is in new &amp; halted state.
+            </li>
+            <li>public final void start() 
+                :- this method is used to bring Thread from new to ready state. this method internally calls run() method.</li>
+            <li>public void run() :- 
+                this method in Thread class is having null body . 
+                so it is recommended to write our own class by extending form Thread class. 
+                and implement business logic in run()</li>
+            <li>public final void suspend :- 
+                by calling this method we move thread from running to waiting state.<br>
+                temporary execution results will be stored in Process Control Block</li>
+            <li>public final void resume  :- 
+                by calling this method we move thread from waiting to ready state. </li>
+            <li>public final void stop() :- 
+                this method is used for terminating or closing the execution of thread. </li>
+            <li>public final void join() throws InterruptedException :- 
+                it can be used after execution of thread is complete. 
+                this is used to join the thread to it's Threadgroup so that garbage collector could collect all threads from Threadgroup at once.
+                so garbage collector will be called only once insted of calling for each thread individually.
+            </li>
+</ol>
+
+	<b>Static methods</b>
+	<ol type="1">
+		<li>public static final Thread currentThread()</li>
+		<li>public static inal void sleep(long miliseconds) throws InterruptedException</li>	
+	</ol>	
+	
+ 
+
+<h1 id="fileHandeling">File Handeling</h1>
+
+<b>File Class</b> <br>
+
+ Constructors
+        <ol type="1">
+		 <li> File file=new File("NameAndLocation"); </li>
+		 <li>File file= new File(String path,String name) </li>
+        </ol>
+ Methods
+		<ol type="1">
+		<li> boolean exists() </li>
+		<li> boolean isDirectory() </li>
+		<li> boolean isFile() </li>
+		<li> boolean canRead() </li>
+		<li> boolean canWrite()  </li>
+		<li> long length()  </li>
+		<li> long lastModified() </li>
+	    </ol>
+
+	
+<b>Stream</b> :- The flow of data / bits/bytes between primary memory and secondary memory is known as Stream.
+<br>
+&nbsp;On Files we perform below operations. <br>
+        
+	1) Write operation / OutputStream operation.<br>
+	2) Read operation / InputStream operation.
+<ul>
+<li> While writing to files if disc is full or file is readonly then we may get IoException. </li>
+<li> While reading from files if file is corrupt then we can get IoException.. file is not existing then we get FileNotFoundException. </li>
+<li> FileNotFoundException is subclass of IoException. both these exceptions are checked exceptions. <br>
+i.e. we need to add try-catch block or throw them while using these objects. </li>
+</ul>
+<b>Types of Streams in Java</b>
+	<ol type="1">
+		<li>Byte Streams</li>
+		<li>Characer Streams.</li>
+	</ol>
+
+<b>1) Byte Streams.</b>
+    
+    <ul>    
+    <li> by using byte streams, data will be written byte by byte. i.e. 1 byte at a time. </li>
+	<li> byte stream classes can be used to read and write <b>primitive datatypes</b>. </li>
+	</ul>
+			       
+    <div class="imageDiv">
+        <img src="StreamClassesHirarchy.jpg">
+    </div>   
+        <br>
+ <b>FileInputStream</b> :-
+        <ul>
+		<li> this can be used to read file byte by byte.  </li>
+		<li> -1 will represent end of file. 	 </li>
+		<li> Constructors are as follows  :-  
+            <ol type="1">
+			     <li> FileInputStream fis=new FileInputStream(String fileNameAndLocation) </li>
+                <li> FileInputStream fis=new FileInputStream(File f) / new FileInputStream(new File("name_and_location")); 
+                </li>
+            </ol>
+        </li>    
+		<li> methods are as follows.
+            <ol type="1">
+             <li>public int read();  :- will return ascii code for each character.  .</li>
+			 <li>public int read(byte[] b);	 </li>
+			 <li>public void close();   :- to close the opened file in read mode.  </li>
+            </ol>    
+        </li>    
+		<li> FileInputStream can be used with help of DataInputStream to read pimitive datatypes.
+            <div class="javaCode">			 
+FileInputStream fis=new FileInputStream("/home/suraj/Desktop/json_messsage");<br>
+DataInputStream dis=new DataInputStream(fis); <br>
+XXX = dis.readXXX() :- here XXX represents 
+            </div>    
+        </li>
+        </ul>
+	
+	<b>FileOutputStream</b>:- <br>
+        
+		 this class can be used to write file byte by byte.		
+        <ul>
+            <li>
+		    Constructors are as follows.
+                <ol type="1">
+			<li> FileOutputStream(String fileNameAndLocation) </li>
+			<li> FileOutputStream(String fnameAndLocation , boolean flag )  
+            :- here if boolean flag is 'true' then file will be appended. <br>
+            otherwise if flag is false then it will rewrite file.
+            </li>    
+                </ol>    
+             </li>
+            <li>
+		    few methods of FileOutputStream are
+            <ol>    
+                 <li> write(byte[] b); </li>
+			     <li> write(int); </li>
+			     <li> public void close(); </li>
+            </ol>    
+            </li>
+            <li>
+		    FileOutputStream can be used with help of DataOutputSteam to write primitive datatype variables.
+			<div class="javaCode">
+FileOutputStream fos=new FileOutputStream("filename_and_location");
+DataOutputStream dos=new DataOutputStream(fos);
+dos.writeXXX();
+            </div>    
+            </li>    
+        </ul>    
+	<b>DataInputStream :- </b><br>
+        <ul>
+		<li> as shown like above we can use this class to read primitive data. </li>
+		<li> also we can attach it to other input streams. like keyboard.  DataInputStream dis=new DataInputStream(System.in) 
+        //attached to system keyboard i.e. standard input method. 
+        </li>    
+		<li> it has readLine() method. so that we can read line by line. </li>
+        </ul>    
+	<b>DataOutputStream :- </b>	<br>
+        <ul>
+		<li> as shown like above we can use this class to write primitive data. </li>
+        <li> it has constructor DataOutputStream(OutputStream) </li>
+        <li> it can write data line by line . it has writeLine(String) method. </li>
+        </ul>
+        
+	
+<b>2) Character Streams.</b>	<br>
+	Character streams are those which will transfer 2 bytes of data at a time.
+
+<div class="imageDiv">
+    <img src="CharacterStreamClassesHirarchy.jpg">    
+        </div>        
+    
+		
+	<b>FileReader</b>
+        <ul>
+		<li> FileReader class is used to read data byte by byte. it is same as FileInputStream. </li>
+		<li> constructors <ol type="1">
+            <li> FileReader(File file)</li>
+            <li> FileReader(String fname) </li>
+            </ol>
+        </li>
+        </ul>    
+	<b>BufferedReader</b>
+        
+		<ol type="1">
+            <li>BufferedReader(Reader ...) </li> 
+            <li> BufferedReader(Reader rd, int size) </li>
+        </ol>
+	<b>FileWriter</b>
+        <ol type="1">
+		 <li> FileWriter(File file) </li>
+         <li> FileWriter(String fname) </li>
+        </ol>    
+	<b>BufferedWriter</b>
+        <ol>
+		 <li> BufferedWriter(Writer wrt)  </li>
+         <li> BufferedWriter(Writer wrt, int size) </li>
+        </ol>    
+
+<h4>Serialization and Deserialization</h4>
+<ul>
+<li> When we want to write object to file, we can achieve it by using Serialization techniques. </li>
+<li> to make an object serializable we need to implement that class by Serializable interface. </li>
+<li> transient variables will not participate in serialization process.  </li>
+<li> Serializable is an marker interface. i.e. it is not containing any method. </li>         
+</ul>
+        
+<div class="javaCode">
+    class Student implements Serializable
+	{
+		int rollNo;
+		String name;
+		String address;
+	}		
+
+	class MySerializationTest
+	{
+		Student student =new Student(10,"suraj","pune");
+		FileInputStream fis=new FileInputStream(new File("/home/suraj/Desktop/testFile"));
+		ObjectInputStream ois=new ObjectInputStream(fis);
+		ois.writeObject(student);		
+
+		FileOutputStream fos=new FileOutputStream(new File("/home/suraj/Desktop/testFile"));
+		ObjectOutputStream oos=new ObjectOutputStream(fos);
+		oos.writeObject(student);	
+	}        
+        
+</div>       
+        
+ 
+<h1 id="networkProgramming"> Network Programming</h1>
+<br>
+With help of socket programms we can develop the Intranet applications.
+<br>
+        <b>to create a client :- </b><br>
+        <div class="javaCode">
+			Socket socket=new Socket(String hostname, port)
+			DataOutputStream dos= new DataOutputStream(socket.getOutputStream());
+			dos.writeInt(data);
+		</div>	
+<b>to create a server :- </b><br>
+        <div class="javaCode">
+			ServerSocket ss =new ServerSocket(int port_no);
+			while(true) //to open continious connection
+			{
+				Socket s= ss.accept();
+				DataInputStream dis=new DataInputStream(s.getInputStream());
+				dis.readInt();
+				...
+				....
+				DataOutputStream dos= new DataOutputStream(s.getOutputStream());
+				dos.writeInt("hello world")
+				
+				....
+				s.close();
+				
+			}
+			 </div>       
+    </div>
+        <div class="rightContentContainer">
+        Right Navigation...
+    </div>
+</div>    
+
+<footer class="w3-container w3-teal footerContainer">
+  <p>Terms Of Use </p>
+</footer>
+</div>
+</body>
+</html>

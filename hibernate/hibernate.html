@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)file:///home/suraj/Documents/notes/hibernate/hibernate.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./hibernate_files/w3.css">
+<link rel="stylesheet" href="./hibernate_files/index.css">    
+</head>
+<body>
+<div class="mainContainer w3-container">
+
+<header class="w3-container  w3-teal headerContainer">
+  <h2>Tutorial Campus....!</h2>
+</header>
+    
+    
+<nav style="margin-top: 10px;" class="w3-bar w3-border w3-card-4 w3-light-grey">    
+    
+		<a href="file:///home/suraj/Documents/notes/hibernate/core_Java/Core-Java.html" class="w3-bar-item w3-button">Core Java</a> 
+		<a href="file:///home/suraj/Documents/notes/hibernate/core_Java/JDBC.html" class="w3-bar-item w3-button">JDBC</a>
+		<a href="file:///home/suraj/Documents/notes/hibernate/core_Java/Design-Patterns.html" class="w3-bar-item w3-button">Design Patterns</a>
+		<a href="file:///home/suraj/Documents/notes/advance_Java/Servlet-JSP.html" class="w3-bar-item w3-button">Servlet-JSP</a>	
+		<a href="file:///home/suraj/Documents/notes/hibernate/hibernate.html" class="w3-bar-item w3-button">Hibernate</a>
+    
+    
+</nav>
+<div class="contentContainer">
+    <div class="leftContentContainer">
+        Left Navigation .... 
+    </div>   
+    <div class="middleContentContainer">
+        
+
+<b>What is O-R Mapping or OBJECT RELATIONAL MAPPING ?</b><br>
+ the process of linking java class with database table ,  java class members variables with DB collumns<br>
+and making java class objects representing db table rows having synchronization between them (object with table rows)<br>
+is known as OR mapping.<br>
+<ul>
+    <li>    Synchronization between objects &amp; table rows is nothing but the modification done in objet will reflect to rable<br> rows and vice versa. </li>
+    <li>O-R mapping allows to perform all the persistence operations on db-table records through objects and without using any sql queries.</li>
+    <li>every ORM software internally uses JDBC Code and SQL Queries to perform persistance operations on db table based on instructions given by application through objects.</li>
+    <li>the process of hiding implementation and simplifying work is called abstraction.</li>
+</ul>
+
+<ul>        
+<li><b>JPA(JAVA PERSISTANCE API) gives specifications to implement ORM softwares. ORM Softwares are implemented by multiple vendors.</b></li>
+    <br> 
+<li>Hibernate is also one of the implementation for JPA.</li>  <br> 
+
+<li><b>Hibernate is written by Mr. Gavin King.</b><br></li>
+<li><b>All methods of hibernate API internally uses exception re-throwing concept to convert JDBC code <br>
+    generated SQLException(CheckedException) to Unchecked Exceptions.
+Exception's are beauty of hibernate software.    
+    </b></li>    
+</ul>
+<p>that is all introduction about hibernate. we will take a look how to start for hibernate below....<br>
+    i would be using maven with eclipse and mysql as database to demonstrate hibernate features.    
+</p>
+<br>    
+Before we start lets describe what is a POJO class.
+    
+
+<b>Q)What is POJO class.</b>    
+ The java class acting as a resource of java application without extending or implementing any other framework, <br>
+    that class can be called POJO. i.e. Plain Old Java Object class. <br>
+
+Bean Or Model Class is class that represents real-world entity  by properties. and it also contains getters &amp; setters<br>         
+Bean or Model Class  can be called Pojo class.        
+
+non pojo class example
+        <div class="javaCode">
+        public class MyServlet extends HttpServlet
+        {
+        // as this class has HttpServlet capabilities this is not a plain old java class.    
+        ...    
+        }
+        </div>
+example pojo class
+        <div class="javaCode">
+        public class User{
+            int id;
+            String name;            
+            }
+        </div>    
+    
+<ul>    
+<li><br>simplest way is to create a java project in eclipse and add maven capabilities to it.(right click on project--&gt; configure--&gt;convert to maven project.) <br> 
+---&gt; it will give you the pom.xml(project object Model file) . we can add dependencies here. <br>
+    so that maven will download all required jars related to our dependencies in our project. and no need to worry about dependedent and version specific jars.<br></li>
+<li> also note that hibernate code to is version dependent. getting session factory in hibernate 4 is different than hibernate 5. it would give you Exceptions. </li>        
+</ul>        
+    
+<br>
+add below maven dependency to your new Hibernate project's pom.xml file. i am going to use 5.3.7 version of hibernate.
+
+<div class="xmlCode">
+   &lt;!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core --&gt;
+	&lt;dependency&gt;
+   	 &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+   	 &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+   	 &lt;version&gt;5.3.7.Final&lt;/version&gt;
+	&lt;/dependency&gt;
+	&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;
+	&lt;dependency&gt;
+   	    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    	&lt;version&gt;8.0.12&lt;/version&gt;
+	&lt;/dependency&gt;        
+</div>        
+        
+<br>
+
+lets create a pojo class.
+
+        <div class="javaCode">
+        package in.tcampus.model;
+
+import java.io.Serializable;
+
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 4L;
+	
+	int id;
+	String firstName;
+	String lastName;
+	String mobileNo;
+	
+	public User(int id, String firstName, String lastName, String mobileNo) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobileNo = mobileNo;
+	}
+
+    // you can generate getters and setters for bravity....!        
+	
+}
+
+        </div>
+
+<br>
+please place below xml files in src directory. i.e. above all packages.
+    <br>    
+  hibernate.cfg.xml        
+<div class="xmlCode">
+    &lt;?xml version = &quot;1.0&quot; encoding = &quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE hibernate-configuration SYSTEM 
+&quot;http://www.hibernate.org/dtd/hibnate-configuration-3.0.dtd&quot;&gt;
+&lt;hibernate-configuration&gt;
+   &lt;session-factory&gt;   
+      &lt;property name = &quot;hibernate.dialect&quot;&gt;
+         org.hibernate.dialect.MySQL55Dialect
+      &lt;/property&gt;      
+      &lt;property name = &quot;hibernate.connection.driver_class&quot;&gt;
+         com.mysql.jdbc.Driver
+      &lt;/property&gt;      
+      &lt;!-- Assume test is the database name --&gt;      
+      &lt;property name = &quot;hibernate.connection.url&quot;&gt;
+         jdbc:mysql://localhost/testdatabase
+      &lt;/property&gt;      
+      &lt;property name = &quot;hibernate.connection.username&quot;&gt;
+         root
+      &lt;/property&gt;      
+      &lt;property name = &quot;hibernate.connection.password&quot;&gt;
+         111111
+      &lt;/property&gt;
+      &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
+    &lt;!-- this should not be create-drop for live application. it should be validate. other values are 'validate','create' --&gt;
+    &lt;property name=&quot;hbm2ddl.auto&quot;&gt;create-drop&lt;/property&gt;    <br>
+      
+      &lt;!-- List of XML mapping files --&gt;      
+      &lt;mapping resource = &quot;User.hbm.xml&quot;/&gt;           
+   &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+</div>        
+  User.hbm.xml
+<div class="xmlCode">
+    &lt;?xml version = &quot;1.0&quot; encoding = &quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE hibernate-mapping PUBLIC 
+&quot;-//Hibernate/Hibernate Mapping DTD//EN&quot;
+&quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&gt; 
+
+&lt;hibernate-mapping&gt;
+   &lt;class name = &quot;in.tcampus.model.User&quot; table = &quot;User&quot;&gt;
+      
+      &lt;id name = &quot;id&quot; type = &quot;int&quot; column = &quot;id&quot;&gt;
+         &lt;generator class=&quot;native&quot;/&gt;
+      &lt;/id&gt;
+      
+      &lt;property name = &quot;firstName&quot; column = &quot;first_name&quot; type = &quot;string&quot;/&gt;
+      &lt;property name = &quot;lastName&quot; column = &quot;last_name&quot; type = &quot;string&quot;/&gt;
+      &lt;property name = &quot;mobileNo&quot; column = &quot;salary&quot; type = &quot;string&quot;/&gt;
+      
+   &lt;/class&gt;
+&lt;/hibernate-mapping&gt;    
+        
+        </div>
+<br>        
+ Application.java (app executor)  <br>
+<h3>Below are Single Record CRUD operations via hibernate.</h3><br>        
+        
+        <b>Save a record.</b>
+<div class="javaCode">
+    package in.tcampus;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+
+import in.tcampus.model.User;
+
+public class Application {
+
+public static void main(String args[]) {
+	
+	System.out.println("Hello World..!");
+		
+	
+    StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+    Metadata metadata = new MetadataSources(ssr).getMetadataBuilder().build();
+    SessionFactory sessionFactory=metadata.getSessionFactoryBuilder().build();
+    Session ses=sessionFactory.openSession();	
+    
+	User user=new User(1,"test_firstname","test_lastname","9999999999");
+	ses.save(user);  // as hbm2ddl.auto = create-drop . it will create a new table and save record.
+	// or ses.persist(user); 
+    ses.close();
+	System.out.println("user saved..!");
+}
+	
+}        
+        </div>
+
+<br><br> we will try CRUD operations in same application. i will just show operation specific code in Application.java.      <br>
+        
+<b>Q) what is difference between session.save(object) &amp; session.persist(object) </b> <br>
+--> session.save(object) :- this method saves record and returns the generated id.<br>
+    session.persist(object) :- this method saves record but doesen't return generated id. <br>
+    please view return types for these methods.    
+<br><br>
+        <b>Updating a record</b><br>
+
+<div class="javaCode">
+    
+    Transaction t=ses.beginTransaction();
+    
+	/* here as i am using only 3 params, hibernate will update mobileNo to null*/
+    
+    User updateUser=new User(1,"Mahendra","Desai");<br>
+     	ses.update(updateUser);  
+	t.commit();
+        
+</div>        
+<br>
+        
+    <li>also note that hibernate will use identity value to update record.</li>
+    <li>ses.update(object) throws exception if record is not found.</li> 
+    <li>alternatively we can use ses.merge(object); to update or insert record.</li>
+    <li><b>ses.merge(object)</b> method will also return one persistant state object.</li>
+    <li><b>ses.saveOrUpdate(object)</b> will do same thing but this will not return any persistant state object.</li>    
+<br>        
+<b>Deleting a record</b><br>
+<div class="javaCode">
+    Transaction t=ses.beginTransaction();
+    User deleteUser=new User(2); //2 is userId which record is to be deleted.
+    ses.delete(deleteUser);
+	t.commit();
+</div>        
+<br><br>
+<b>Selecting a record</b><br>
+
+<ul>
+    <li>To Select single record from db table, we can use <b>ses.load(-,-) </b>or <b>ses.get(-,-)</b> methods.</li>
+    <li>We have two overloaded forms of ses.load(-,-) methods. 
+        <ul>
+            <li> public Object load(POJO.class,Serializable id)</li>
+            <li> public void load(Object newEmptyPojoObject,Serializable id)</li> 
+        </ul>
+    </li>
+    <li>Select operation can be performed as non-transactional stmt.</li>
+</ul>        
+        <div class="javaCode">
+
+  // using get(-,-) method
+    User selectedUser= ses.get(User.class, 2);
+            
+  // using form 1 of session.load(-,-)
+    User selectedUser=ses.load(User.class, 2); 
+            
+ // using form 2 of session.load(-,-)           
+    User selectedUser=new User();
+    ses.load(selectedUser, 2);   
+
+    System.out.println(selectedUser.toString());
+    
+</div>
+        
+        
+        
+        
+    </div>
+    <div class="rightContentContainer">
+        Right Navigation...
+    </div>
+</div>    
+
+<footer class="w3-container w3-teal footerContainer">
+  <p>Terms Of Use 
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="./hibernate_files/88x31.png"></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Java and other tutorials</span> by 
+<a xmlns:cc="http://creativecommons.org/ns#" href="file:///home/suraj/Documents/notes/hibernate/www.tcampus.in" property="cc:attributionName" rel="cc:attributionURL">Suraj Patil</a>
+ is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></p>
+</footer>
+</div>
+
+
+</body></html>

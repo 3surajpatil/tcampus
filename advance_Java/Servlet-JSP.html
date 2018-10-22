@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="..\index.css">    
+</head>
+<body>
+<div class="mainContainer w3-container">
+
+<header class="w3-container  w3-teal headerContainer">
+  <h2>Tutorial Campus....!</h2>
+</header>
+    
+    
+<nav  style="margin-top: 10px;" class="w3-bar w3-border w3-card-4 w3-light-grey">    
+    
+		<a href="..\core_Java\Core-Java.html" class="w3-bar-item w3-button">Core Java</a> 
+		<a href="..\core_Java\JDBC.html" class="w3-bar-item w3-button">JDBC</a>
+		<a href="..\core_Java\Design-Patterns.html" class="w3-bar-item w3-button">Design Patterns</a>
+		<a href="Servlet-JSP.html" class="w3-bar-item w3-button">Servlet-JSP</a>	
+		
+    
+    
+</nav>
+<div class="contentContainer">
+    <div class="leftContentContainer">
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#getvspost">GET VS POST</a></li>
+            <li><a href="#formComponents">Form Components</a></li>
+            <li><a href="#httpRequestRepsonse">Http Request Response Structure</a></li>
+            <li><a href="#servletLifeCycle">Servlet Life Cycle</a></li>
+            
+        </ul>
+        
+        
+    </div>   
+    <div class="middleContentContainer">
+        
+
+<b>What is difference between web-app and website ?</b>
+<ul>
+<li>The web app that is placed on the internet network having domain name like www.xyz.com is called website. </li>
+<li> Every web application is a collection of web resource programms having capability to generate web pages.</li>
+</ul>
+<h1 id="introduction">Introduction</h1>
+<br>
+<b> Servlet :- </b> <br>
+Servlet is a java based server side technology that allows us to create server side web resource programm in java web-app.
+
+<br>
+<b>Servlet api-3.0 packages</b> <br>
+
+<ul>
+<li>javax.servlet</li>
+<li>javax.servlet.http</li>
+<li>javax.servlet.annotation</li>
+<li>javax.servlet.descriptor</li>
+</ul>
+
+        <b>Servlet hirarchy</b><br>
+ 
+javax.servlet.Servlet<b>(I)</b> ----> javax.servlet.GenericServlet<b>(AC)</b> -----> javax.servlet.HttpServlet<b>(AC)</b> <br>
+
+<b>Creating Servlet</b>
+<ul>
+<li><b>Approach 1:-</b> implement Servlet interface and its 5 methods</li>
+<li><b>Approach 2:-</b> extend java class by GenericServlet class and implemnet Service(Request,Response) method.</li>
+<li><b>Approach 3:-</b> extend java class by HttpServlet and override on of do doXXX(-,-) or two service(-,-) methods
+</li>
+</ul>
+
+<b>Q) how many type of servlets are there</b><br>
+there is possiblity to develop n-types of servlet. depending on the protocol we want to implement. like HTTP, FTP, SMTP etc.
+
+<br><br>
+
+<b>Sample Servlet Program </b><br><br>
+        
+     <b>Web.xml</b>
+<div class="xmlCode">    
+    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+     xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; 
+     xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot; 
+     id=&quot;WebApp_ID&quot; version=&quot;3.1&quot;&gt;
+
+  &lt;display-name&gt;ServletApplication&lt;/display-name&gt;
+  &lt;servlet&gt;
+  	&lt;servlet-name&gt;firstServlet&lt;/servlet-name&gt;
+  	&lt;servlet-class&gt;controller.FirstServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+  	&lt;servlet-name&gt;firstServlet&lt;/servlet-name&gt;
+  	&lt;url-pattern&gt;/firstServlet&lt;/url-pattern&gt;
+    &lt;url-pattern&gt;/fs&lt;/url-pattern&gt; 
+  &lt;/servlet-mapping&gt;
+  
+  
+  &lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.html&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.htm&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;
+  &lt;/welcome-file-list&gt;
+&lt;/web-app&gt;
+
+
+</div>       
+<br>       
+<b>FirstServlet.java</b>    <br> 
+<div class="javaCode">    
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class FirstServlet extends GenericServlet {
+
+	@Override
+	public void service(ServletRequest request, ServletResponse response)
+    throws ServletException, IOException {
+	
+		response.setContentType("text/html");
+		
+		PrintWriter pw=response.getWriter();
+		request.setAttribute("attribute1", "firstAttribute");
+		
+		pw.println("hello world...!");
+		
+		pw.close();
+
+	}
+
+}
+</div>
+       
+  
+<ul>
+    <li> As shown in above xml we can provide multiple url-pattern 's  for a servlet. </li>
+    <li> pw.println(---) messages of servlet program goes to browser window.</li>
+    <li> System.out.println(--) messages goes to standard console of server or logfile configured. </li>
+</ul>
+<br><br>        
+<h4>Types of url patterns</h4>
+<ul>
+<li> ExactMatch URL Pattern :- e.g. /DateApp  or /login  </li>
+<li> DirectoryMatch URL Pattern :- e.g. /x/y/abc or /abc/x/y/ </li>
+<li> ExtensionMatch URL Pattern  :- e.g. /*.do or /*.c or /*.cpp  </li>
+</ul>
+
+<b>Deployment Directory Structure</b>    
+<div class="javaCode">    
+
+WebApp
+    |
+    |---WEB-INF
+    |   |---> classes    
+    |   |       |----> FirstServlet.java 
+    |   |       |----> SecondServlet.java 
+    |   | 
+    |   |---> web.xml
+    |    
+    |--->index.html
+    |--->index.jsp (etc)
+    
+</div>
+
+<br><br> 
+<b>GenericServlet class request processing methods </b>  <br><br>
+  <ul><li>      
+ public void service(ServletRequest req,ServletResponse res)throws ServletException,IOException
+</li></ul>     
+        
+<b>HttpServlet Class request processing methods </b><br>
+<ul>
+<li> protected void doXXX(HttpServletRequest req, HttpServletResponse res)throws ServletException,IOException</li>
+<li> protected void service(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException</li>
+<li> public void service(ServiceRequest req,ServletResponse res) throws ServletException,IOException </li>     
+</ul>        
+        
+        
+ <h1 id="getvspost">GET VS POST</h1>
+<table>
+<tr><th>GET</th><th>POST</th></tr>
+<tr><td>designed to get data form server but can send limited amount of data max 256 kb with request</td>
+<td>designed to send request having data . so it can send unlimited amount of data along with request. max 1-2 GB.</td></tr>
+<tr><td>form generated data is visible in browser's address bar as query string. </td>
+<td>form generated data is not visible in browser address bar as query string.</td></tr>
+<tr><td>not suitable for file uploading</td><td>suitable for file uploading. </td></tr>
+<tr><td>can't encrypt data</td><td>can encrypt data</td></tr>
+<tr><td>it is idempotent</td><td>it is not idempotent.</td></tr>
+</table>       
+        
+<br><br>
+
+<b>Idempotent:- </b> allowing multiple simoultaneous requests from a client before compleing other request given by that client is called idempotent behaviour.<br>
+that is browser maintains state of the request if it is posted or not. we can perform multiple GET request continiously as get is idmepotent and it will not make any chages at server.<br>
+   but if we try to perform post request second time, browser will prompt us with a message that request is already send and do you<br>still want to resend this request.<br>
+POST request is non idempotent.
+<br><br>
+        
+        
+ 
+
+<h1 id="formComponents">Various Form Components..!</h1>       
+I know that it is very easy to create HTML form , but sometimes we need to test some functionality like webservice or simple servlet program. and you start searching for a readymade form. or sometimes end up with some syntax errors 
+while creating some components. so here is sample html form... !<br><br>
+        
+<div class="xmlCode">
+<form action="/someActionUrl">
+<table>
+<tr><td colspan="3">Sample Form fields and respective java code to get data in servlet.</td></tr>
+<tr>
+<td><label name="textFieldLabel"> text field 1</label></td>
+<td><input type="text" name="textField1"></td>
+<td> String textField1=request.getParameter("textField1")</td>
+</tr>
+
+
+<tr>
+<td><label name="passwordFieldLabel"> password field</label> </td>
+<td><input type="password" name="passwordField"></td>
+<td>String password=request.getParameter("passwordField")</td>
+</tr>
+
+<tr>
+<td><label name="textArea"> text Area </label></td>
+<td><textarea name="textArea" rows="5" cols="20"></textarea></td>
+<td>String textArea=request.getParameter("textArea")</td>
+</tr>
+
+<tr>
+<td><label name="radio">radio button</label></td>
+<td>
+<input type="radio" name="gender" value="male"> male
+<input type="radio" name="gender" value="female"> femal
+</td>
+<td>String gender= request.getParameter("gender") 
+    as only one of the checkbox will be selected.</td>
+</tr>
+
+<tr>
+<td><label name="checkbox">checkbox</label></td>
+<td>
+<input type="checkbox" name="course" value="java">java
+<input type="checkbox" name="course" value="c">c
+<input type="checkbox" name="course" value="c++">c++
+</td>
+<td> String[] course=request.getParameterValues("course")  
+course[]={ "java","c","c+="}</td>
+</tr>
+
+<tr>
+<td><label name="select">Select box <br>
+(allows to select only 1 item)</label></td>
+<td>
+<select name="qualification">
+    <option value="Engg"> Engineering</option>
+    <option value="Medical"> Medical</option>
+    <option value="Arts"> Arts</option>    
+</select>    
+
+</td>
+<td> String qualification=
+    request.getParameter("qualification")</td>
+</tr>
+
+
+<tr>
+<td>
+<label name="listbox" multiple> ListBox 
+(allows to select multimple items with ctrl key)</label></td>
+<td>
+<select name="course"  multiple>
+<option value="java">java</option>
+<option value=".net">.net</option>
+<option value="oracle">oracle</option>
+</select>
+</td>
+<td>String[] course=request.getParameterValues("course")
+    course[]={"java",".net","oracle"}</td>
+</tr>
+
+<tr>
+<td colspan="3" align="center">
+<input type="submit" name="submit" value="submit Form">
+</td>
+</tr>
+<tr><td colspan="3">
+url generated after submitting form is :-
+
+file:///someActionUrl?textField1=textfieldValue&passwordField=passwordValue&textArea=textAreaValue&gender=male
+&course=java&course=c&course=c%2B%2B&qualification=Arts&course=.net&course=oracle&submit=submit+Form</td></tr>
+
+</table>
+</form>
+</div>
+ <br> 
+
+Source code for above form is as below
+
+<div class="xmlCode">
+
+&lt;form action=&quot;/someActionUrl&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;td colspan=&quot;3&quot;&gt;Sample Form fields and respective java code to get data in servlet.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;label name=&quot;textFieldLabel&quot;&gt; text field 1&lt;/label&gt;&lt;/td&gt;
+&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;textField1&quot;&gt;&lt;/td&gt;
+&lt;td&gt; String textField1=request.getParameter(&quot;textField1&quot;)&lt;/td&gt;
+&lt;/tr&gt;
+
+
+&lt;tr&gt;
+&lt;td&gt;&lt;label name=&quot;passwordFieldLabel&quot;&gt; password field&lt;/label&gt; &lt;/td&gt;
+&lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;passwordField&quot;&gt;&lt;/td&gt;
+&lt;td&gt;String password=request.getParameter(&quot;passwordField&quot;)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;label name=&quot;textArea&quot;&gt; text Area &lt;/label&gt;&lt;/td&gt;
+&lt;td&gt;&lt;textarea name=&quot;textArea&quot; rows=&quot;5&quot; cols=&quot;20&quot;&gt;&lt;/textarea&gt;&lt;/td&gt;
+&lt;td&gt;String textArea=request.getParameter(&quot;textArea&quot;)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;label name=&quot;radio&quot;&gt;radio button&lt;/label&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot;&gt; male
+&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot;&gt; femal
+&lt;/td&gt;
+&lt;td&gt;String gender= request.getParameter(&quot;gender&quot;) as only one of the checkbox will be selected.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;label name=&quot;checkbox&quot;&gt;checkbox&lt;/label&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;course&quot; value=&quot;java&quot;&gt;java
+&lt;input type=&quot;checkbox&quot; name=&quot;course&quot; value=&quot;c&quot;&gt;c
+&lt;input type=&quot;checkbox&quot; name=&quot;course&quot; value=&quot;c++&quot;&gt;c++
+&lt;/td&gt;
+&lt;td&gt; String[] course=request.getParameterValues(&quot;course&quot;)  course[]={ &quot;java&quot;,&quot;c&quot;,&quot;c+=&quot;}&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;label name=&quot;select&quot;&gt;Select box (allows to select only 1 item)&lt;/label&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;select name=&quot;qualification&quot;&gt;
+    &lt;option value=&quot;Engg&quot;&gt; Engineering&lt;/option&gt;
+    &lt;option value=&quot;Medical&quot;&gt; Medical&lt;/option&gt;
+    &lt;option value=&quot;Arts&quot;&gt; Arts&lt;/option&gt;    
+&lt;/select&gt;    
+
+&lt;/td&gt;
+&lt;td&gt; String qualification=request.getParameter(&quot;qualification&quot;)&lt;/td&gt;
+&lt;/tr&gt;
+
+
+&lt;tr&gt;
+&lt;td&gt;&lt;label name=&quot;listbox&quot; multiple&gt; ListBox (allows to select multimple items with ctrl key)&lt;/td&gt;
+&lt;td&gt;
+&lt;select name=&quot;course&quot;  multiple&gt;
+&lt;option value=&quot;java&quot;&gt;java&lt;/option&gt;
+&lt;option value=&quot;.net&quot;&gt;.net&lt;/option&gt;
+&lt;option value=&quot;oracle&quot;&gt;oracle&lt;/option&gt;
+&lt;/select&gt;
+&lt;/td&gt;
+&lt;td&gt;String[] course=request.getParameterValues(&quot;course&quot;) course[]={&quot;java&quot;,&quot;.net&quot;,&quot;oracle&quot;}&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td colspan=&quot;3&quot; align=&quot;center&quot;&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;submit Form&quot;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+&lt;/form&gt;
+</div>        
+
+<br><br>        
+        
+if there are multiple submit buttons for same form, we can identify the request with help of value of submit button
+e.g.<br>
+    &lt;input type="submit" value="add" &gt; <br>
+    &lt;input type="submit"  value="multiply" &gt; <br>
+    &lt;input type="submit"  value ="divide" &gt; <br><br>
+
+String submitValue=request.getParameter("submit"); <br><br>
+
+depending on value of submit button we can apply logic in Servlet program.
+
+<br>
+
+ if we want to send request to servlet with help of hyperlink we can use below sample. <br>
+
+<b>  &lt;a href="servletUrl?param1=param1value&amp;param2=param2value"&gt;hyperlink name&lt;a&gt; </b>
+          
+        
+ <br>
+<h1 id="httpRequestRepsonse">Http Request Repsonse</h1>        
+
+  
+<b></b>Structure of http request
+<div class="imageDiv">
+    <img src="HTTPRequest.jpg">
+</div>
+
+<br><br>        
+ We can read all the details that are coming along with browser generated request using request object of servlet program.
+<br>
+    To get request parameters below are the approaches.
+    
+    <ul>
+    <li>String paramName=request.getParameter("parameter_name")</li>
+    <li>String[] requestValues=request.getParameterValues("e.g._course"); //gets all request param values for listbox or checkboxes.
+    </li>
+    <li>String[] requestParamNames=request.getParameterNames();</li>
+    </ul>
+
+<br><br>
+To get request Header parameters we can use below approaches.
+    <ul>
+        <li>String request.getHeader("header_param_name")</li>
+        <li>String[] headerNames=request.getHeaderNames(); //use this if we don't know header param name</li>        
+    </ul>
+
+<br>
+<b>Q)How to find current browser software name from which request is generated ?</b><br>
+String browserName= request.getHeader("user-agent"); this will get us the browser name
+<br><br>    
+    
+        <b>Q) What are the different http response codes given by Web-Resource program. </b><br>
+    These are applicable for REST applications or any other language applications like php/.net         
+    <ul>
+    <li><b>100-199</b> :- Information </li>
+    <li><b>200-299</b> :- Success </li>
+    <li><b>300-399</b> :- Redirection </li>
+    <li><b>400-499</b> :- Incomplete </li>
+    <li><b>500-599</b> :- ServerError </li>
+    </ul>
+
+<br><br>
+<b> Structure of HTTP Response </b>
+    <div class="imageDiv">
+        <img src="HTTPResponse.jpg">
+    </div>
+
+
+<br><br>
+<b>Q) How to disable buffer of browser window  </b> <br><br>
+
+response.setHeader("cache-control","no-cache"); // for http 1.1 . <br>
+response.setHeader("pragma","no-cache"); // in http 1.0 .  <br><br>
+
+List Of Request Headers <br>
+<ol type="1">
+    <li>refferer</li>
+    <li>accept</li>
+    <li>accept-encoding</li>
+    <li>accept-language</li>
+    <li>authorization</li>
+    <li>connection</li>
+    <li>cookie</li>
+    <li>host</li>
+    <li>if-modified-since</li>
+    <li>user-agent</li>
+    <li>keep-alive</li>
+    <li>accept-charset</li>    
+</ol>
+
+List of Resonse Headers  <br>
+<ol type="1">
+    <li>Location</li>
+    <li>set-cookie</li>
+    <li>refresh</li>
+    <li>cache-control/pragma</li>
+    <li>content-encoding</li>
+    <li>content-length</li>
+    <li>content-type</li>
+    <li>last-modified</li>
+    <li>date</li>
+    <li>server</li>
+    <li>connection</li>
+    <li>content-disposition</li>    
+</ol>
+
+<br>
+        
+ We can take only one of the two streams pointing to response object to write data to browser window at a time.<br>
+<ul>        
+    <li> [character stream for character data.] PrintWriter pw= response.getWriter();   </li>
+    <li> [byte stream for binary data.] ServletOutputStream sos= response.getOutputStream(); </li>
+</ul>
+
+ <h1 id="servletLifeCycle">Servlet Life Cycle</h1>
+<ol type="1">
+<li>init(ServletConfig) :- for instantiation event. </li>
+<li> public service(ServletRequest req, ServletResponse res) throws IOException, ServletException </li>
+    --> protected service(-,-) * doXXX(-,-) methods are not lifecycle methods . 
+<li>destroy() :- for destruction event</li>
+</ol>
+
+<b>ServletConfig :- </b> <br>
+      
+        
+
+    </div>
+    <div class="rightContentContainer">
+        Right Navigation...
+    </div>
+</div>    
+
+<footer class="w3-container w3-teal footerContainer">
+  <p>Terms Of Use 
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Java and other tutorials</span> by 
+<a xmlns:cc="http://creativecommons.org/ns#" href="www.tcampus.in" property="cc:attributionName" rel="cc:attributionURL">Suraj Patil</a>
+ is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></p>
+</footer>
+</div>
+</body>
+</html>

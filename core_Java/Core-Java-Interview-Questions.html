@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="..\notes.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1 align="center">Core Java interview Questions</h1>
+<pre>
+<b>Q1. Explain JDK, JRE and JVM? </b>
+--> JDK is java development kit. It provides tools to compile and run java application. it  contains JRE & JVM.
+
+JRE is java runtime environment. It provides environment to run java program.
+end users Who just want to run a java program need JRE. 
+
+JRE contains JVM  & Java Packages (like util, math, lang, awt, swing etc) & rt.jar 
+
+JVM  converts byte-code to the machine readable form with help of JIT(Just In Time Compiler).  
+
+
+
+<b>Q2. Why Java is platform independent?</b>
+
+Java is called so because of its byte codes which can run on any system irrespective of its underlying operating system.
+
+<b>Q3. Why java is not 100% Object-oriented? </b>
+
+Java is not 100% Object-oriented because it makes use of eight primitive datatypes such as boolean,
+byte, char, int, float, double, long, short which are not objects.
+
+we can avoid primitive datatypes and use Wrapper classes to 100% java application 100% object oriented. 
+
+
+<b>Q4. What is singleton class and how can we make a class singleton?</b>
+
+Singleton class is a class whose only one instance can be created at any given time, in one JVM. 
+A class can be made singleton by making its constructor private.
+
+<b>Q5. What is the difference between equals() and == ?</b>
+
+<ol type="i">
+<li>Main difference between .equals() method and == operator is that one is method and other is operator. </li>
+<li>We can use == operators for reference comparison (address comparison) and .equals() method for content comparison. </li>
+<li>If a class does not override the equals method, then by default it uses equals(Object o) method of the closest 
+parent class that has overridden this method. if no class has overridden equals(-) method then by default Object class
+equals(-) method will come in picture and which internally uses == operator for comparison.
+String class has it's own implementation i.e. overridden method equals which compares contents.
+ </li>
+</ol>
+
+Example: 
+	<code>
+	    String s1 = new String("HELLO");
+        String s2 = new String("HELLO");
+        System.out.println(s1 == s2); //false
+        System.out.println(s1.equals(s2)); //true
+	</code>
+
+<h1 align="center"> OOPS Java Interview Questions: </h1>
+
+<b>Q) What is Polymorphism? </b>
+
+Representing one thing in many forms is Polymorphism.
+
+There are 2 types of polymorphism, 
+
+1) Compiletime/Static Polymorphism :- This can be achieved by using Method Overloading.
+
+if there are two overloaded methods, then which method to be called is decided at compile time itself depending on parameter list. 
+
+ 
+2) Runtime/Dynamic Polymorphism. :- This can be achieved by Method Overriding.
+
+if there is overridden method in child class, then which method to be called is decided at runtime depending on reference of object.
+
+
+<b>Q) What is association</b>
+Association represents the relation between objects. or using association objects can communicate with each other.
+
+there are 3 type of associations 1) IS-A 2) HAS-A 3) USES-A
+
+1) IS-A :- if a class is inherited from other class then there is IS-A type of relation.
+
+2) HAS-A :- if a class A is having object of another class B as a datamember then it is HAS-A type of relation.
+it is also called composition. i.e. if there is no object A then there will not be object B.
+
+System.out is example of HAS-A relationship.
+
+3) USES-A :- if a method of a class is using object of another class then it is called as a USES-A relation.
+
+<b>Q) What do you mean by aggregation & Composition? </b>
+
+
+</pre>
+</body>
+</html>
+
+

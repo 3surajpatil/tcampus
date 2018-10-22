@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="..\index.css">    
+</head>
+<body>
+<div class="mainContainer w3-container">
+
+<header class="w3-container  w3-teal headerContainer">
+  <h2>Tutorial Campus....!</h2>
+</header>
+    
+    
+<nav  style="margin-top: 10px;" class="w3-bar w3-border w3-card-4 w3-light-grey">    
+    
+		<a href="Core-Java.html" class="w3-bar-item w3-button">Core Java</a> 
+		<a href="JDBC.html" class="w3-bar-item w3-button">JDBC</a>
+		<a href="Design-Patterns.html" class="w3-bar-item w3-button">Design Patterns</a>
+		<a href="..\advance_Java\Servlet-JSP.html" class="w3-bar-item w3-button">Servlet-JSP</a>	
+		
+    
+    
+</nav>
+<div class="contentContainer">
+    <div class="leftContentContainer">
+        <ul>
+        <li><a href="#Creational">Creational Patterns</a> </li>
+        <li><a href="#Structural">Structural Patterns</a></li>    
+            <li><a href="#Behavioural">Behavioural Patterns</a></li>
+        </ul>    
+    </div>   
+    <div class="middleContentContainer">
+      <h1 align="center"> Design patterns </h1>		
+
+Design Patterns deal with comman reoccuring problems.
+
+<H1 id="Creational"> Creational Design Patterns </H1>
+	
+        these design patterns deal with object creation.
+		
+		<H3>Factory Pattern / Factory Method :- </H3>
+           <ul>
+			 <li>this can be used when there are multiple sub classes of an interface or class or abstract class. </li>
+			<li> it can help to hide implementation class. so that changes made in implementation class would not affect to client code. <br>
+				eg. :- Currency(I) can be implemented with different Nation as implementation class. <br>
+						Then we can create a CurrencyFactory Class which will have method to return the logic to <br>return Currecy implementaion object based on input for nation name. 
+            </li>    
+            </ul>   
+        
+		<H3> Abstract Factory Pattern. </H3>
+			<ul>
+			<li> In general Factory is place where something is produced. </li>
+			<li> Abstract Factory is nothing but Factory of Factories.  </li>
+			<li> AbstractFactory pattern could be implemented by interface with multiple abstract getFactoryTypes() methods. </li>
+            <li>like in FactoryPattern we used to get object of same type like currency or color etc. 
+                here we can provide abstraction over for multiple factories together. <br>
+                e.g. getShapeFactory()  it could be rectangle or circle or getColorFactory() it can be red,
+                green or blue.</li>
+            </ul>    
+		<H3> Builder Design Pattern </H3>
+        <ul>
+			<li> This approach helps to build step by step approach to build complex object. </li>
+			<li> This can be implemented with help of interface which provides abstract methods to build some object.</li>
+			<li> consider example of Bike . if we want to build a bike then we can use BikeBuilder like interface	
+				 in Which we can provide abstract methods like engine(-); headLights(-); seatType(-) etc.
+				 so implementing those methods would give us our dream Bike :).	
+            </li>    
+        </ul>    
+				
+		<H3> Prototype Pattern in java </H3>	
+ <ul>
+     <li>
+		Prototype patterns is required, when object creation is time consuming, and costly operation,so we create object with existing object itself.
+			One of the best available way to create object from existing objects are clone() method.	
+			e.g. getting database connection operation. 
+    </li>     
+     <li> If you are using clone method, then it is upto you to decide whether go for shallow copy or deep copy based        on your business need.  
+     </li>
+     <li>Deep Cloning is when we make copy of Has-A relationship  type data members. </li>
+		<li> Shallow cloning is default type. in this type we are not making copy of Has-A relationship type data members. i.e. both orignal and cloned object refer same HAS-A relationship data-member. </li>
+		<li> Example implementation.
+            <ol type="1">
+                <li> create an Abstract class implementing Clonable interface. & providing prototypes of other methods and variables. </li>
+                <li>implement all the subclasses for abstract class.</li>
+                <li> create a prototype class which can create a store for objects of implementations like using map. that stores all implementations of object.</li>
+                <li> in prototype class provide the getter(Key) method to get implementation class object with provided key.</li>
+			<li> the getter method should invoke clone() method insted of returning orignal implementation object. 	
+			 
+<div class="javaCode">
+public static Color getColor(String colorName){         
+return (Color) colorMap.get(colorName).clone();
+}
+                </div>    
+            </li>    
+            </ol>    
+        </li>    
+</ul>
+
+
+<h1 id="Structural">Structural Design Patterns</h1>
+
+ Structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
+        
+	
+		<h3>Adapter Pattern</h3>	
+        <ul>
+            <li>
+			 An adapter pattern helps two incompatible interfaces to work together </li>
+			<li> e.g. lets take realtime example. there are USA charger sockets &amp; there are UK type charger sockets. </li>
+				<li>to support both types we must have an adapter where we can plug our charger and then we can plugthe adapter in USA or UK type charging socket.</li>
+            
+			<li> simmilerly we can implement this concept in java. <br>
+				
+				e.g. Class A needs temprature in degree celsius. &amp; <br>
+                Class B is there which provides temprature in Farenhite. <br>
+				 so we can write an adapter to take input form Class B to get temprature in Faranhite &amp;<br>
+                write convertion method to convert from Faranhite to Degree celsius and return value.
+                
+            </li>    
+            </ul>
+		<h3>Composite Pattern</h3>	
+        <ul>
+			<li> Composite pattern composes objects in term of a tree structure to represent part as well as whole hierarchy. </li>
+			<li> Composite pattern can be implemented like one object should have a group or collection of it's own sub-type in hirarchy objects. </li>
+			<li> e.g. an employee can be implemented by CEO and CEO class can have SALES &amp;<br>
+                MARKETING employees as its sub-ordinates and SALES &amp; MARKETING employees can  <br>
+                have list of their subordinates. inshort sales &amp; marketing employees could be added under CEO <br>&amp; clerks could be added as subordinates of MARKETING employees.
+                
+            </li>    
+	   </ul>
+		<h3>Proxy Pattern</h3>
+        <ul>
+			<li> Proxy pattern provide a surrogate or placeholder for another object to control access to it. </li>
+			<li> for example suppose there is request for Internet object to visit useful website. </li>
+			<li> so insted of providing direct access to Internet object we can create a class to which 
+                is proxy of Internet this class will capture request and do validations and then it will return Internet object to access it's content.  <br>
+				Request("www.ddffss.com")---> InternetProxy("www.ddffss.com") <br>
+                it will verify content reuqested and forward to --> Internet.
+            </li>    
+        </ul>    
+		<h3>Flyweight Pattern</h3>	
+        <ul>
+			<li> Flyweight pattern is primarily used to reduce the number of objects created and to decrease memory footprint and increase performance.	</li>		 
+			<li> Flyweight pattern tries to reuse already existing similar kind objects by storing them and creates new object when no matching object is found. </li>
+			<li> it takes help of some property to check in it's store like map if object is already created. if object is already created then it will return existing object. </li>
+			<li> if object is not already present in the object store or map then it will go for creation of object. </li>	
+			<li> it will reduce direct object creation. </li>
+        </ul>    
+
+<H2 id="Behavioural"> Behavioural Design Patterns </H2>
+
+    </div>
+    <div class="rightContentContainer">
+        Right Navigation...
+    </div>
+</div>    
+
+<footer class="w3-container w3-teal footerContainer">
+  <p>Terms Of Use </p>
+</footer>
+</div>
+</body>
+</html>
