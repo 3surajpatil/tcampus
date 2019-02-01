@@ -21,8 +21,7 @@
     margin: 15px 0 ;    
     box-sizing: border-box;
     //justify-content: space-between;
-    //box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-    overflow:scroll;
+    //box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);   
 }
 
 @media(min-width: 900px){
@@ -124,8 +123,7 @@ table, th, td{
     font-size: 15px;
     font-family: "monospace","courier new";
     color: blue;
-    white-space: pre;
-    word-wrap:break-word;
+    white-space: pre;    
     line-height: 1.5;
 }
 
@@ -139,7 +137,7 @@ table, th, td{
     font-family: "monospace","courier new";
     color: blue;
     white-space: pre;
-    word-wrap:break-word;
+   
     padding-left: 8px;
     line-height: 1.5;
 }
