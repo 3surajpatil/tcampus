@@ -125,7 +125,6 @@ table, th, td{
     font-family: "monospace","courier new";
     color: blue;
     white-space: pre;
-    word-wrap:break-word;
     line-height: 1.5;
 }
 
@@ -139,7 +138,6 @@ table, th, td{
     font-family: "monospace","courier new";
     color: blue;
     white-space: pre;
-    word-wrap:break-word;
     padding-left: 8px;
     line-height: 1.5;
 }
