@@ -123,7 +123,11 @@ table, th, td{
     font-size: 15px;
     font-family: "monospace","courier new";
     color: blue;
+<<<<<<< HEAD
     white-space: pre;    
+=======
+    white-space: pre;
+>>>>>>> updates
     line-height: 1.5;
 }
 
@@ -137,7 +141,10 @@ table, th, td{
     font-family: "monospace","courier new";
     color: blue;
     white-space: pre;
+<<<<<<< HEAD
    
+=======
+>>>>>>> updates
     padding-left: 8px;
     line-height: 1.5;
 }
