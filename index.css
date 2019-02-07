@@ -21,7 +21,8 @@
     margin: 15px 0 ;    
     box-sizing: border-box;
     //justify-content: space-between;
-    //box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);   
+    //box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+    //overflow:scroll;
 }
 
 @media(min-width: 900px){
@@ -123,11 +124,7 @@ table, th, td{
     font-size: 15px;
     font-family: "monospace","courier new";
     color: blue;
-<<<<<<< HEAD
-    white-space: pre;    
-=======
     white-space: pre;
->>>>>>> updates
     line-height: 1.5;
 }
 
@@ -140,13 +137,9 @@ table, th, td{
     font-size: 15px;
     font-family: "monospace","courier new";
     color: blue;
-    white-space: pre;
-<<<<<<< HEAD
-   
-=======
->>>>>>> updates
+    white-space: pre;   
     padding-left: 8px;
-    line-height: 1.5;
+    line-height: 1.5;    	
 }
 
 .imageDiv{
@@ -178,7 +171,7 @@ h1{
     
 }
 
-h2 h3 h4{
+h2 h3 h4 h5 h6{
 text-align: left;
 background-color: #ACFD;
 }
@@ -187,6 +180,7 @@ background-color: #ACFD;
 
 body {
 font-family: Arial;
+
 }
 
 

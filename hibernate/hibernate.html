@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0059)file:///home/suraj/Documents/notes/hibernate/hibernate.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<!-- saved from url=(0046)http://www.tcampus.in/hibernate/hibernate.html -->
+<html lang="en"><head>
+<title>hibernate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./hibernate_files/w3.css">
-<link rel="stylesheet" href="./hibernate_files/index.css">    
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="..\index.css">    
 </head>
 <body>
 <div class="mainContainer w3-container">
@@ -15,17 +17,27 @@
     
 <nav style="margin-top: 10px;" class="w3-bar w3-border w3-card-4 w3-light-grey">    
     
-		<a href="file:///home/suraj/Documents/notes/hibernate/core_Java/Core-Java.html" class="w3-bar-item w3-button">Core Java</a> 
-		<a href="file:///home/suraj/Documents/notes/hibernate/core_Java/JDBC.html" class="w3-bar-item w3-button">JDBC</a>
-		<a href="file:///home/suraj/Documents/notes/hibernate/core_Java/Design-Patterns.html" class="w3-bar-item w3-button">Design Patterns</a>
-		<a href="file:///home/suraj/Documents/notes/advance_Java/Servlet-JSP.html" class="w3-bar-item w3-button">Servlet-JSP</a>	
-		<a href="file:///home/suraj/Documents/notes/hibernate/hibernate.html" class="w3-bar-item w3-button">Hibernate</a>
-    
-    
+		<a href="..\core_Java\Core-Java.html" class="w3-bar-item w3-button">Core Java</a> 
+		<a href="..\core_Java\JDBC.html" class="w3-bar-item w3-button">JDBC</a>
+		<a href="..\core_Java\Design-Patterns.html" class="w3-bar-item w3-button">Design Patterns</a>
+		<a href="..\advance_Java\Servlet-JSP.html" class="w3-bar-item w3-button">Servlet-JSP</a>	
+		<a href="hibernate.html" class="w3-bar-item w3-button">Hibernate</a>
+        	<a href="..\spring\Spring.html"  class="w3-bar-item w3-button">Spring</a>
 </nav>
 <div class="contentContainer">
     <div class="leftContentContainer">
-        Left Navigation .... 
+       <ul>
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#SRCrud">S.R.CRUD</a></li>
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#BRoperations">B.R.Operations</a></li>
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#hbmappings">Mappings</a></li>
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#hbcache">Cache</a></li>           
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#versioning">Versioning</a></li>
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#idgeneration">Identity Algorithms</a></li>           
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#HBPOJO_lifeCycle">HB Pojo </a></li>
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#Schema_Tools">Schema Tools</a></li>
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#HBConnectionPool">Connection Pooling</a></li>
+           <li><a href="http://www.tcampus.in/hibernate/hibernate.html#hbfiler">Filter</a></li>
+        </ul>
     </div>   
     <div class="middleContentContainer">
         
@@ -34,18 +46,21 @@
  the process of linking java class with database table ,  java class members variables with DB collumns<br>
 and making java class objects representing db table rows having synchronization between them (object with table rows)<br>
 is known as OR mapping.<br>
+
 <ul>
     <li>    Synchronization between objects &amp; table rows is nothing but the modification done in objet will reflect to rable<br> rows and vice versa. </li>
     <li>O-R mapping allows to perform all the persistence operations on db-table records through objects and without using any sql queries.</li>
-    <li>every ORM software internally uses JDBC Code and SQL Queries to perform persistance operations on db table based on instructions given by application through objects.</li>
+    <li>every ORM software internally uses JDBC Code and SQL Queries to perform persistance 
+        <br>operations on db table based on instructions given by application through objects.</li>
     <li>the process of hiding implementation and simplifying work is called abstraction.</li>
 </ul>
 
+
 <ul>        
 <li><b>JPA(JAVA PERSISTANCE API) gives specifications to implement ORM softwares. ORM Softwares are implemented by multiple vendors.</b></li>
-    <br> 
-<li>Hibernate is also one of the implementation for JPA.</li>  <br> 
 
+<li>Hibernate is also one of the implementation for JPA.</li>  
+ 
 <li><b>Hibernate is written by Mr. Gavin King.</b><br></li>
 <li><b>All methods of hibernate API internally uses exception re-throwing concept to convert JDBC code <br>
     generated SQLException(CheckedException) to Unchecked Exceptions.
@@ -58,7 +73,7 @@ Exception's are beauty of hibernate software.
 <br>    
 Before we start lets describe what is a POJO class.
     
-
+<br>
 <b>Q)What is POJO class.</b>    
  The java class acting as a resource of java application without extending or implementing any other framework, <br>
     that class can be called POJO. i.e. Plain Old Java Object class. <br>
@@ -67,10 +82,12 @@ Bean Or Model Class is class that represents real-world entity  by properties. a
 Bean or Model Class  can be called Pojo class.        
 
 non pojo class example
+
+
         <div class="javaCode">
         public class MyServlet extends HttpServlet
         {
-        // as this class has HttpServlet capabilities this is not a plain old java class.    
+        // as this class has HttpServlet capabilities this is not a plain old java class.
         ...    
         }
         </div>
@@ -81,8 +98,7 @@ example pojo class
             String name;            
             }
         </div>    
-    
-<ul>    
+<ul>   
 <li><br>simplest way is to create a java project in eclipse and add maven capabilities to it.(right click on project--&gt; configure--&gt;convert to maven project.) <br> 
 ---&gt; it will give you the pom.xml(project object Model file) . we can add dependencies here. <br>
     so that maven will download all required jars related to our dependencies in our project. and no need to worry about dependedent and version specific jars.<br></li>
@@ -144,53 +160,54 @@ please place below xml files in src directory. i.e. above all packages.
     <br>    
   hibernate.cfg.xml        
 <div class="xmlCode">
-    &lt;?xml version = &quot;1.0&quot; encoding = &quot;utf-8&quot;?&gt;
+    &lt;?xml version = "1.0" encoding = "utf-8"?&gt;
 &lt;!DOCTYPE hibernate-configuration SYSTEM 
-&quot;http://www.hibernate.org/dtd/hibnate-configuration-3.0.dtd&quot;&gt;
+"http://www.hibernate.org/dtd/hibnate-configuration-3.0.dtd"&gt;
 &lt;hibernate-configuration&gt;
    &lt;session-factory&gt;   
-      &lt;property name = &quot;hibernate.dialect&quot;&gt;
+      &lt;property name = "hibernate.dialect"&gt;
          org.hibernate.dialect.MySQL55Dialect
       &lt;/property&gt;      
-      &lt;property name = &quot;hibernate.connection.driver_class&quot;&gt;
+      &lt;property name = "hibernate.connection.driver_class"&gt;
          com.mysql.jdbc.Driver
       &lt;/property&gt;      
       &lt;!-- Assume test is the database name --&gt;      
-      &lt;property name = &quot;hibernate.connection.url&quot;&gt;
+      &lt;property name = "hibernate.connection.url"&gt;
          jdbc:mysql://localhost/testdatabase
       &lt;/property&gt;      
-      &lt;property name = &quot;hibernate.connection.username&quot;&gt;
+      &lt;property name = "hibernate.connection.username"&gt;
          root
       &lt;/property&gt;      
-      &lt;property name = &quot;hibernate.connection.password&quot;&gt;
+      &lt;property name = "hibernate.connection.password"&gt;
          111111
       &lt;/property&gt;
-      &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
-    &lt;!-- this should not be create-drop for live application. it should be validate. other values are 'validate','create' --&gt;
-    &lt;property name=&quot;hbm2ddl.auto&quot;&gt;create-drop&lt;/property&gt;    <br>
+      &lt;property name="show_sql"&gt;true&lt;/property&gt;
+    &lt;!-- this should not be create-drop for live application. 
+	it should be validate. other values are 'validate','create' --&gt;	
+    &lt;property name="hbm2ddl.auto"&gt;create-drop&lt;/property&gt;    <br>
       
       &lt;!-- List of XML mapping files --&gt;      
-      &lt;mapping resource = &quot;User.hbm.xml&quot;/&gt;           
+      &lt;mapping resource = "User.hbm.xml"/&gt;           
    &lt;/session-factory&gt;
 &lt;/hibernate-configuration&gt;
 </div>        
   User.hbm.xml
 <div class="xmlCode">
-    &lt;?xml version = &quot;1.0&quot; encoding = &quot;utf-8&quot;?&gt;
+    &lt;?xml version = "1.0" encoding = "utf-8"?&gt;
 &lt;!DOCTYPE hibernate-mapping PUBLIC 
-&quot;-//Hibernate/Hibernate Mapping DTD//EN&quot;
-&quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&gt; 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt; 
 
 &lt;hibernate-mapping&gt;
-   &lt;class name = &quot;in.tcampus.model.User&quot; table = &quot;User&quot;&gt;
+   &lt;class name = "in.tcampus.model.User" table = "User"&gt;
       
-      &lt;id name = &quot;id&quot; type = &quot;int&quot; column = &quot;id&quot;&gt;
-         &lt;generator class=&quot;native&quot;/&gt;
+      &lt;id name = "id" type = "int" column = "id"&gt;
+         &lt;generator class="native"/&gt;
       &lt;/id&gt;
       
-      &lt;property name = &quot;firstName&quot; column = &quot;first_name&quot; type = &quot;string&quot;/&gt;
-      &lt;property name = &quot;lastName&quot; column = &quot;last_name&quot; type = &quot;string&quot;/&gt;
-      &lt;property name = &quot;mobileNo&quot; column = &quot;salary&quot; type = &quot;string&quot;/&gt;
+      &lt;property name = "firstName" column = "first_name" type = "string"/&gt;
+      &lt;property name = "lastName" column = "last_name" type = "string"/&gt;
+      &lt;property name = "mobileNo" column = "salary" type = "string"/&gt;
       
    &lt;/class&gt;
 &lt;/hibernate-mapping&gt;    
@@ -198,7 +215,7 @@ please place below xml files in src directory. i.e. above all packages.
         </div>
 <br>        
  Application.java (app executor)  <br>
-<h3>Below are Single Record CRUD operations via hibernate.</h3><br>        
+<h2 id="SRCrud">Single Record CRUD operations via hibernate.</h2><br>        
         
         <b>Save a record.</b>
 <div class="javaCode">
@@ -222,25 +239,168 @@ public static void main(String args[]) {
 	System.out.println("Hello World..!");
 		
 	
-    StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+    StandardServiceRegistry ssr = new StandardServiceRegistryBuilder()
+	.configure("hibernate.cfg.xml").build();
     Metadata metadata = new MetadataSources(ssr).getMetadataBuilder().build();
     SessionFactory sessionFactory=metadata.getSessionFactoryBuilder().build();
     Session ses=sessionFactory.openSession();	
     
 	User user=new User(1,"test_firstname","test_lastname","9999999999");
-	ses.save(user);  // as hbm2ddl.auto = create-drop . it will create a new table and save record.
+	Transaction t=ses.beginTransaction();
+    ses.save(user); // as hbm2ddl.auto = create-drop . 
+	//it will create a new table and save record.
 	// or ses.persist(user); 
     ses.close();
+    t.commit(); // commiting transaction.
 	System.out.println("user saved..!");
 }
 	
 }        
         </div>
+<br><br>
 
+in case if you don't want xml configurations , go for annotation configurations. to do that in above application. we need 
+<br>below changes in User.java pojo class &amp; hibernate.cfg.xml files respectively. other stuff will remain same.
+<br><br>
+        
+        
+User.java<br>
+    <div class="javaCode">
+        
+        package in.tcampus.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="User")
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 4L;
+	
+	int id;
+	String firstName;
+	String lastName;
+	String mobileNo;
+	
+	public User() {
+		
+	}
+	
+	public User(int id, String firstName, String lastName, String mobileNo) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobileNo = mobileNo;
+	}
+
+	
+	public User(String firstName, String lastName,String mobileNo) {
+		
+		super();
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobileNo= mobileNo;
+	}
+
+
+	public User(int i) {
+		this.id=i;
+	}
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
+// we can put annotations on fields also. but putting annotations on getters is recommended.        
+        
+    @Column(name="first_name")  
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	@Column(name="last_name")
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	@Column(name="mobileNo")
+	public String getMobileNo() {
+		return mobileNo;
+	}
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+
+	@Override
+	public String toString() {
+	return "User [id=" + id + ", firstName=" + firstName + ", 
+	lastName=" + lastName + ";
+	}	
+}
+
+        
+        </div>    
+<br><br>
+        
+
+    hibernate.cfg.xml    <br><br>
+    <div class="xmlCode">
+        &lt;?xml version = "1.0" encoding = "utf-8"?&gt;
+&lt;!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibnate-configuration-3.0.dtd"&gt;
+&lt;hibernate-configuration&gt;
+   &lt;session-factory&gt;   
+      &lt;property name = "hibernate.dialect"&gt;
+         org.hibernate.dialect.MySQL55Dialect
+      &lt;/property&gt;      
+      &lt;property name = "hibernate.connection.driver_class"&gt;
+         com.mysql.jdbc.Driver
+      &lt;/property&gt;      
+      &lt;!-- Assume test is the database name --&gt;      
+      &lt;property name = "hibernate.connection.url"&gt;
+         jdbc:mysql://localhost/testdatabase
+      &lt;/property&gt;      
+      &lt;property name = "hibernate.connection.username"&gt;
+         root
+      &lt;/property&gt;      
+      &lt;property name = "hibernate.connection.password"&gt;
+         111111
+      &lt;/property&gt;
+      &lt;property name="show_sql"&gt;true&lt;/property&gt;
+      &lt;property name="hbm2ddl.auto"&gt;validate&lt;/property&gt;      
+      &lt;!-- List of XML mapping files --&gt;      
+      &lt;!--  &lt;mapping resource = "User.hbm.xml"/&gt; 
+	  commented to use annotation configurations.--&gt;
+      &lt;mapping class="in.tcampus.model.User"&gt;&lt;/mapping&gt;          
+   &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+        
+        </div>    
+        
+        
+        
+        
 <br><br> we will try CRUD operations in same application. i will just show operation specific code in Application.java.      <br>
         
 <b>Q) what is difference between session.save(object) &amp; session.persist(object) </b> <br>
---> session.save(object) :- this method saves record and returns the generated id.<br>
+--&gt; session.save(object) :- this method saves record and returns the generated id.<br>
     session.persist(object) :- this method saves record but doesen't return generated id. <br>
     please view return types for these methods.    
 <br><br>
@@ -258,12 +418,13 @@ public static void main(String args[]) {
         
 </div>        
 <br>
-        
+     <ul>   
     <li>also note that hibernate will use identity value to update record.</li>
     <li>ses.update(object) throws exception if record is not found.</li> 
     <li>alternatively we can use ses.merge(object); to update or insert record.</li>
     <li><b>ses.merge(object)</b> method will also return one persistant state object.</li>
-    <li><b>ses.saveOrUpdate(object)</b> will do same thing but this will not return any persistant state object.</li>    
+    <li><b>ses.saveOrUpdate(object)</b> will do same thing but this will not return any persistant state object.</li>
+    </ul>    
 <br>        
 <b>Deleting a record</b><br>
 <div class="javaCode">
@@ -300,23 +461,1839 @@ public static void main(String args[]) {
     System.out.println(selectedUser.toString());
     
 </div>
+<br><br><br>        
+<b>Q)What is difference between above two forms of ses.load(-,-) &amp; ses.get(-,-) ?</b><br>
+--&gt;
+        <table>
+        <tbody><tr><th>ses.load(pojo_obj,id)</th><th>ses.load(POJO.class,id)</th><th>ses.get(POJO.class,id)</th></tr>
+            <tr><td>Performs eager loading of record.</td><td>Performs lazy loading of record.</td><td>Performs eager loading of record.</td></tr>
+            <tr><td>Doesen't create additional proxy object. just uses supplied POJO object.</td><td>Creates Proxy object. &amp; one persistant state object.</td><td>Doesen't create proxy object.</td></tr>
+            <tr><td>Not suitable to check whether record is available or not. as it will throw ObjectNotFoundException. </td><td>Not suitable to check whether record is available or not. as it will throw ObjectNotFoundException.</td><td>Suitable check wether record is available or not. as it will not throw exception.</td></tr>
+            <tr><td>Useful in standalone apps where record will be utilized immidiately.</td><td>Useful in multilayer mvc architecture based apps. where record selected from model layer will be utilized in view layer.</td><td>Useful in standalone apps where record will be utilized immidiately.</td></tr>
+        </tbody></table>
+    
+        <br><br>
+       <p> 
+        Hibernate s/w takes cate of synchronization between HB Pojo class objects and db table rows.  Synchronization means the modifications doen in HB POJO class Will be refleted to DBTable rows  &amp; vie versa.
+        to make POJO Object &amp; db table row in sync we can use <strong>ses.flush()</strong> <br>
+        e.g.:- 
+        </p>    
+     <div class="javaCode">
+        EmpBean eb=(EmpBean)ses.load(EmpBean.class,1001);
+        eb.setMail("random.email@somemail.com");
+        ses.flush(); // modification done in eb object will reflect in dbtable row. 
+        
+        </div>
+       <br><br> 
+        <p>above example is for record updated via our bean in java code. what if record is modified by someone externaly to database?  <br>
+            the solution is <strong>ses.refresh(bean_obj):- </strong> refresh will re-read data from db. 
+        </p>
+    
+<b>Q) can we develop HB Application without HB-Mapping file? </b><br>
+---&gt;Yes possible with help of annotations.  
+ <br><br>
+        
+<b>Q) can we develop HB Application without HB-POJO class ?</b><br>
+---&gt; No , no possible. there will not be Object Relational Mapping without Pojo class.        
+<br><br>        
+<b>Q) what if application is using composite primary key ? how will you map in HBM.xml ? (primary key with multiple collumn's ?)</b><br>        
+---&gt; use &lt;Composite-id&gt; e.g. <br> 
+    <div class="xmlCode">
+    &lt;composite-id&gt;
+            &lt;key-property name="no" column="EID"&gt;&lt;/key-property&gt;
+            &lt;key-property name="email" column="EMAIL"&gt;&lt;/key-property&gt;
+         &lt;/composite-id&gt;  
+    </div>    
+<br>
+<h2 id="BRoperations">Bulk Record Operations</h2>        
+        
+      To perform BULK operations and to take programmer choice values as criteria values we can use  <br>
+      <ul>
+        <li>HQL (Hibernate Query Language)</li>
+        <li>Native SQL</li>
+        <li>Criteria API </li>  
+      </ul>  
+
+        
+<h3> <strong>HQL (Hibernate Query Language):- </strong></h3>
+<ul>
+    <li> these are object oriented sql queries. that means we should replace db-table with HB POJO class and DBTable columns should be replaced with HB POJO class datamembers.</li>
+    <li>SQL queries will be written based on db table name, column names. where as HQL Queries will be writen based on HB POJO class and it's datamember variables.</li>
+    <li>HB software converts each HQL query into the db software specific SQL query by using ASTQueryTranslatorFactory</li>
+    <li>HQL Keywods are not case sensitive but the POJO Class names and it's member variable names used in HQL Query are case sensitive.</li>
+    <li>HQL Supports JOINS, SUBQUERIES, AGGREGATE FUNCTIONS, Condition Classes etc.</li>
+    <li>HQL queies allow boh positional(?) and named(:param_name) parameters.</li>
+    <li>Using HQL both Select and Non-Select operations can be done.</li>
+    <li>HQL allows both single-row and bulk row operaions with programmer choice condition.</li>
+    <li>HQL queries supports both lazy loading , eager loading operations.</li>
+    <li>Query object represents HQL Query, Query object means it is the object of a class that implements <b>org.hibernate.Query(I)</b></li>
+    <li>using HQL Query single record insertion is not possible.</li>
+    <li>HQL query based DDL Operations , PL/SQL programming is not possible.</li>
+    <li>Query object represents each HQL Query.</li>
+    <li>use <b>list()</b> or <b>iterate()</b> method on query object to execute HQL Select Queries.</li>
+    <li> use <b>executeUpdate()</b> method on Query object to execute HQL Non-Select Queries.</li>
+</ul>        
+<br>
+        <h4>HQL Select Examples</h4>
+        <div class="javaCode">
+        // select * clause can be ommited from HQL Query if we are selecting all columns
+        //Employee is Bean Class name.
+            
+        Query q=ses.createQuery("from Employee"); 
+        List employeeList=q.list();
+        
+        for(int i=0;i&lt;employeeList.size();i++)
+        {
+            Employee e=(Employee)employeeList.get(i);
+            System.out.println(e.toString()); 
+        }
+            
+        ses.close();
+        
+        </div>
+        
+        <h5>HQL Select Example with positional parameters</h5>
+        
+        <div class="javaCode">
+        
+            Query q=ses.createQuery("from EmpBean as eb where eb.no&gt;=? and eb.no&lt;=?");
+            
+            /*set positional parameters to query.
+             in Hibernate Positional parameters start with 0 &amp; 
+			in JDBC those start with 1
+			*/
+            q.setInteger(0,100); 
+            q.setInteger(1,200);
+        
+            List l=q.list();
+            .... // now you can iterate list.
+        </div>
+        
+        <br>
+        
+        <h5>HQL Select Example with named parameters</h5>
+        <ul>
+        <li> if there are multiple positional parameters in HQL query then there is possibility of giving wrong indexing to parameters. this can be overcomed with help of named query parameters. </li>
+        
+        <li> JDBC Doesen't support named parameters.<br></li> 
+        <li> We can prepare HQL Query by having both named &amp; positional parameters, but we can't define positional parameter in query after defining any named parameter. <br> </li>
+        <li> we can take parameters in HQL Query only representing input values, Condition values of query i.e. we can't take parameters representing HQL Keywords , POJO Class name, POJO Class member variable names etc.</li>
+        </ul>
+        
+        <div class="javaCode">
+        
+        Query q=ses.createQuery("from Employee as eb where eb.fname like :p1 and eb.email like :p2");
+            
+        q.setString("p1","r%");
+        q.setString("p2","%x.com");
+        
+        List l=q.list(); 
+        ...
+        </div>
+        
+        <br><br>
+        
+        <ul>
+        
+        <li> if HQL select query retrives all the collumn values of db table , then  the generated list datastructure contains HB POJO class objects as element values.</li>
+        <li>if HQL select query retrives specific column values of db table (partially loaded objects), then the generated list datastructure contains java.lang.Object class array as element values.</li>
+        <li>Arrays are objects in java so they can be taken as collection datastructure elements.</li>
+        <li>since java.lang.Object class is topmost class in inheritance hirarchy of any java class, we can place any java class objects as elements of java.lang.Object class array.</li>    
+        </ul>
+        
+        <h5>Executing HQL Select query to retrive specific column values.</h5>
+        
+        <br>
+        <div class="javaCode">
+        
+        Query q=ses.createQuery(
+		"select eb.fname,eb.lname from Employee eb where eb.email like :p1"
+		);
+        
+        q.setString(":p1","%x.com");
+        List l=q.list();
+        
+        for(int i=0;i&lt;l.size();i++)
+        {
+            Object row[]=(Object[]) l.get(i); //getting each row as array of Object class.
+            
+            for(int j=0;j&lt;row.length;j++)
+            {            
+                System.out.println(row[j]+" ");
+            }
+        }
+            
+        </div>
+        
+        <br>
+        
+        in above example, List object will look like below.
+        <div class="imageDiv">
+            <img src="HQL_RETRIVING_SPECIFIC_COLUMNS.jpg">
+        </div>
+        
+        <br>
+        
+        -if HQL Select query retrives single collumn values from db table , then generated list datastructure  object contains wrapper class ojbect as element values representing the retrived collumn values. 
+        
+        <div class="javaCode">        
+        Query q=ses.createQuery("select eb.no from Employee as eb");
+        List l =q.list();
+        for(int i=0;i&lt;l.size();i++)
+        {
+            int no=(Integer) l.get(i);
+            System.out.println(no);
+        }            
+        </div>
+        <br>
+        <h5>Executing HQL Sub Query</h5>
+                
+        <div class="javaCode">
+            Query q=ses.createQuery("from Employee as eb where eb.no=(
+            select max(eb1.no) from Employee as eb1)");
+        
+            List l=q1.list();
+            /* as we are selecting all records of employee
+			list will contain Employee class objects representing records.
+            */
+            for(int i=0;i&lt;l.size();i++)
+            {
+            
+            Employee e=(Employee)l.get(i);
+            System.out.println(e.toStirng());
+            
+            }
+        </div>
+        <br>
+
+<h5>getting records using count(*) aggregate function</h5>        
+
+        <div class="javaCode">        
+        Query q=ses.createQuery("select count(*) from Employee");
+        List l=q.list();    
+        Long count=l.get(0);
+        Sytem.out.println("Count is :-"+count);    
+        </div>
+        
+<h5>Executing HQL with multiple aggregate functions.</h5>        
+        <div class="javaCode">
+        Query q=ses.createQuery("select count(*) ,max(eb.no), min(eb.no) ,sum(eb.sal), avg(eb.sal) 
+    from Employee as eb");
+    
+    List l=q.list();
+    Object row []=(Object[])l.get(0);
+    
+    long count=(Long)row[0];
+    int max=(Integer)row[1];
+    int min=(Integer)row[2];
+    long sum=(Long)row[3];
+    Double avg=(Double) row[4];
+        </div>
+        
+ 
+<h5>Using Iterate() on Query Object to retrive values.</h5>        
+- it uses n+1 queries to select records. i.e. 1st query will select all identity values of records.<br>
+- and other n no. of query will select the records with help of the identity value. retrived by above query.<br>
+- in case of q.list() , it will generate only 1 query to fetch records.<br>
+- q.iterate() method's behaviour is same as q.list() in case of retriving specific column values.i.e. it will retrive rows in form of Object[] arrays.
+<br>        
+
+        <div class="javaCode">
+        
+        Query q=ses.createQuery("from Employee");
+        Iterator itr=q.iterate();
+        while(itr.hasNext()){
+        
+        Employee eb=(Employee)it.next();
+        System.out.println(eb.toString());
+        }
+        </div>    
+<br>
+<b>Q) what is difference between q.list() and q.iterate() method.</b>
+        
+<table>
+<tbody><tr><th>q.list()</th><th>q.iterate()</th></tr>
+<tr>
+    <td>retrives all records at a time by generating single sql select query</td>
+    <td>retrives 1 record at a time by generating n+1 select queries to retrive those multiple records.</td>
+</tr>
+    <tr>
+    <td>HB POJO class object will be created and initialize eagerly.performs eager loading of record</td>
+    <td>performs lazy loading of record</td>
+    </tr>
+    <tr>
+    <td>creates HB Pojo class objects based on no. of records that are selected.</td>
+    <td>creates more HB POJO class objects compared to no. of records that are selected.</td>    
+    </tr>
+    <tr>
+        <td>doesen't create proxy object</td>
+        <td>creates proxy object for each record.</td>
+    </tr>
+    <tr>
+        <td>returns List datastructure directly.</td>
+        <td>returns Iterator object pointing to List datastructure.</td>
+    </tr>
+</tbody></table>        
+
+<h5>HQL Non-Select Queries.</h5>        
+-&gt; HQL insert query cannot insert record directly to database table . but it can be used to insert records into db table by retriving the records from another db table. <br>
+-&gt; insert into...values...(this query is not present in hql) but insert into...select from...(this query is available)<br>
+-&gt; use ses.save(-) ,ses.persist(-) methods to insert the records directly.  <br>              
+
+<h6>deleting record with HQL</h6>        
+    
+        <div class="javaCode">
+        Query q=ses.createQuery("delete from Employee as eb where eb.no&gt;=?");
+        q.setInteger(0,200);
+        Transaction tx=ses.beginTransaction();
+        int result=q.executeUpdate();
+        System.out.println(result+" records update.");    
+        tx.commit();            
+        </div>
+<h5>Pagination</h5>        
+        <br>
+        --&gt; we have setFirstResult(int) &amp; setMaxResults(int); methods of Query interface to perform pagination.
+<br>
+        
+        
+<h3> <strong>Native SQL:- </strong></h3>                
+<ul>
+        <li>The orignal database software dependent sql queries.</li>
+        <li>these queries will be written based on table-names and db column-names.</li>
+        <li>these queries based persistence logic is db software dependent.</li>
+        <li>supports both select and non select queries including single record insertion and DDL operations.</li>
+        <li><b>SQLQuery(I)</b> object represents each native sql query. <b>SQLQuery(I)----&gt;Query(I) </b></li>
+        <li>it is mainly given to call PL/SQL procedures and functions of underlying db software.</li>
+        <li>There are two types of NativeSQL queries 
+            <ol type="1">
+            <li>Entity Select queries (selects all the column values of db table.)</li>
+            <li>Scalar select queries (selects specific Column or values of db table.)</li>
+            </ol>
+        </li>
+        <li>Entity query results must be registered with HB-POJO class. by using <b>addEntity(--) </b> method to see results in form of HB-POJO class object</li>
+        <li>mapping scalar query results with HB Datatype is optional using addScalar()</li>        
+        </ul>
+
+<h5>Limitations of Native sql</h5>        
+<ul>
+        <li>Native SQL Queries based persistence logic is db software dependent </li>
+        <li>We can't use iterate() to execute Native SQL Select queries i.e. lazy loading is not possible. </li>        
+</ul>  
+    
+        --&gt; select * from Employee; (Native SQL) <br>
+        --&gt; select FNAME,LNAME from Employee  (Native SQL Scalar query)<br>
+        --&gt; select  count(*) from Employee (Native SQL Scalar query)<br><br>
+        
+<b>Q) When to use HQL Queries &amp; when to use Native SQL queries ? </b><br>
+        --&gt; prefer HQL Queries in most of the cases. but if we are not able to perform some operation with HQL then only we can go for Native SQL. like... <br>
+        --&gt; selecting records with multiple conditions. <br>
+        --&gt; to call database procedure and functions of db software. <br>
+        --&gt; to insert single record with HQL in such situations we <br>
+
+<h5>Executing Native sql select Entity query </h5>        
+
+        --&gt; if native SQL entity select query results are not mapped with HB POJO class, then generated List d.s. contains java.lang.Object class object array[] as row of elements. otherwise if results are mapped , then generated list d.s. contains HB POJO class objects as elements.
+        
+        <div class="javaCode">
+        SQLQuery q= ses.createSQLQuery("select * from Employee"); // here Employee is table name.
+        List l=q.list();  // 
+            
+            for(int i=0;i&lt;l.size();i++)
+            {
+                Object row[]=(Object[])l.get(i);
+            
+                for(int k=0;k&lt;row.length;++k)
+                {
+                    System.out.println(row[k]);
+                }
+            }
+        </div>
+        <br>
+        --&gt; to make above application giving list with Pojo class objects we can make following changes.<br>
+        --&gt; native sql query can have both named and positional parameters. but we can't place positoinal parameters after defining named parameters.
+        
+        <div class="javaCode">
+            SQLQuery q=ses.createSQLQuery("select * form Employee where eid&gt;=? and eid&lt;=:p1");
+            
+            q.setInteger(0,100);
+            q.setInteger("p1",200);
+            
+            q.addEntity(EmployeeBean.class);
+            
+            List l=q.list();
+            
+            for(int i=0;i&lt;l.size();i++)
+            {
+                EmployeeBean eb=(EmployeeBean) l.get(i);
+                System.out.println(eb.toString());
+            }            
+        </div>
+        <br>
+        
+    <h5>Executing Native SQL scalar query :- </h5>    
+        
+     -&gt; this query will always give list d.s. having java.lang.Object clss Object[] as elements.   
+        
+    <div class="javaCode">
+        
+        SQLQuery q=ses.createSQLQuery("select fname,lname from Employee where eid=(select
+        max(eid) from Employee)");
+        
+        List l=q.list()
+        
+        // l will contain records rows in form of Object [] 
+        //where each element of array will contain column selected.
+        
+        for(int i=0;i&lt;l.size();i++)
+            {
+                Object row[]=(Object[])l.get(i);
+            
+                for(int k=0;k&lt;row.length;++k)
+                {
+                    System.out.println(row[k]);
+                }
+            }
+        
+        </div>
+        
+<h5>Executing Non Select Native SQL Queries</h5>        
+        
+      <div class="javaCode">
+        
+        SQLQuery q= ses.createSQLQuery("
+          insert into Employee values (?,?,?,?);
+          ");
+        q.setInteger(0,101);
+        q.setString(1,"ramesh");
+        q.setString(2,"patil");
+        q.setString(3,"xxx@yyy.xom");
+          
+          Transaction tx=ses.beginTransaction();
+          int result =q.executeUpdate();
+          System.out.println("records updated"+result);
+          tx.commit();
+        ses.close();
+          </div>  
+        
+<h5> Executing DDL query with Native sql</h5>
+        
+    <div class="javaCode">
+        
+        SQLQuery q=ses.createSQLQuery("create table xyz(abc number(5))");
+        Transaction tx=ses.beginTransaction();
+        q.executeUpdate();
+        tx.commit();
+        ses.close();        
+    </div>    
+        
+<h5><b>Q) What is difference between HQL and Native SQL query</b></h5>        
+    <table>
+        <tbody><tr>
+        <th>HQL</th><th>Native SQL</th>
+        </tr>
+        <tr>
+        <td>queries are DB s/w independent</td><td>queries are db s/w dependent</td>
+        </tr>
+        <tr><td>supports both lazy loading and eager loading (with l.iterate())</td>
+        <td>supports only eager loading </td>
+        </tr>
+        <tr><td>queries will be written with HB-POJO class and it's properties</td>
+            <td>queries will be written by using db-table name and it's column names</td></tr>
+        
+        <tr><td>can't be used to call PL/SQL procedures and functions</td>
+        <td>can be used to call PL/SQL procedures and functions</td>
+        </tr>
+        <tr><td>doesen't support direct record insertion and DDL Operations</td>
+            <td>supports direct record insertion and DDL Operations.</td>
+        </tr>
+        </tbody></table>    
+    
+    <br>
+        
+    ---&gt; native sql queries supports pagination by using same old q1.setFirstResult(-) &amp;
+        q1.setMaxResults(-) methods.
+        
+    <br>
+<h4>Calling Procedure and Functions from HB application.</h4>
+    --&gt; to be added...    
+
         
         
         
+<h3> <strong>Criteria API:- </strong></h3>                        
         
+    <ul>
+        <li>Allows to develop persistence logic through java statements without using any kind of queries.</li>    
+        <li>this persistence logic will be written by using DB POJO class and it's member variables so it is persistence logic is db s/w independent.</li>
+        <li>hibernate internally uses reflection API to execute criteria API logic. this gives better performance compared to HQL</li>
+        <li>creteria API is very suitable to retrive data from table with multiple conditions.</li>
+        <li>allows all kinds of select operations but doesen't allow non select ddl operations.</li>
+        <li><b>Criteria</b> object represent Criteria persistence logic. &amp; <b>Criterion </b> objects represents Conditions</li>
+        <li>doesen't allow iterate() method based lazy loading.</li>
+        <li>Criteria api logic is specific to one session object and can't be made as global object as visible to multiple session objects.</li>
+        <li>criteria API suports pagination but doesen't allow to call PL/SQL procedures and functions.</li>
+    </ul>    
+        
+<h5>Retriving all records of table using criteria API.</h5>        
+        <div class="javaCode">
+        Criteria ct=ses.createCriteria("Employee.class");
+        List l=ct.list();            
+        </div>
+    <ul>  
+        <li>we can add conditions to Criteris object as <b>ct.add(Criterion_obj)</b></li>
+        <li> the static methods of <b>org.hibernate.criterion.Restrictions</b> class give Criterion object representing conditions.       </li>
+        <li>multiple conditions can be added to criteria object. those will be executed by having 'and' clause in query.</li>
+    </ul>    
+        <div class="javaCode">
+        Criteria ct=ses.createCriteria(Employee.class);
+        Criterion condition1= Restrictions.between("no",100,200); //'no' is colum name    
+        Criterion condition2=Restriction.like("mail","%x.com");
+            
+        ct.add(condition1);
+        ct.add(condition2);
+            
+        List l=ct.list();    
+        </div>
+        
+    <h5><b>Q) what is difference between Criteria object and Criterion object.</b></h5>
+        <ul>
+        <li>Criteria object represents the whole criteria api persistence logic. in that Criterion object represents conditions. </li>
+        <li>Criteria object is object of class that implements <b>org.hibernate.Criteria (I)</b>
+            &amp; Criterion object is object of class that implements <b>org.hibernate.criterion.Criterion (I)</b>
+        </li>        
+        </ul>
+        
+<h6>retriving records with ascending or decending order using criteria api</h6>        
+        
+        <div class="javaCode">
+            
+        Criteria ct=ses.createCriteria(Employee.class);
+        
+        Criterion condition1= Restriction.ge("no",100);
+        Criterion condition2=Restriction.le("no",300);
+        
+        ct.add(condition1);
+        ct.add(condition2);
+        
+        Order order=new Order.desc("mail"); // or Order.asc("mail");
+        
+        ct.addOrder(order);
+       
+        //Criteria API supports pagination.
+        
+        ct.setFirstResult(1);
+        ct.setMaxResults(10);    
+                    
+        List l=ct.list();
+        </div>
+        
+<br>
+ 
+
+<h6>providing conditions as sql statement to criteria API logics </h6>       
+        
+        <div class="javaCode">        
+            Criteria ct=ses.createCriteria(Employee.class);
+            Criterion condition1= Restrictions.sqlRestriction("email like '%x.com'")            
+            ct.add(condition1);
+            List l=ct.list();            
+        </div>
+    <br>    
+        
+<h6>Using Projections. (performing scalar select operation retriving speific column values in criteria API environment.) </h6>        
+    <ul>
+    <li>
+    We can take support of <b>org.hibernate.criterion.Projection(I)</b> for this operation.  
+        </li> 
+    <li>Create multiple Projection object for multiple properties or field names.</li>    
+    <li>add projection objects to ProjectionList object.</li>    
+    <li>finally set ProjectionList object to Criteria object.</li>
+    </ul>    
+        
+    <div class="javaCode">
+        
+    Criteria ct=ses.createCriteria();
+    Projection p1=Projections.property("no");
+    Projection p2=Projections.property("name");
+        
+    ProjectionList pl=Projections.projectionList();
+    pl.add(p1);
+    pl.add(p2);        
+    ct.setProjection(pl); // setting projectionlist to criteria object.        
+    List l=ct.list();    
+    </div>    
+    
+<h6>Using Projections to retrive aggregation results.</h6>        
+        
+<div class="javaCode">
+    Criteria ct=ses.createCriteria();
+    Projection p1=Projections.rowCount();
+    Projection p2=Projections.max("no");
+    Projection p3=Projections.min("sal");
+    Projection p4=Projections.avg("sal");
+    Projection p5=Projections.sum("sal");
+    
+    ProjectionList pl=Projections.projectionList();
+    pl.add(p1);pl.add(p2);pl.add(p3);pl.add(p4);pl.add(p5);
+    
+    ct.setProjection(pl);
+    List l=ct.list(); // this list will contain row as array of Object[]    
+</div>
+        
+<h6> Using CriteriaAPI logic by applying both "or" &amp; "and" clauses.</h6>        
+        
+    <div class="javaCode">
+    
+    Criteria ct=ses.createCriteria("Employee.class");
+    
+    Criterion condition1=Restriction.like("mail","%x.com");
+    Criterion condition2=Restriction.ne("no",300); // not equal to 
+    Criterion condition3=Restriction.between("no",100,200);
+        
+    Criterion orCondition=Restriction.or(condition1,condition2);
+    Criterion andCondition=Restriction.and(orCondition,condition3);
+        
+    ct.add(andCondition);
+    List l=ct.list();    
+        
+    </div>    
+<h2 id="hbmappings">Mappings in Hibernate</h2>
+    <ul>
+    <li>How we will represent data tables if some classes are inheritance hirarchy ?</li>    
+    <li>How we will store data in database table if we have collection variable as data member ? </li>    
+    <li>How we will represent OneToOne or OneToMany or ManyToMany relationships in database ?</li>
+    <li>the answer is using mappings. hibernate provides mapping techniques to deal with such problems.</li>
+    <li>
+        <ol type="1">
+            <li>Collection Mappings</li>
+            <li>Inheritance Mappings</li>
+            <li>Association Mappings</li>    
+        </ol>
+    </li>
+    </ul>    
+    
+    <h4><b>Collection Mapping</b></h4>
+    
+    Below are few steps we can follow     
+    <ul>    
+        <li><b>@ElementCollection</b> to be putted below annotation on Collection Attribute like Set,List or Collection in your pojo class..</li>
+        <li><b>@JoinTable(name="tableName", joinColumns=@JoinColumn(name="collmn_name_tobe_given_for_primary_key") ) </b>
+            this annotation is not mandatory. <br>
+            if not used then hibernate will use attribute <b>'ClassName_attributeName' </b> as a name of table <b> classname_primary_key </b> as foreign key for reference table.
+        </li>
+        <li><b>@Embedable</b>(class level annotation) annotation is required when your collection element is of UserDefined Type. like 'Answer' class..</li> 
+        <li><b>@Column(name="name_of_db_column")</b> on all attributes if required.</li>
+        <li>in below example i have just used String as a List's type. we can add Userdefined Type as well with help of @Embedable annotation</li>        
+    </ul>
+    
+<b>Example for Predefined List of Predefined Datatype String </b>
+    <hr>    
+<b>Questions.java</b>        
+<div class="javaCode">
+@Entity&gt;
+@Table(name="questions")
+public class Question {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	int id;
+	
+	@Column(name="question")
+	String questionString;
+
+	@ElementCollection
+	@JoinTable(name="Answers",joinColumns=@JoinColumn(name="qid"))
+	List&lt;String&gt; answers=new ArrayList&lt;String&gt;();
+
+	... getters &amp; setters.	
+</div>        
+        <b>App.java</b>        
+<div class="javaCode">        
+		Session ses=sessionFactory.openSession();
+       
+       Question question=new Question();
+       question.setQuestionString("What is java");
+       
+       question.getAnswers().add("java is platform independent programming language.");
+       question.getAnswers().add("java is object oriented programming language");
+       
+       Transaction tx=ses.beginTransaction();
+       ses.save(question);
+       tx.commit();	
+	   
+</div>	   
+<br>        
+<b>Example using UserDefined collection. </b>
+<hr>
+<b>Answer.java (UserDefined datatype.) </b>
+<div class="javaCode">
+@Embeddable
+public class Answer {
+
+	@Column(name="Answer")
+	String answerString;
+	@Column(name="answerBy")
+	String answerBy;
+	...
+	getters &amp; setters.
+</div>    
+
+<b>Question.java </b>
+<div class="javaCode">	  
+@Entity
+@Table(name="questions")
+public class Question {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	int id;
+	
+	@Column(name="question")
+	String questionString;
+
+	@ElementCollection
+	@JoinTable(name="Answers",joinColumns=@JoinColumn(name="qid"))
+	List&lt;Answer&gt; answers=new ArrayList&lt;Answer&gt;();
+	...
+    getters &amp; setters.
+</div>
+    
+
+<b>App.java </b>
+<div class="javaCode">
+ Session ses=sessionFactory.openSession();
+       
+       Question question=new Question();
+       question.setQuestionString("What is java");
+       
+       Answer answer=new Answer();      
+       answer.setAnswerBy("supath");
+       answer.setAnswerString("java is platform independent programming language.");
+       
+       
+       Answer answer1=new Answer(); 
+       answer1.setAnswerBy("suraj");
+       answer1.setAnswerString("java is object oriented programming language");
+       
+       question.getAnswers().add(answer);
+       question.getAnswers().add(answer1);
+       
+       Transaction tx=ses.beginTransaction();
+       ses.save(question);
+       tx.commit();
+
+    //Note:- here Answer.java is not mapped in hibernate.cfg.xml.
+
     </div>
+  
+<b>Example using Map collection. </b>
+<hr>
+<b>Question.java </b>
+
+<div class="javaCode">
+@Entity
+@Table(name="questions")
+public class Question {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	int id;
+	
+	@Column(name="question")
+	String questionString;
+
+	@ElementCollection
+	@JoinTable(name="Answers",joinColumns=@JoinColumn(name="qid"))	
+	Map&lt;String,String&gt; answers=new HashMap&lt;String,String&gt;();
+
+</div>    
+<b>App.java </b>
+
+<div class="javaCode">
+	   Session ses=sessionFactory.openSession();
+       
+       Question question=new Question();
+       question.setQuestionString("What is java");       
+       
+       Map&lt;String,String&gt; answers=new HashMap&lt;String,String&gt;();
+       answers.put("suraj", "java is platform independent prog. language.");
+       answers.put("supath", "java is object oriented language.");             
+	   
+       question.setAnswers(answers);
+              
+       Transaction tx=ses.beginTransaction();
+       ses.save(question);
+       tx.commit();
+</div>       
+<br>	
+Note:- this stores map values correctly . but need to check for changing answer's column_name for key. 	
+<br>	
+<b>Example for Predefined Set would be simmiler to ArrayList.</b>
+<hr>
+       
+   
+        
+<h4><b>Inheritance Mappings</b></h4>        
+        
+        
+    We have following inheritance mappings.
+        
+        <ul>
+            <li>Table Per Hirarchy</li>
+            <li>Table Per Class</li>
+            <li>Table Per Subclass</li>
+        </ul>
+    <b>Note:- please map all base and derived classes in hibernate.cfg.xml as we are using annotations.<br>
+e.g. &lt;mapping class="package.name.ClassName"/&gt;
+     </b>
+        
+        <h5><b>TablePerHirarchy inheritance mapping</b></h5>
+<ul>
+<li> In this Type only one table will be generated for all hirarchy of classes.  </li>
+<li> this uses discriminator collumn to identify record is of which type. </li>
+<li> we are defining default values for discriminator collumn to be inserted at time of record insertion. </li>
+</ul>
+        
+        <h6><b>BaseClass Annotations.</b> </h6>
+
+Class level annotations.
+        <div class="javaCode">
+            @Entity
+            @Table(name="MailUsers")
+            @Inheritance(strategy=InheritanceType.SINGLE_TABLE)  
+             // this will be here only in base class.
+            @DiscriminatorColumn(name="name_you_want_to_give_to_discriminator_collumn") 
+            @DiscriminatorValue(
+	value="this_value_will_be_inserted_on_insertion_of_every_record_for_this_class_object"
+			)
+        </div>
+        
+annotations on primary key attribute.
+        <div class="javaCode">	
+            @Id
+	   //or other strategy for identity generation.
+	   @GeneratedValue(strategy=GenerationType.IDENTITY) 	   
+	        int id;
+        </div>	
+annotations on other attributes.
+        <div class="javaCode">
+            @Column(name="column_name)
+        </div>    
+<h6><b>DerivedClass Annotations</b></h6>
+ class level annotations.
+        
+        <div class="javaCode">
+            @Entity
+            @DiscriminatorValue(
+	value="this_value_will_be_inserted_on_insertion_of_every_record_for_this_class_object"
+			)
+        </div>
+    <br>    
+        <b>Note:-&gt;</b> no primary key annotation as it will use base calss primary key.<br>
+        
+annotations on other attributes.<br>        
+        <div class="javaCode">
+            @Column(name="column_name)
+        </div>
+
+    
+
+        
+<h5><b>TablePerClass inheritance mapping.</b> </h5>
+<ul>
+    <li>In this type table will be generated for each class. i.e. for base class there will be a table. and derived classes will also have tables.</li>
+<li>This avoids nullable values as like in TablePerHirarchy inheritance mapping. </li>
+<li> problem with this strategy is , we are making completly new collumn's for parent class attributes. 
+i.e. same collumn's for parent attributes will be available in all the tables. </li>
+</ul>
+        
+<h6><b>BaseClass annotations. </b></h6>
+
+Class level annotations.
+    <div class="javaCode">    
+        @Inheritance(strategy=TABLE_PER_CLASS)
+        @Entity
+        @Table(name="table_name")
+    </div>    
+annotations on primary key attribute.
+    <div class="javaCode">    
+        @Id
+        @@GeneratedValue(strategy=GenerationType.AUTO)  //or other GenerationType
+    </div>    
+annotations on other attributes.
+    <div class="javaCode">    
+        @Column(name="column_name)
+    </div>    
+
+<h6><b>Derived Classes annotations.  (apply below annotations to all derived classes.) </b></h6>
+
+Classl level Annotations.
+    <div class="javaCode">
+        @Entity  
+        @Table(name="table_name_for_this_class")  
+        @AttributeOverrides(
+            @AttributeOverride(
+			name="property_name_from_base_class" 
+			column=@column(name="column_name_for_the property")		
+            )
+            @AttributeOverride(
+			name="property_name_from_base_class" 
+			column=@column(name="column_name_for_the property")		
+            ) // simmilerly add all properties of base class here.
+        )
+    </div>
+annotations on attributes. (no @Id attribute since we are inheriting id from base class)
+    <div class="javaCode">    
+        @Column(name="column_name") 
+    </div>    
+        
+        
+        
+
+<h5><b>Table Per Subclass inheritance mapping.</b></h5>
+    <ul>
+        <li>in this strategy tables will be created for each classes. </li>
+        <li> records will be joined using primary-key and foreign key relationship. </li>
+        <li> this avoids duplicate collumn's as like in TablePerClass inheritance mapping.</li>
+    </ul>
+
+<h6><b>BaseClass annotations.</b></h6>
+
+Class level annotations.
+    <div class="javaCode">
+        @Entity  
+        @Table(name = "table_name")  
+        @Inheritance(strategy=InheritanceType.JOINED)    
+     </div>
+annotations on primary key attribute.
+    <div class="javaCode">
+        @Id  
+        @GeneratedValue(strategy=GenerationType.AUTO)  // or other id generation strategy      
+        @Column(name = "primary_key_column_name")  
+    </div>
+annotations on other attributes.
+    <div class="javaCode">    
+        @Column(name="column_name)  
+    </div>
+        
+<h6><b>Derived Classes annotations.  (apply below annotations to all derived classes.) </b></h6>
+
+
+ Class level annotations.
+    <div class="javaCode">
+        @Entity  
+        @Table(name="table_name_for_storing_derieved_class_attributes")  
+        @PrimaryKeyJoinColumn(name="primary_key_column_name_from_base_class")  
+    </div>
+ annotations on attributes. (no @Id attribute since we are inheriting id from base class)
+    <div class="javaCode">    
+        @Column(name="column_name") 
+    </div>    
+        
+        
+<h4><b>Association Mappings</b></h4>        
+        
+following are types of Association Mappings.    
+        
+        <ul>
+            <li>One To One Association Mapping</li>
+            <li>One To Many Association Mapping</li>
+            <li>Many To Many Association Mapping</li>
+        </ul>
+        
+<h5><b>One To One Association Mapping</b></h5>        
+        
+reference link :- <a href="https://dzone.com/tutorials/java/hibernate/hibernate-example/hibernate-mapping-one-to-one-using-annotations-1.html">dzone.com</a><br>
+
+<ul>
+    <li>In this mapping records will be idnetified by hibernate with help of foreign-key column. </li>
+    <li> foreign key column will be added in Student table. </li>
+    <li> if name not supplied with @JoinColumn then hibernate will take property name as FIRST_CLASS_SECOND-CLASS.</li>
+    <li> Also , we can specify property names above getters, that would be preffered.</li> 
+    <li><b> E.X.: Association statement :-</b> One Student Has only One Address. (Has a relationship between classes.)
+        so Student class will have Address class object as a data member.</li>
+</ul>
+
+Student.java        
+<div class="javaCode">        
+@Entity
+@Table(name = "STUDENT")
+public class Student {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="studentId")
+	private long studentId;
+	@Column(name="studentName")
+	private String studentName;
+	// this creates oneToone relationship between Student and Address.
+	@OneToOne(cascade = CascadeType.ALL)  
+		
+	/* below annotation is not mandatory , 
+	just in case you want to change name of collumn.
+	 column will be created in Student table.*/
+	@Joincolumn(name="Student_Address") 
+	private Address studentAddress; 
+
+	// getters and setters for bravity.
+}
+</div>    
+
+Address.java        
+<div class="javaCode">        
+@Entity
+@Table(name = "ADDRESS")
+public class Address {
+
+	@Id
+	@GeneratedValue(strtegy=GenerationType.Auto)
+	@Column(name="addressId")
+	private long addressId;
+	@Column(name="line1")
+	private String line1;
+	@Column(name="line2")
+	private String line2;
+	
+	//getters and Setters for bravity.
+}
+
+</div>
+        
+---&gt; in hibernate.cfg.xml please add these classes.
+ <div class="xmlCode">
+    &lt;mapping class="package.Student" /&gt;
+    &lt;mapping class="package.Address" /&gt;
+ </div>
+ 
+---&gt; App.java(Application Executor.)
+	<div class="javaCode">
+        Address address1 =new Address();
+	   address1.setLine1("some street and flat no.");
+	   address1.setLine2("some city and state with pin.");
+	
+        // create simmiler address2 object.	
+        Student student1=new Student();
+        Student student2=new Student();
+
+        student1.setName("student1_name");
+        student1.setAddress(address1);// adding 1st address object here.
+        student2.setName("student2_name");
+        student2.setAddress(address2);// adding 2nd address object here.
+
+        Transaction tx=ses.beginTransaction();
+        ses.persist(student1);  ses.persist(student2);
+        tx.commit();
+	
+    </div>
+        
+        
+<h5><b>One To Many Association Mapping</b></h5>        
+        
+ 
+<h6><b>Association statement :-</b>One Student can Have multiple phone numbers.</h6>
+
+
+
+<h6>Solution 1:- Using Foreign Key.    [it will make 2 tables only.]</h6>
+
+ 
+<b>reference link :- <a href="https://www.javatpoint.com/hibernate-one-to-many-mapping-using-annotation-example">javatpoint.com</a> </b>
+
+<div class="javaCode">        
+	@OneToMany(cascade = CascadeType.ALL)
+// STUDENT_ID will be made as foreign key in  Phone table.  	
+	@JoinColumn(name="STUDENT_ID")  
+	public Set&lt;Phone&gt; getStudentPhoneNumbers() {
+		return this.studentPhoneNumbers;
+	}
+</div>
+    
+<b>Note:-&gt; Model Classes &amp; other classes are available below with solution 2. those are same.  </b>
+ 
+      
+
+<h6>Solution 2:- Using Reference Table. [it will make 3 tables]</h6>
+
+
+<b>reference link :-<a href="https://dzone.com/tutorials/java/hibernate/hibernate-example/hibernate-mapping-one-to-many-using-annotations-1.html">dzone.com</a></b>
+
+<ul>        
+    <li> in this type of mapping , two tables will be created for two Entity classes. </li>
+    <li> there will not be any foreign key. </li>
+    <li> another table will be created i.e. 3rd table will be created with first-table-name_second-table-name.<br>
+        and primary keys of these two tables will be stored in two collumns.</li>
+    <li> <b>@OneToMany</b> annotation on the property of HAS-A relationship class will be enough.to perform this mapping.<br> 
+    if we not use @JoinTable annotation then it will create 3rd table with default names.<br>
+     i.e. table name, primary_key column of table 1 &amp; primary_key_of second column will be according to<br> datamember/variable names. </li>	
+    <li> <b>@JoinTable</b> annotation will be required to customize the default names that will be given to the 3rd table. </li>
+</ul>
+
+POM.xml
+
+<div class="xmlCode">
+	&lt;dependency&gt;  
+    &lt;groupId&gt;org.hibernate&lt;/groupId&gt;  
+    &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;  
+    &lt;version&gt;5.3.1.Final&lt;/version&gt;  
+	&lt;/dependency&gt;  
+	&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;
+	&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;8.0.12&lt;/version&gt;
+	&lt;/dependency&gt;	 
+</div>	
+	 
+hibernate.cfg.xml
+<div class="xmlCode">
+    &lt;?xml version='1.0' encoding='UTF-8'?&gt;  
+    &lt;!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-5.3.dtd"&gt;  
+  
+    &lt;!-- Generated by MyEclipse Hibernate Tools.                   --&gt;  
+    &lt;hibernate-configuration&gt;  
+  
+    &lt;session-factory&gt;  
+        &lt;property name="hbm2ddl.auto"&gt;update&lt;/property&gt;    
+        &lt;property name="dialect"&gt;org.hibernate.dialect.MariaDB53Dialect&lt;/property&gt;    
+        &lt;property name="connection.url"&gt;jdbc:mysql://localhost/local_schema&lt;/property&gt;    
+        &lt;property name="connection.username"&gt;root&lt;/property&gt;    
+        &lt;property name="connection.password"&gt;root&lt;/property&gt;    
+        &lt;property name="connection.driver_class"&gt;com.mysql.jdbc.Driver&lt;/property&gt; 
+        &lt;property name="show_sql"&gt;true&lt;/property&gt;  
+          
+        &lt;mapping class="in.tcampus.model.Student"/&gt;  
+        &lt;mapping class="in.tcampus.model.Phone"/&gt;  
+          
+    &lt;/session-factory&gt;  
+  
+    &lt;/hibernate-configuration&gt;  
+ 
+</div>
+        
+Student.java
+
+<div class="javaCode"> 
+ package in.tcampus.model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "STUDENT")
+public class Student {
+
+	private long studentId;
+	private String studentName;
+	private Set&lt;Phone&gt; studentPhoneNumbers = new HashSet&lt;Phone&gt;(0);
+
+	public Student() {
+	}
+
+	public Student(String studentName, Set&lt;Phone&gt; studentPhoneNumbers) {
+		this.studentName = studentName;
+		this.studentPhoneNumbers = studentPhoneNumbers;
+	}
+
+	@Id
+	@GeneratedValue
+	@Column(name = "STUDENT_ID")
+	public long getStudentId() {
+		return this.studentId;
+	}
+
+	public void setStudentId(long studentId) {
+		this.studentId = studentId;
+	}
+
+	@Column(name = "STUDENT_NAME", nullable = false, length = 100)
+	public String getStudentName() {
+		return this.studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "STUDENT_PHONE", joinColumns = { @JoinColumn(name = "STUDENT_ID") },
+    inverseJoinColumns = { @JoinColumn(name = "PHONE_ID") })
+	public Set&lt;Phone&gt; getStudentPhoneNumbers() {
+		return this.studentPhoneNumbers;
+	}
+
+	public void setStudentPhoneNumbers(Set&lt;Phone&gt; studentPhoneNumbers) {
+		this.studentPhoneNumbers = studentPhoneNumbers;
+	}
+
+}
+
+    </div>
+ 
+ Phone.java
+
+<div class="javaCode">
+package in.tcampus.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PHONE")
+public class Phone {
+
+	private long phoneId;
+	private String phoneType;
+	private String phoneNumber;
+
+	public Phone() {
+	}
+
+	public Phone(String phoneType, String phoneNumber) {
+		this.phoneType = phoneType;
+		this.phoneNumber = phoneNumber;
+	}
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "PHONE_ID")
+	public long getPhoneId() {
+		return this.phoneId;
+	}
+
+	public void setPhoneId(long phoneId) {
+		this.phoneId = phoneId;
+	}
+
+	@Column(name = "PHONE_TYPE", nullable = false, length=10)
+	public String getPhoneType() {
+		return this.phoneType;
+	}
+
+	public void setPhoneType(String phoneType) {
+		this.phoneType = phoneType;
+	}
+	
+	@Column(name = "PHONE_NUMBER", nullable = false, length=15)
+	public String getPhoneNumber() {
+		return this.phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+}
+        </div>
+    
+App.java
+
+<div class="javaCode">
+package in.tcampus;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import in.tcampus.model.Phone;
+import in.tcampus.model.Student;
+import in.tcampus.util.HibernateUtil;
+
+public class App {
+
+	public static void main(String[] args) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+
+			Set&lt;Phone&gt; phoneNumbers = new HashSet&lt;Phone&gt;();
+			phoneNumbers.add(new Phone("house", "32354353"));
+			phoneNumbers.add(new Phone("mobile", "9889343423"));
+
+			Student student = new Student("Eswar", phoneNumbers);
+			session.save(student);
+			
+			transaction.commit();
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+	}
+
+}
+</div> 
+ 
+        <b>Note:-&gt; to avoid configuration for session factory each time . created this utility class.</b><br>
+HibernateUtil.java 
+<div class="javaCode"> 
+package in.tcampus.util;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+public class HibernateUtil {
+	private static final SessionFactory sessionFactory;
+	static {
+		try {
+			StandardServiceRegistry ssr=
+			new StandardServiceRegistryBuilder()
+			.configure("hibernate.cfg.xml").build();
+			Metadata metadata=new MetadataSources(ssr).buildMetadata();
+			
+			sessionFactory = metadata.buildSessionFactory();
+					
+		} catch (Throwable ex) {
+			System.err.println("Initial SessionFactory creation failed." + ex);
+			throw new ExceptionInInitializerError(ex);
+		}
+	}
+
+	public static SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+}
+ 
+</div>    
+     		
+    
+<h5><b>Many To Many Association mapping.</b></h5>
+
+
+ <h6>Association statement :- One Student can have many Courses &amp; One Course can have many Students.</h6>
+
+ <b>reference link :- <a href="https://dzone.com/tutorials/java/hibernate/hibernate-example/hibernate-mapping-many-to-many-using-annotations-1.html">dzone.com</a></b>
+ 
+<br>        
+ 
+ Student.java
+ <div class="javaCode">
+ public class Student {
+
+	private long studentId;
+	private String studentName;
+	private Set&lt;Course&gt; courses = new HashSet&lt;Course&gt;(0);
+
+	@Id
+	@GeneratedValue
+	@Column(name = "STUDENT_ID")
+	public long getStudentId() {
+		return this.studentId;
+	}
+	... other getters and setters.
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "STUDENT_COURSE", joinColumns = { @JoinColumn(name = "STUDENT_ID") }, 
+     inverseJoinColumns = { @JoinColumn(name = "COURSE_ID") })	
+	public Set&lt;Course&gt; getCourses() {
+		return this.courses;
+	}
+</div> 
+        
+        
+	Course.java
+<div class="javaCode">	
+@Entity
+@Table(name="COURSE")
+public class Course {
+
+	private long courseId;
+	private String courseName;
+
+	// some constructors if required. 
+	//getters and setters.
+	
+	@Id
+	@GeneratedValue  //// this class will have it's own id.
+	@Column(name="COURSE_ID")
+	public long getCourseId() {
+		return this.courseId;
+	}
+	
+	@Column(name="COURSE_NAME", nullable=false)  
+	public String getCourseName() {
+		return this.courseName;
+	}
+</div> 
+ 
+ hibernate.cfg.xml
+ <div class="xmlCode">
+    &lt;mapping class="in.tcampus.model.Student"/&gt;  
+    &lt;mapping class="in.tcampus.model.Course"/&gt;  
+</div>
+
+ <b>Note:-&gt; HibernateUtil can be found in above One to Many example. </b>
+    <br><br>    
+        
+ App.java.
+<div class="javaCode">
+ 
+public class App {
+
+	public static void main(String[] args) {
+		Session session = HibernateUtil.
+		getSessionFactory().openSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+
+			Set&lt;Course&gt; courses = new HashSet&lt;Course&gt;();
+			courses.add(new Course("Maths"));
+			courses.add(new Course("Computer Science"));
+
+			Student student1 = new Student("Eswar", courses);
+			Student student2 = new Student("Joe", courses);
+			session.save(student1);
+			session.save(student2);
+
+			transaction.commit();
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+}
+
+</div>     
+        
+<h2 id="hbcache">Hibernate Cache</h2>    
+
+        <ul>
+            <li>Cache or Buffer is a temporary memorey that holds data for temporary period.</li>
+            <li>in client-server communication, the cache at client side preserves server application supplied data and used it across the multiple same request and reduces network round trips between client application and server application.</li>
+            <li>the content of cache must be emptyed at regular intervals to gather uptodate results from server application.</li>
+            <li>Hibernate supports two levels of caching as client side caching to reduce network round trips between application and db software.</li>
+            
+            <li>
+                <ol type="1">
+                <li><b>First Level/L1 cache :- </b>
+                   <ul>
+                        <li>it is Session object level cache.</li>
+                        <li>it is built-in cache.</li>
+                        <li>Every Session object of Hibernate application contains one L1 Cache.</li>                    
+                    </ul>                
+                </li>
+                <li><b>Second Level / L2 cache / Global Cache:- </b>
+                    <ul>
+                        <li>it is SessionFactory level cache </li>
+                        <li>it is configurable cache.</li>
+                        <li>Every SessionFactory object of Hibernate application contains one L2 cache.</li>
+                    </ul>                
+                </li>
+                </ol>            
+            </li>
+            <li>Both L1 &amp; L2 cache maintains results / records in the form of Hibernate POJO clas object.</li>           
+            <li>When HB application generates requests through session Object first the results will be verified in L1 cache of that session object.</li>
+            <li> if result/ record is not available in Session object or L1 cache then it will be looked up for L2 cache of SessionFactory object.
+            </li>
+            <li>if result/ record not available in L2 cache as well then it will interact with DB software and retrive record.</li>
+            <li>once records are retrived then it will register in L2 cache and then it will be registered in L1 cache before giving to client application.</li>
+            <li>these registered results of cache will be used across the multiple same requests.</li>
+        </ul>        
+        
+        <h4>First Level Cache / L1 cache</h4>
+        <ul>
+            <li>every session object contains on L1 cache.</li>
+            <li>this cache remembers multiple modifications done to object duting a transaction and generates single update query at the end of transaction refleting all the modifications.</li>
+            <li>if application wants to display same record multiple times, it will select record from db table only 1 time and keep in L1 cache as HB POJO class object. and uses it multiple times.</li>
+            <li>sample code</li>
+        </ul>
+        <div class="javaCode">
+        //record will be retrived and stored in L1 cache. 
+		//sql query can be observed in logs.   
+        Employee eb=(Employee)ses.load(Employee.class,101);         
+        System.out.println(eb.toString()); 
+        
+        //record will be loaded from L1 cache . 
+		//sql query will not be printed in logs for second time.   
+        Employee eb=(Employee)ses.load(Employee.class,101);             
+        ....
+        </div>
+        <h6>to control L1 cache</h6>
+        <ul>
+            <li><b>ses.clear()</b> :- cleans L1 cache</li>
+            <li><b>ses.evict(eb)</b> :- removes "eb" object from L1 cache.</li>
+            <li><b>sesclose()</b>:- closes the session object and it's L1 cache.</li>
+            <li><b>ses.disconnect()</b>:- disconnects session object from DB s/w  and closes it's L1 cache.</li>
+        </ul>
+        
+        
+        
+        
+<h4>Second Level Cache / L2 cache</h4>
+        
+<ul>
+<li>it is SessionFactory object level cache (Global Cache)</li>
+<li>it is not build in cache that means this cache must be configured explicitly.</li>
+    <li>there are multiple 3rd party vendors supplying second level cache some examples are 
+        <ol type="1">
+            <li>EHCache</li>
+            <li>SwaramCache</li>
+            <li>JBossTreeCache  ...etc</li>
+        </ol>
+    </li>
+</ul>       
+        
+    <h6>steps to add L2 Caching Using EHCache in our application.</h6>
+        <ol type="1">
+        <li>add maven dependency in your pom.xml or add required jar to classpath in case if not using maven.
+        <div class="xmlCode">
+            &lt;!-- https://mvnrepository.com/artifact/org.ehcache/ehcache --&gt;
+            &lt;dependency&gt;
+            &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
+            &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
+            &lt;version&gt;3.6.2&lt;/version&gt;
+            &lt;/dependency&gt;
+        </div>                
+        </li>
+        <li>register cache provier's class in hibernate.cfg.xml and enable second level cache
+            <div class="xmlCode">
+            &lt;property name="cache.region.factory_class"&gt;
+			org.hibernate.cache.EHCacheRegionFactory
+			&lt;/property&gt;
+            &lt;property name="cache.use_second_level_cache"&gt; true&lt;/property&gt;
+            </div>            
+        </li>
+        <li>specify caching strategy in hibernat mapping file or in Hibernate POJO class.  .... need to be added. </li>
+        <li>sample application to verify above changes..
+            <div class="javaCode">
+                //get record from db and store in L2 &amp; L1 cache.
+                Employee eb=(Employee)ses.load(Employee.class,101);
+                System.out.println(eb.toString());
+                
+                //again write same code and test L1 cache first.. 
+				//observe that query will not be generated this time.
+                Employee eb=(Employee)ses.load(Employee.class,101);
+                System.out.println(eb.toString());
+                
+                //now clear the L1 cache..
+                ses.clear();
+                
+                //again get record .. this time it will be retrived from L2 cache.
+                Employee eb=(Employee)ses.load(Employee.class,101);
+                System.out.println(eb.toString());
+                
+                //as we are setting timeout for L2 Cache it will be cleared after timeout.
+                //now again clean L1 cache.
+                Thread.sleep(..timeout+few seconds..);
+                ses.clear();
+                
+                //get record from db and store in L2 &amp; L1 cache.
+                Employee eb=(Employee)ses.load(Employee.class,101);
+                System.out.println(eb.toString());
+                                
+                ses.close();
+                factory.close();
+            </div>    
+            </li>    
+        </ol>
+        
+<h4><b>Query Cache</b></h4>        
+<ul>
+    <li>it is subchache of Second level cache. and preserves HQL,NativeSQL query results in their orignal format and not in the form of HB Pojo lass object.</li>
+    <li>if Query region name is not specified using <b>Query.setCacheRegion(-)</b> then HQL,NativeSQL query results will be saved in default QueryCache region</li>
+    <li>to enable QueryCache 1st we need to enable L2 cache and we should also add following property in hibernate.cfg.xml
+    <div class="xmlCode">        
+        &lt;property name="cache.use_query_cache"&gt;true&lt;property&gt;
+        </div>
+    </li>
+    <li>to control L2 cache and Query cache we an call following methods.
+        <ul>
+            <li><b>factory.close()</b> :- destroyes HB sessionfactory object and releases L2 cache and JDBC pool</li>
+            <li><b>factory.evict()</b>:- removes all bean class objects form L2 cache.</li>
+            <li><b>Cache ch=factory.getCache()<br>
+                ch.evictEntityRegion(POJO.class);
+                </b> alternative to factory.evict() method</li>
+            <li><b>Cache ch=factory.getCache()<br>
+                ch.evictQueryRegions()</b> removes entities from default regions</li>
+            <li><b>factory.evictQueries("region_name")</b>:- removes query results form specified region.</li>
+            <li><b>Cache ch=factory.getCache()<br>
+                ch.evictQueryRegions("region_name")
+                </b> alternative to factory.evictQueries("region_name")</li>
+            
+        </ul>
+    
+    
+    </li>
+    
+</ul>            
+<h2 id="versioning">Versioning in hibernate</h2> 
+<p>Hibernate's one of the feature is versioning. it means if you want to track how many times a record is modified then       hibernate needs a property <br><b>&lt;version name="version" type="long"&gt;</b> in hbm.xml file or it needs a <b>@Version</b> on a property's getter in case of annotation  <br>
+        
+        but remember it is not managed by hibernate if a record gets updated externally in the database.
+</p>  
+        
+
+<h2 id="idgeneration"> Identity Generation Algorithms</h2>        
+
+    <ul>
+        <li>JVM identifies every object through hashcode. simmilerly Hibernate identifies POJO class object through it's identity value. </li>
+        <li> Hibernate uses this identity value as the criteria value to perform synchronization between objects and db-table rows.</li>
+        <li>we can use Hibernate provided algorithms or we can create our own algorithm to generate identity value by implementing <br><b>org.hibernate.IdentifierGenerator(I) interface.</b></li>        
+    </ul> 
+<br> 
+        below are few ID generation algorithms.
+        <ol type="1">
+            <li><b>Assigned (org.hibernate.id.Assigned):-</b> this algorithm let's user assign the value to the identity field before calling session.save(-). i.e. whatever you want to assign as identity value. this is default algorithm. 
+            
+            </li>
+            <li><b>Identity Algorithm:- </b> this algorithm works with db softwares which support auto increment collumn.
+            to use this algorithm . <br>
+                <pre>                    &lt;id name="no" column="eid"&gt;
+                    &lt;generator class="identity"&gt;
+                    &lt;id&gt;
+                
+                or with annotation
+                
+                	   @Id
+	                   @GeneratedValue(strategy=GenerationType.IDENTITY)
+	                   public int getId() {
+		              return id;
+	               }
+                
+                </pre>                
+            </li>
+            <li>
+            <b>Increment Algorithm:- </b>  this will use max val +1 formula to generate id. 
+                it will not consider deleted collumns while generating value.
+                <pre>                    &lt;id name="no" column="eid"&gt;
+                    &lt;generator class="increment"&gt;
+                    &lt;id&gt;
+                    </pre>
+            </li>
+            <li>
+            <b>Sequence Algorithm:-</b> it can be used with database softwares that support Sequences.<br>
+                <pre>                    &lt;id name="no" column="eid"&gt;
+                    &lt;generator class="sequence"/&gt;
+                    &lt;param name="sequence"&gt; sequence_name&lt;/param&gt;
+                    &lt;generator&gt;                    
+                    &lt;id&gt;
+                    
+                    or
+                    
+                    @Id
+                    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_generator")
+                    @SequenceGenerator(name="book_generator", sequenceName = "book_seq", allocationSize=50)
+                    
+                </pre>            
+            </li>
+            <li>
+                <b>Hi/Lo:-</b> generates identity value of type long,short,int.
+                this algorithm uses helper table collumn value as the source of high value &amp; 
+				max low value as source of low value while generating identity values.
+                
+                in hibernate mapping file 
+                
+                <pre>                
+                &lt;generator class="hilo"&gt;
+                    &lt;param name="table"&gt;mytab&lt;/param&gt;
+                    &lt;param name="column"&gt;mycol&lt;/param&gt;
+                    &lt;param name="max-10"&gt;5&lt;/param&gt;
+                &lt;/generator&gt;
+                
+                </pre>
+                
+            </li>
+            <li><b>Native:-</b>
+            this algorithm picksup identity , sequence,hilo algorithm depending upon the capability of underlying db software.
+                if underlying db s/w supports sequences like oracle then it will use sequence algorithm internally.
+                &amp; if db s/w supports both sequence &amp; identity collumns then it internally uses hilo algorithm.
+                
+                <pre>                    &lt;id name="no" column="eid&gt;
+                    &lt;generator class="native"&gt;
+                    &lt;generator class="native&gt;
+                    &lt;param name="sequence"&gt;myseq&lt;/param&gt;
+                    &lt;/generator&gt;
+                    &lt;/id&gt;                
+                </pre>
+            </li>
+            <li>
+            <b>UUID:- </b> uses a 128 bit UUID algo to generate identifiers of type string by using IP address of network.
+                this UIID identity value comes as string of hexadecimal digits of length 32.
+                <pre>                    &lt;id name="no" column="eid&gt;
+                    &lt;generator class="uuid"/&gt;      
+                    &lt;/id&gt;
+                </pre>
+            </li>
+            <li><b>Own Implementation:-</b> if you don't like above all algorithms. then go for our own implementation.
+            </li>
+            </ol>        
+             Example <br>            
+            <div class="javaCode">
+                
+            imports ...*
+            
+            public class CusotomIdGenerator implements IdentifierGenerator
+            {
+                public Serializable generate(SessionImplementor impl,Object obj)
+                {
+                    //generate random number as id value
+                    Random rd=new Random();
+                    int val=rd.nextInt(100000);
+                    return new Integer(val); 
+                    // return id val as Integer wrapper class object.
+                }
+            
+            }
+                
+            </div>            
+            
+                        
+        
+        
+        <h2 id="HBPOJO_lifeCycle">
+        Hibernate POJO class Life-Cycle.
+        </h2>
+        <div class="imageDiv">
+        <img src="Hibernate_Pojo_Class_lifeCycle.jpg">
+        </div>
+        
+<br>
+    We can create HB Pojo clas object residing in one of the following 3 states.
+        <ol type="1">
+            <li><b>Transient State:-</b> <br>
+            -not associated with session. i.e. just created Pojo Bean object.<br>
+            -no identity value<br>    
+            </li>
+            <li><b>Persistent State:-</b><br>
+            - Associated with session i.e. called save() or saveOrUpdate() or merge() or persist() method<br>
+            - Contains Identity value.<br>
+            - Maintains Synchronization with db table record. <br>   
+            </li>
+            <li><b>Detached State:-</b><br> 
+            - not associated with session currently i.e. after calling evict(), or clear() method.<br>
+            - contains identity value but doesen't maintain Synchronization with db able record.<br>    
+            </li>
+        </ol>
+        
+<h2 id="Schema_Tools">
+        Hibernate Schema tools
+        </h2>        
+<br>
+    Hibernate gives 3 tools as command line tools to create or alter db tables according to the configurations done in Hibernate mapping files. these tools are useful when you want to migrate to a new database for your application.   
+        
+        <br>
+        <ol type="1">
+        
+        <li><b>SchemaExport:-</b><br>
+            - always creates new db table based on hibernate mapping file configurations. drops tables if necessary.<br>
+            - we can control new db table setting by providing attributes in mapping files.<br>
+            - e.g. <b>cmd&gt; java org.hibernate.tool.hbm2ddl.SchemaExport --config=hibernate.cfg.xml </b><br><br>
+        </li>
+        <li>
+            <b>SchemaUpdate:-</b><br>
+            - this tool creates table if it is not already available.<br>
+            - uses existing db table if it is already available and modification are not required in db table.<br>
+            - alters tables if required.<br>
+            - e.g. <b>cmd&gt; java org.hibernate.tool.hbm2ddl.SchemaUpdate --config=hibernate.cfg.xml</b><br><br>
+        </li>    
+        <li>
+            <b>SchemaValidator:-</b><br>
+            - this tool will not create new db tables. it will just validate if db tables are according to provided mapping files.<br>
+            - e.g. <b>cmd&gt;java org.hibernate.tool.hbm2ddl.SchemaValidator --config=hibernate.cfg.xml</b><br><br>
+        </li>
+        </ol>
+<h2 id="HBConnectionPool">
+        Hibernate Connection Pooling
+        </h2>               
+        - Dont use HB built-in Connection pool in any real time project. we have alternative for third party connection pools. <br>
+        - and if application is to be deployed in web/application server then we can go for server managed  JDBC Connection pool. <br>
+        
+        - based on the property value that we configure in <b>hibernate.cfg.xml</b>, hibernate will choose the connection pool 
+        
+        <b>Hibernate.connection.provider_class</b><br>
+        
+        - e.g. configure connection provider class in configuration file.<br>
+         <b> &lt;property name="hibernate.connection.provider-class"&gt; org.hibernateconnection.c3p0ConnectionProvider
+        &lt;/property&gt;
+        </b>
+        
+        <ul>
+        <li>to use build-in JDBC connection pool (default)<br>
+        <b>org.hibernate.connection.DriverManagerConnectionProvider  </b> <br> 
+        </li>
+        <li> to use c3p0 JDBC connection pool (dependent jar required.)<br>
+        <b>org.hibernate.connection.c3p0ConnectionProvider</b><br>
+            - apart form this we would need few properties in hibernate.cfg.xml as follows.<br>
+            <div class="xmlCode">
+            &lt;property name="hibernate.c3p0.max_size"&gt;10&lt;property&gt;
+            &lt;property name="hibernate.c3p0.min_size"&gt;1&lt;property&gt;
+            &lt;property name="hibernate.c3p0.timeout"&gt;5000&lt;property&gt;
+            &lt;property name="hibernate.c3p0.acquire_increment"&gt;1&lt;property&gt;
+            
+            </div><br>
+        </li>
+        <li> to use proxool JDBC connection pool (dependent jar required.)<br>
+        <b> org.hibernate.connection.ProxoolConnectionProvider</b><br>    
+        - this requires seperate xml connection pool configuration file and additional properties in hibernate.cfg.xml as below.<br>
+        <div class="xmlCode">
+            &lt;property name="proxool.xml"&gt;xmlfilename.xml&lt;property&gt;
+            &lt;property name="proxool.pool_alias"&gt;alias_name_configured_in_xmlfilename.xml&lt;property&gt;
+            </div>
+            <br>
+            
+            </li>
+        <li> to use server managed JDBC connection pool<br>
+            <b>org.hibernate.connection.DatasourceConnectionProvider</b>
+            </li>    
+        </ul>
+        
+    <h2 id="hbfiler">Hibernate Filter</h2>    
+        
+        
+        
+        
+        
+
+
+
+    </div><!-- middleContentContainer-->
     <div class="rightContentContainer">
         Right Navigation...
     </div>
 </div>    
 
 <footer class="w3-container w3-teal footerContainer">
-  <p>Terms Of Use 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="./hibernate_files/88x31.png"></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Java and other tutorials</span> by 
-<a xmlns:cc="http://creativecommons.org/ns#" href="file:///home/suraj/Documents/notes/hibernate/www.tcampus.in" property="cc:attributionName" rel="cc:attributionURL">Suraj Patil</a>
- is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></p>
+  <p>
+Java and other tutorials</span>
+<a xmlns:cc="http://creativecommons.org/ns#" href="www.tcampus.in" property="cc:attributionName" rel="cc:attributionURL"></a>
+is licensed under a  
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"> 
+<br>for suggestions please text me on <b>suraj.patil@tcampus.in</b>
+</p>
 </footer>
 </div>
+
+    
+    
+    
+    
 
 
 </body></html>

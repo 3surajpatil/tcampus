@@ -1,42 +1,66 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="..\notes.css" rel="stylesheet" type="text/css">
+<title>java-interview-questions </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="..\index.css">    
 </head>
 <body>
-<h1 align="center">Core Java interview Questions</h1>
-<pre>
-<b>Q1. Explain JDK, JRE and JVM? </b>
---> JDK is java development kit. It provides tools to compile and run java application. it  contains JRE & JVM.
+<div class="mainContainer w3-container">
 
-JRE is java runtime environment. It provides environment to run java program.
-end users Who just want to run a java program need JRE. 
+<header class="w3-container  w3-teal headerContainer">
+  <h2>Tutorial Campus....!</h2>
+</header>
+    
+    
+<nav  style="margin-top: 10px;" class="w3-bar w3-border w3-card-4 w3-light-grey">    
+    
+		<a href="Core-Java.html" class="w3-bar-item w3-button">Core Java</a> 
+		<a href="JDBC.html" class="w3-bar-item w3-button">JDBC</a>
+		<a href="Design-Patterns.html" class="w3-bar-item w3-button">Design Patterns</a>
+		<a href="..\advance_Java\Servlet-JSP.html" class="w3-bar-item w3-button">Servlet-JSP</a>	
+		<a href="..\hibernate\hibernate.html"  class="w3-bar-item w3-button">Hibernate</a>
+        <a href="..\spring\Spring.html"  class="w3-bar-item w3-button">Spring</a>
+    
+    
+</nav>
+<div class="contentContainer">
+    <div class="leftContentContainer">
+        Left Navigation .... 
+    </div>   
+    <div class="middleContentContainer">
+        <h1>Core Java interview Questions</h1>
 
-JRE contains JVM  & Java Packages (like util, math, lang, awt, swing etc) & rt.jar 
+<b>Q1. Explain JDK, JRE and JVM? </b><br>
+<ul>
+<li>JDK is java development kit. It provides tools to compile and run java application. it  contains JRE & JVM.</li>
+<li>JRE is java runtime environment. It provides environment to run java program.</li>
+<li>end users Who just want to run a java program need JRE.</li> 
+<li>JRE contains JVM  & Java Packages (like util, math, lang, awt, swing etc) & rt.jar</li> 
+<li>JVM  converts byte-code to the machine readable form with help of JIT(Just In Time Compiler).</li>  
+</ul>
 
-JVM  converts byte-code to the machine readable form with help of JIT(Just In Time Compiler).  
-
-
-
+<br>
 <b>Q2. Why Java is platform independent?</b>
+<br>
+<ul>
+<li>Java is called so because of its byte codes which can run on any system irrespective of its underlying operating system.</li>
+</ul>
 
-Java is called so because of its byte codes which can run on any system irrespective of its underlying operating system.
+<b>Q3. Why java is not 100% Object-oriented? </b><br>
+<ul>
+<li>Java is not 100% Object-oriented because it makes use of eight primitive datatypes such as boolean,
+byte, char, int, float, double, long, short which are not objects.</li>
+<li>we can avoid primitive datatypes and use Wrapper classes to 100% java application 100% object oriented.</li> 
+</ul>
 
-<b>Q3. Why java is not 100% Object-oriented? </b>
+<b>Q4. What is singleton class and how can we make a class singleton?</b><br>
 
-Java is not 100% Object-oriented because it makes use of eight primitive datatypes such as boolean,
-byte, char, int, float, double, long, short which are not objects.
+<ul><li>Singleton class is a class whose only one instance can be created at any given time, in one JVM. 
+A class can be made singleton by making its constructor private.</li></ul>
 
-we can avoid primitive datatypes and use Wrapper classes to 100% java application 100% object oriented. 
-
-
-<b>Q4. What is singleton class and how can we make a class singleton?</b>
-
-Singleton class is a class whose only one instance can be created at any given time, in one JVM. 
-A class can be made singleton by making its constructor private.
-
-<b>Q5. What is the difference between equals() and == ?</b>
+<b>Q5. What is the difference between equals() and == ?</b><br>
 
 <ol type="i">
 <li>Main difference between .equals() method and == operator is that one is method and other is operator. </li>
@@ -49,50 +73,76 @@ String class has it's own implementation i.e. overridden method equals which com
 </ol>
 
 Example: 
-	<code>
+	<div class="javaCode">
 	    String s1 = new String("HELLO");
         String s2 = new String("HELLO");
         System.out.println(s1 == s2); //false
         System.out.println(s1.equals(s2)); //true
-	</code>
+	</div>
 
 <h1 align="center"> OOPS Java Interview Questions: </h1>
 
-<b>Q) What is Polymorphism? </b>
+<b>Q) What is Polymorphism? </b> <br>
+<ul>
+<li>Representing one thing in many forms is Polymorphism.</li>
 
-Representing one thing in many forms is Polymorphism.
-
-There are 2 types of polymorphism, 
-
-1) Compiletime/Static Polymorphism :- This can be achieved by using Method Overloading.
-
-if there are two overloaded methods, then which method to be called is decided at compile time itself depending on parameter list. 
-
+<li>There are 2 types of polymorphism  
+<ol type="1">
+ <li><b>Compiletime/Static Polymorphism :-</b> This can be achieved by using Method Overloading.
+if there are two overloaded methods, then which method to be called is decided at compile time itself depending on parameter list. </li>
  
-2) Runtime/Dynamic Polymorphism. :- This can be achieved by Method Overriding.
+<li> <b>Runtime/Dynamic Polymorphism. :-</b> This can be achieved by Method Overriding.
 
-if there is overridden method in child class, then which method to be called is decided at runtime depending on reference of object.
+if there is overridden method in child class, then which method to be called is decided at runtime depending on reference of object.</li>
+</ol>
+</li>
 
+</ul>
 
-<b>Q) What is association</b>
-Association represents the relation between objects. or using association objects can communicate with each other.
+<b>Q) What is association</b><br>
+<ul>
+<li>Association represents the relation between objects. or using association objects can communicate with each other.</li>
 
-there are 3 type of associations 1) IS-A 2) HAS-A 3) USES-A
+<li>there are 3 type of associations 1) IS-A 2) HAS-A 3) USES-A </li>
+<li> <ol type="1">
+<li> <b>IS-A :-</b> if a class is inherited from other class then there is IS-A type of relation.</li>
 
-1) IS-A :- if a class is inherited from other class then there is IS-A type of relation.
-
-2) HAS-A :- if a class A is having object of another class B as a datamember then it is HAS-A type of relation.
+<li> <b>HAS-A :-</b> if a class A is having object of another class B as a datamember then it is HAS-A type of relation.
 it is also called composition. i.e. if there is no object A then there will not be object B.
 
-System.out is example of HAS-A relationship.
+System.out is example of HAS-A relationship.</li>
 
-3) USES-A :- if a method of a class is using object of another class then it is called as a USES-A relation.
+<li><b> USES-A :-</b>if a method of a class is using object of another class then it is called as a USES-A relation.</li>
+</ol>
+</li>
+</ul>
 
-<b>Q) What do you mean by aggregation & Composition? </b>
+
+<b>Q) What do you mean by aggregation & Composition? </b> <br>
 
 
-</pre>
+
+
+
+
+
+
+    </div>
+    <div class="rightContentContainer">
+        Right Navigation...
+    </div>
+</div>    
+
+<footer class="w3-container w3-teal footerContainer">
+<p>
+Java and other tutorials</span>
+<a xmlns:cc="http://creativecommons.org/ns#" href="www.tcampus.in" property="cc:attributionName" rel="cc:attributionURL"></a>
+is licensed under a  
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"> 
+<br>for suggestions please text me on <b>suraj.patil@tcampus.in</b>
+</p>
+</footer>
+</div>
 </body>
 </html>
-
-
