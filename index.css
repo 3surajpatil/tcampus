@@ -1,17 +1,30 @@
 
-.mainContainer
-{
-    background-color: white;
-    width: auto;
+html {
+  height: 100%;
+  font-family: sans-serif;
 }
 
+body {
+  height: 100%; 
+  margin: 0px;
+    
+}
+
+.mainContainer
+{
+    background-color: white;         
+    margin: 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    //overflow-y: scroll;
+}
+      
 
 .headerContainer 
 {
-    background-color:darkslategray;
-    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-    margin-top: 15px 0; 
-    
+    background-color: darkslategray;
+    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);                    
 }
 
 
@@ -20,47 +33,56 @@
     background-color: white;
     margin: 15px 0 ;    
     box-sizing: border-box;
-    //justify-content: space-between;
-    //box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-    //overflow:scroll;
+    justify-content: space-between;
+    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);           
+    
 }
 
 @media(min-width: 900px){
     
     .contentContainer{
     
-    display: flex;    
-    align-items: stretch;
-    
+   	display: flex;    
+    //align-items: stretch;    
     }
     
-     .leftContentContainer{
-        margin-right:5px;        
+   .leftContentContainer{
+        margin-right: 5px;
+        /* when menu will be increase scroll will be added */
+        height: 450px;
+        overflow-y: auto;        
     }
+    
     .middleContentContainer{
         margin-right: 5px;
+        
+        /*when middleContent size increased scroll will get added.*/
+        height: 450px;
+        overflow-y: auto;         
     }
+    
 }
 
 
 .leftContentContainer
 {
     background-color: white;
-    flex: 1;    
-    //flex-basis: 12%;
+    flex: 1;        
     order: 1;
     padding-left: 0px;
     box-sizing: border-box;   
-    
-
-    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-    
+    flex-shrink: 0; /*avoids content shrinking on small browser window.*/		
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);    
 }
 
+
 .leftContentContainer ul{
-    margin:0;
+    margin: 0;
     padding: 0;
-    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);    
+    flex-direction: column;
+    //overflow-y: auto;
+    flex-shrink: 0;
 }
 .leftContentContainer ul li{
         
@@ -71,6 +93,7 @@
     background-color:#f1f1f1;
     overflow:auto
 }
+
 .leftContentContainer ul li:hover{
     background-color: lightgray;
 }
@@ -87,6 +110,8 @@
     padding-left: 5px;   
     box-sizing: border-box;
     box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+    //flex-grow: 1;  /*ensures that the container will take up the full height of the parent container*/
+    overflow-y: auto;  /*adds scroll to this container*/
 }
 
 .rightContentContainer
@@ -99,13 +124,13 @@
     box-sizing: border-box;     
     padding-left: 10px;
     box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+    /* overflow-y: auto; */ 
 }
 
 
 
 .footerContainer
-{
-    
+{    
     background-color: darkslategray;
     box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
 }
@@ -126,6 +151,7 @@ table, th, td{
     color: blue;
     white-space: pre;
     line-height: 1.5;
+    overflow-x: scroll;
 }
 
 .javaCode{
@@ -139,11 +165,13 @@ table, th, td{
     color: blue;
     white-space: pre;   
     padding-left: 8px;
-    line-height: 1.5;    	
+    line-height: 1.5;  
+    overflow-x: scroll;  	
 }
 
 .imageDiv{
     border: 1px solid black;
+    overflow-x: scroll;
 }
 
 #indexMenu{

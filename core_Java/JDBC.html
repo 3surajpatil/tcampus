@@ -38,27 +38,27 @@
         </ul>
     </div>   
     <div class="middleContentContainer">
-<H1 id="#Intro">JDBC Introduction</H1>        
-According to database software specification , there are 4 types of queries
-	<ol type="1">
-		<li> DML (update, insert , delete)</li>
-		<li> DRL (select queries.)</li>
-		<li> DDL queries (create or alter table or drop table etc.)</li>
-		<li> TCL (commit, rollback savepoint)</li>
-	</ol>
-    <ul>    
-	<li> When select queries are executed, they return bunch of records,and when non select <br>
-        queries are executed they return one numeric value which is no. of records affected. </li>
-	<li> We use JDBC Statement object to send and execute queries in database software being <br>
-        from java application. we can create this object based on connection object. <br>
-Statement st= connection.createStatement(); 
-    </li>
-	<li> use executeQuery() to send and execute sql select queries.  </li>
-	<li> use executeUpdate() to send and execute sql non-select queries. </li>
-    </ul>    
-        
-	<b>Prototypes of JDBC API methods</b>
-	<ul>
+		<H1 id="#Intro">JDBC Introduction</H1>        
+		According to database software specification , there are 4 types of queries
+			<ol type="1">
+				<li> DML (update, insert , delete)</li>
+				<li> DRL (select queries.)</li>
+				<li> DDL queries (create or alter table or drop table etc.)</li>
+				<li> TCL (commit, rollback savepoint)</li>
+			</ol>
+			<ul>    
+			<li> When select queries are executed, they return bunch of records,and when non select <br>
+				queries are executed they return one numeric value which is no. of records affected. </li>
+			<li> We use JDBC Statement object to send and execute queries in database software being <br>
+				from java application. we can create this object based on connection object. <br>
+			Statement st= connection.createStatement(); 
+			</li>
+			<li> use executeQuery() to send and execute sql select queries.  </li>
+			<li> use executeUpdate() to send and execute sql non-select queries. </li>
+			</ul>    
+				
+			<b>Prototypes of JDBC API methods</b>
+			<ul>
 		<li>public static Connection getConnection(Stirng url, String username, String password)</li>
 		<li>public Statement createStatement() throws SQLException</li>
 		<li>public ResultSet executeQuery(String query) throws SQLException</li>
@@ -67,7 +67,7 @@ Statement st= connection.createStatement();
 		<li>public void close() throws SQLException</li>
 	</ul>	
 	
-<div class="javaCode">
+	<div class="javaCode">
     public class JdbcTest
 	{
 		public static void main(---)
@@ -98,7 +98,7 @@ Statement st= connection.createStatement();
 </div>        
         
         
- <h3 id="ResultSet">ResultSet Object</h3>
+	<h3 id="ResultSet">ResultSet Object</h3>
         <ul>
 		<li> ResultSet object it is object of underlying jdbc driver supplied java class that implements java.sql.ResultSet interface. </li>
 		<li> by default every ResultSet object contains BFR & ALR records . & record pointer / cursor reside in BFR position by default 
@@ -110,7 +110,7 @@ Statement st= connection.createStatement();
         <img src="ResultSet.jpg">
         </div> 
     <ul>    
-<li> ResultSet have getXXX(). we can use collumn index or column name
+		<li> ResultSet have getXXX(). we can use collumn index or column name
         <li> if we don't  know what is datatype of the collumn in ResultSet then we can simply call <br> <strong>rs.getString(index/collumnName)</strong> method.	 </li>
 		<li> when we select specific collumns of db into RS object. <br>
         the collumn vlues will be stored in the ResultSet object in the order they are selected.</li>
@@ -118,7 +118,7 @@ Statement st= connection.createStatement();
             in which they are stored in ResultSet object and not in order they are there in database table.</li>
         <li> if we try to get values from ResultSet object when it is closed , then we get SQLException.</li>
 
-</ul>
+	</ul>
  		
 <h4>Types of ResultSet</h4>			
 <ol type="1">
@@ -127,7 +127,7 @@ Statement st= connection.createStatement();
 	 <li> The result set cannot be scrolled; its cursor moves forward only, from BFR row to ALR positions. </li>
  	 <li> The default ResultSet type is TYPE_FORWARD_ONLY  </li>
         </ul>
-</li>
+	</li>
 	<li>TYPE_SCROLL_INSENSITIVE:
         <ul>
 	 <li> The result can be scrolled; its cursor can move both forward and backward relative to the current position.</li>
@@ -135,7 +135,7 @@ Statement st= connection.createStatement();
  		that occur after the result set was created.
      </li>
     </ul>        
- </li>
+	</li>
 	<li>TYPE_SCROLL_SENSITIVE:
         <ul>
  	<li>The cursor can scroll forward and backward, and the result set is sensitive to changes made by others to the database that occur after the result set was created.</li>
@@ -528,28 +528,28 @@ we can achieve this with help of PreparedStatement <br>
 	ps.setCharacterStream(-,-,-)  / ps.setCLOB(-,-,-);
 	
 <h2>Retriving BLOB from database.</h2>
-<div class="javaCode">		
-InputStream is=null ;
-if(rs.next())
-{	
-    is=rs.getBinaryStream(4);
-	FileOutputStream fos=new FileOutputStream("newPic.gif");
-	int bytesRead=0;
-	byte [] buffer = new byte[4096];
-	while(( bytesRead=is.read(buffer))!=-1) 
-	{
-		fos.write(buffer,0,bytesRead);
-	}
-}		
-	
-</div>        
+		<div class="javaCode">		
+		InputStream is=null ;
+		if(rs.next())
+		{	
+			is=rs.getBinaryStream(4);
+			FileOutputStream fos=new FileOutputStream("newPic.gif");
+			int bytesRead=0;
+			byte [] buffer = new byte[4096];
+			while(( bytesRead=is.read(buffer))!=-1) 
+			{
+				fos.write(buffer,0,bytesRead);
+			}
+		}		
+			
+		</div>        
         
         
         
     </div>
-    <div class="rightContentContainer">
+    <!-- <div class="rightContentContainer">
         Right Navigation...
-    </div>
+    </div> -->
 </div>    
 
 <footer class="w3-container w3-teal footerContainer">
