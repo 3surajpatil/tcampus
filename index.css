@@ -17,7 +17,7 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    //overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
       
 
@@ -43,7 +43,7 @@ body {
     .contentContainer{
     
    	display: flex;    
-    //align-items: stretch;    
+    /*align-items: stretch;    */
     }
     
    .leftContentContainer{
@@ -81,7 +81,7 @@ body {
     padding: 0;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);    
     flex-direction: column;
-    //overflow-y: auto;
+    /*overflow-y: auto;*/
     flex-shrink: 0;
 }
 .leftContentContainer ul li{
@@ -105,12 +105,12 @@ body {
 {
     background-color: white;
      flex: 6; 
-    //flex-basis: 74%;
+    /*flex-basis: 74%;*/
     order: 2;
     padding-left: 5px;   
     box-sizing: border-box;
     box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-    //flex-grow: 1;  /*ensures that the container will take up the full height of the parent container*/
+    /*flex-grow: 1; */ /*ensures that the container will take up the full height of the parent container*/
     overflow-y: auto;  /*adds scroll to this container*/
 }
 
@@ -119,7 +119,7 @@ body {
     
     background-color: white;
      flex: 1;
-    //flex-basis: 12%;
+    /*flex-basis: 12%;*/
     order: 3;
     box-sizing: border-box;     
     padding-left: 10px;
