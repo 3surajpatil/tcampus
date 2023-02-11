@@ -49,7 +49,7 @@ body {
    .leftContentContainer{
         margin-right: 5px;
         /* when menu will be increase scroll will be added */
-        height: 450px;
+        height: 650px;
         overflow-y: auto;        
     }
     
@@ -57,7 +57,7 @@ body {
         margin-right: 5px;
         
         /*when middleContent size increased scroll will get added.*/
-        height: 450px;
+        height: 650px;
         overflow-y: auto;         
     }
     
